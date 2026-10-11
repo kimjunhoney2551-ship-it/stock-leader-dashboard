@@ -195,7 +195,7 @@ function rankLookup(field,transform,variant='raw'){
   const key=field+'|'+variant;
   if(rankCache.has(key))return rankCache.get(key);
   const isPriceField=/^(?:ret_|high52_gap_pct|cmf20|rvol10_60)/.test(field);
-  const vals=state.rows.filter(x=>!isPriceField||!state.settings.asof||x.price_asof===state.settings.asof).map(x=>x[field]).filter(valid).map(x=>transform?transform(x):x).sort((a,b)=>a-b);
+  const vals=state.rows.filter(x=>valid(x.market_cap_usd)&&x.market_cap_usd*state.settings.fx>=1e10&&valid(x.avg_value_usd)&&x.avg_value_usd>=5e6&&valid(x.beta)&&x.beta<=2&&(!state.settings.asof||x.price_asof===state.settings.asof)).map(x=>x[field]).filter(valid).map(x=>transform?transform(x):x).sort((a,b)=>a-b);
   const ranks=new Map(),max=vals.length-1;
   for(let i=0;i<vals.length;){let j=i+1;while(j<vals.length&&vals[j]===vals[i])j++;
     ranks.set(vals[i],max===0?.5:bound((i+(j-i-1)/2)/max,0,1));i=j;
@@ -370,6 +370,14 @@ function addTradingViewLatest(payload, overlay){
     if(valid(v['AvgValue.Traded_10d']))r.avg_value_usd_latest_tv=v['AvgValue.Traded_10d'];
     if(valid(v.return_on_common_equity_fy)){r.roe_pct=v.return_on_common_equity_fy;r.roe_period='TV FY';}
     if(valid(v.piotroski_f_score_fy))r.tv_piotroski_9=v.piotroski_f_score_fy;
+    // Mixed-vintage estimate: historical price and latest TradingView next-FY EPS.
+    if(valid(v.earnings_per_share_forecast_next_fy)&&valid(r.close_usd)&&r.close_usd>0){
+      const eps=v.earnings_per_share_forecast_next_fy;
+      r.forward_pe=eps===0?-1:r.close_usd/eps;
+      r.forward_pe_price_asof=r.price_asof;
+      r.forward_pe_estimate_fetched_at_utc=overlay.queried_at_utc;
+      r.forward_pe_source='Yahoo price / TradingView next-FY EPS (different data vintage)';
+    }
     if(valid(v.gross_margin_ttm))r.gross_margin_ttm_pct=v.gross_margin_ttm;
     if(valid(v.gross_margin_fy))r.gross_margin_fy_pct=v.gross_margin_fy;
     if(valid(v.sell_gen_admin_exp_other_ratio_ttm))r.sga_ratio_ttm_pct=v.sell_gen_admin_exp_other_ratio_ttm;
