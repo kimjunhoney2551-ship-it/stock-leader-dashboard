@@ -18,6 +18,9 @@ import numpy as np
 import pandas as pd
 import yfinance as yf
 
+# Institution disclosures are fetched separately, may be newer than historical prices.
+from ownership import load_cache, enrich_row
+
 ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/"docs"/"data"
 UNIVERSE=ROOT/"config"/"universe.csv"
@@ -214,6 +217,7 @@ def run():
         raise RuntimeError("Cannot verify SPY market session")
     if historical and session!=explicit:
         raise RuntimeError("Pinned close requested "+explicit+" but actual SPY session "+session)
+    institutional_cache=load_cache().get('tickers',{})
     outrows=[]
     current=0
     for n,r in enumerate(directory_rows):
@@ -231,6 +235,7 @@ def run():
         else:
             d["price_is_current"]=False
             d["_auto_price_fields"]=[]
+        enrich_row(d,institutional_cache)
         outrows.append(d)
     if current<20:
         raise RuntimeError("Only "+str(current)+" symbols downloaded; aborting incomplete update")
@@ -274,9 +279,12 @@ def run():
       "current_price_coverage_complete":current==len(tickers),
       "price_updated_count":current,"universe_count":len(tickers),
       "info_updated_count":metadata_updated,"fx_krw_usd":fx,
+      "institution_latest_disclosure_count":sum(bool(r.get("inst_holder_report_asof")) for r in outrows),
+      "institution_comparable_change_count":sum(r.get("inst_change_pct") is not None for r in outrows),
+      "institution_data_policy":"Latest available Yahoo top-institution disclosures, report date separated from price session; changes only for matched top holders across reporting quarters.",
       "sp500_returns":{k:bench[v] for k,v in mapping.items() if v in bench},
       "rows":outrows,"warnings":warnings,
-      "notice":"As-of date is for price history only. Universe directory is present-day, not historical. Historic cap/shares/institutions/F-score unavailable; no complete COMP can be claimed."
+      "notice":"As-of date is for price history only. Universe directory is present-day, not historical. Historic cap/shares/F-score unavailable; current institutional disclosures are an explicitly latest-data, non-point-in-time exception. Sampled holder changes are NOT full institutional ownership changes; no complete COMP can be claimed."
     }
     DATA.mkdir(parents=True,exist_ok=True)
     UNIVERSE.parent.mkdir(parents=True,exist_ok=True)
