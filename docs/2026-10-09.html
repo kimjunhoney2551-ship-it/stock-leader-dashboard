@@ -387,6 +387,27 @@ function addTradingViewLatest(payload, overlay){
   }
   return count;
 }
+async function addLatestInstitutionalCache(payload){
+  try{
+    const response=await fetch('./data/institutional.json?_='+Date.now(),{cache:'no-store'});
+    if(!response.ok)throw Error('HTTP '+response.status);
+    const cache=await response.json();
+    if(!cache.tickers||typeof cache.tickers!=='object')return;
+    const fields=['inst_holder_report_asof','inst_holder_fetched_at_utc','inst_holder_sample_count','inst_holder_sample_shares','inst_holder_source','inst_change_pct','inst_change_asof','inst_change_prev_asof','inst_change_sample_holders','inst_change_method','inst_change_source'];
+    for(const row of payload.rows){
+      const entry=cache.tickers[row.ticker];
+      if(!entry||!entry.inst_holder_report_asof||entry.inst_holder_report_asof<(row.inst_holder_report_asof||''))continue;
+      if(row.inst_change_method==='matched_top_institutions_proxy'){
+        for(const key of fields)if(key.startsWith('inst_change_'))delete row[key];
+      }
+      for(const key of fields)if(entry[key]!==undefined&&entry[key]!==null)row[key]=entry[key];
+    }
+    payload.institution_latest_disclosure_count=payload.rows.filter(r=>r.inst_holder_report_asof).length;
+    payload.institution_comparable_change_count=payload.rows.filter(r=>typeof r.inst_change_pct==='number'&&Number.isFinite(r.inst_change_pct)).length;
+    payload.institution_cache_checked_at=cache.last_attempt_utc||'';
+  }catch(error){payload.institution_cache_warning=String(error);}
+}
+
 function addTradingViewFinancialHistory(payload, history){
   if(!history||!history.rows||Array.isArray(history.rows))return 0;
   let count=0;
@@ -438,7 +459,8 @@ async function syncRemote(force=false){
     const fyResponse=await fetch(fyUrl.toString(),{cache:'no-store'});
     if(fyResponse.ok)addTradingViewFinancialHistory(payload,await fyResponse.json());
   }catch(fyError){console.warn('TradingView fiscal year comparison unavailable',fyError);}
-  const marketStamp=(payload.generated_at_utc||'baseline')+'|'+(tvDoc?.queried_at_utc||'unavailable');
+  await addLatestInstitutionalCache(payload);
+  const marketStamp=(payload.generated_at_utc||'baseline')+'|'+(tvDoc?.queried_at_utc||'unavailable')+'|'+(payload.institution_cache_checked_at||'');
   const isNew=force||marketStamp!==autoSyncState.stamp;
   if(isNew){
    const remote=new Map(payload.rows.filter(x=>x&&x.ticker).map(r=>[r.ticker,r]));
