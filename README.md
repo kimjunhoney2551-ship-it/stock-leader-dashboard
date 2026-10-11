@@ -21,3 +21,11 @@
 
 ## 역사적 데이터의 한계
 기준일 이후의 종가를 10월 9일 스냅샷에 포함하지 않습니다. 2026-10-09 당시 시가총액·선행 PER 등 확인되지 않은 과거 재무지표는 오늘 값으로 소급하지 않습니다. **기관보유에 대해서는 사용자 요청에 따른 최신 공시 사용 예외를 적용하며, 해당 값이 10월 9일 당시 관측 가능했다고 주장하지 않습니다.** 최신 기관보유 수준만으로 변화 점수를 임의 산정하지 않고, 13D/13G 이벤트도 별도 검증이 필요합니다.
+
+## 공개 웹 대시보드 배포
+- **준비 완료:** `docs/index.html`, `docs/2026-10-09.html`, `.github/workflows/deploy-dashboard.yml`.
+- **저장소 소유자가 직접 활성화해야 함:** Settings → General → Danger Zone → Change repository visibility → Public. 변경 시 코드와 수집 종목정보도 누구나 볼 수 있습니다.
+- Settings → Pages → Build and deployment → Source = **GitHub Actions**.
+- Actions → Deploy Public Stock Dashboard → Run workflow. Pages가 허용되면 보통 `https://kimjunhoney2551-ship-it.github.io/stock-leader-dashboard/` 경로가 활성화됩니다.
+- 데이터 수집 및 전체 COMP 확정은 별도입니다. 가격 스냅샷 수집이 실패한 동안에는 대시보드의 데이터 미수집 상태를 확인하세요.
+- GitHub 연결 앱은 저장소 공개 전환 및 Pages 신규 활성화 권한을 제공하지 않으므로 위 두 설정은 계정 소유자가 해야 합니다.
