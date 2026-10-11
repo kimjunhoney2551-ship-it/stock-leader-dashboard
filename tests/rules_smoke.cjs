@@ -10,6 +10,9 @@ new vm.Script(scripts[0][1],{filename:"rules.js"});
 const snapshot=JSON.parse(fs.readFileSync("docs/data/latest.json","utf8"));
 const tv=JSON.parse(fs.readFileSync("docs/data/tradingview_latest.json","utf8"));
 assert(tv.rows&&tv.completed===true,"TradingView snapshot not complete");
+const fy=JSON.parse(fs.readFileSync("docs/data/tradingview_financial_history_priority.json","utf8"));
+assert(Object.keys(fy.rows).length>=16,"FY historical finance samples missing");
+
 assert(Array.isArray(snapshot.rows),"Invalid market snapshot");
 const ids={};
 const get=(id)=>ids[id]||(ids[id]={
@@ -19,7 +22,7 @@ const get=(id)=>ids[id]||(ids[id]={
 });
 const ctx={
  document:{getElementById:get},
- fetch:async(url)=>({ok:true,json:async()=>(String(url).includes("tradingview_latest.json")?tv:snapshot)}),
+ fetch:async(url)=>({ok:true,json:async()=>(String(url).includes("tradingview_financial_history_priority.json")?fy:String(url).includes("tradingview_latest.json")?tv:snapshot)}),
  setTimeout,
  Blob,URL,
  console
@@ -40,6 +43,13 @@ setTimeout(()=>{
     }
     assert(get("validation").innerHTML.includes("시가총액 수집"),"coverage detail missing");
     assert(get("validation").innerHTML.includes("TradingView"),"TV overlay not connected");
+    assert(get("validation").innerHTML.includes("FY 매출"),"FY YoY comparison not connected");
+    get("search").value="NTAP";
+    get("search").listeners.input();
+    assert(get("table").innerHTML.includes("NTAP"),"Priority ticker not rendered");
+    assert(get("table").innerHTML.includes("2~4"),"Annual revenue/gross-margin comparison missing in F-score");
+    get("search").value="";
+    get("search").listeners.input();
     get("filter").value="all";
     get("filter").listeners.change();
     assert(get("table").innerHTML.includes("<tr>"),"table failed to render");
