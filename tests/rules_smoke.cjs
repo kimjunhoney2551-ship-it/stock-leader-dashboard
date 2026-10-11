@@ -8,6 +8,8 @@ const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
 assert(scripts.length===1,"Expected one standalone dashboard script");
 new vm.Script(scripts[0][1],{filename:"rules.js"});
 const snapshot=JSON.parse(fs.readFileSync("docs/data/latest.json","utf8"));
+const tv=JSON.parse(fs.readFileSync("docs/data/tradingview_latest.json","utf8"));
+assert(tv.rows&&tv.completed===true,"TradingView snapshot not complete");
 assert(Array.isArray(snapshot.rows),"Invalid market snapshot");
 const ids={};
 const get=(id)=>ids[id]||(ids[id]={
@@ -17,7 +19,7 @@ const get=(id)=>ids[id]||(ids[id]={
 });
 const ctx={
  document:{getElementById:get},
- fetch:async()=>({ok:true,json:async()=>snapshot}),
+ fetch:async(url)=>({ok:true,json:async()=>(String(url).includes("tradingview_latest.json")?tv:snapshot)}),
  setTimeout,
  Blob,URL,
  console
@@ -25,7 +27,7 @@ const ctx={
 vm.runInNewContext(scripts[0][1],ctx,{timeout:15000});
 setTimeout(()=>{
   try{
-    assert(get("notice").innerHTML.includes("시장일자"),"missing asof");
+    assert(get("notice").innerHTML.includes("종가 기준"),"missing asof");
     assert(get("total").textContent!=="—","universe not loaded");
     assert(get("priced").textContent!=="—","coverage not loaded");
     const official=Number(get("official").textContent.replace(/,/g,""));
@@ -37,6 +39,7 @@ setTimeout(()=>{
       assert(get("portfolio").innerHTML.includes("0개"),"fake allocation shown");
     }
     assert(get("validation").innerHTML.includes("시가총액 수집"),"coverage detail missing");
+    assert(get("validation").innerHTML.includes("TradingView"),"TV overlay not connected");
     get("filter").value="all";
     get("filter").listeners.change();
     assert(get("table").innerHTML.includes("<tr>"),"table failed to render");
@@ -48,6 +51,7 @@ setTimeout(()=>{
       quoted:snapshot.price_updated_count,
       official:official,
       prelim:get("watch").textContent,
+      tradingview_count:tv.stats?.requested||Object.keys(tv.rows).length,
       market_cap_count:(get("validation").innerHTML.match(/시가총액 수집.*?<strong>(.*?)<\/strong>/)||[])[1]
     });
   }catch(e){console.error(e);process.exitCode=1;}
