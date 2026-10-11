@@ -147,11 +147,16 @@ def enrich_row(row,cache):
         return row
     # User-supplied file data are separate; this function is only called on
     # machine-produced JSON rows. Institution score is filled only when matched.
+    # Remove an earlier *automatic* proxy score if the most recent evidence
+    # no longer supports comparison; manually imported scores are preserved.
+    auto_previous=row.get("inst_change_method")=="matched_top_institutions_proxy"
+    if auto_previous and "inst_change_pct" not in entry:
+        for key in OWNERSHIP_FIELDS:
+            if key.startswith("inst_change_"):
+                row.pop(key,None)
     for key in OWNERSHIP_FIELDS:
         if key in entry:
             row[key]=entry[key]
-        elif key in row and row.get("inst_change_method")=="matched_top_institutions_proxy":
-            row.pop(key,None)
     return row
 
 def load_cache():
