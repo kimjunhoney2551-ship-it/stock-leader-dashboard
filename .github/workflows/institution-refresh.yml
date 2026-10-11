@@ -1,0 +1,48 @@
+name: Latest Institutional Ownership Refresh
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/institution-refresh.yml'
+  schedule:
+    - cron: '15 0 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: us-all-market-refresh
+  cancel-in-progress: false
+jobs:
+  ownership:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      OWNERSHIP_PER_RUN: '120'
+      OWNERSHIP_PAUSE_SEC: '0.35'
+      OWNERSHIP_MAX_SECONDS: '900'
+      OWNERSHIP_PRIORITY_TICKERS: 'ECO,VLO,MPC,INSW,PSX,DT,FRO,OKTA,NTAP,CRWD,PRLB'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install data dependencies
+        run: pip install -r requirements.txt
+      - name: Verify report-date and missing-data rules
+        run: python -m unittest discover -s tests -p 'test_ownership.py' -v
+      - name: Refresh latest institution top holders
+        run: python scripts/ownership.py
+      - name: Commit verified institutional observations
+        shell: bash
+        run: |
+          git add docs/data/
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'data: refresh latest institution reports [skip ci]'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          else
+            echo 'No institutional data changes'
+          fi
