@@ -243,7 +243,7 @@ function build(){
  $('missing').innerHTML='<p>시총 없는 종목: <strong>'+format(data.rows.filter(function(r){return !ok(r.market_cap_usd);}).length,0)+'</strong></p>'+
  '<p>기관 변화 미확인: <strong>'+format(data.rows.filter(function(r){return !ok(r.inst_change_pct);}).length,0)+'</strong></p>'+
  '<p>13D/G 원문 확보: <strong>'+format(data.rows.filter(r=>r.ownership_evidence?.filings_13dg?.length).length,0)+'종목</strong> (점수와 별도)</p>'+
- '<p>13D/G 공시 미확인: <strong>'+format(data.rows.filter(function(r){return r.filing_13dg===undefined||r.filing_13dg===null;}).length,0)+'</strong></p>'+
+ '<p>13D/G 점수 미확정: <strong>'+format(data.rows.filter(function(r){return r.filing_13dg===undefined||r.filing_13dg===null;}).length,0)+'</strong></p>'+
  '<p>ROE/Forward PER/이익성장 미확인: <strong>'+format(data.rows.filter(function(r){return ![r.roe_pct,r.forward_pe,r.op_income_growth_pct].every(ok);}).length,0)+'</strong></p>';
  redraw();
  if(typeof globalThis.__onScoresReady==='function')globalThis.__onScoresReady({data:data,items:items});
