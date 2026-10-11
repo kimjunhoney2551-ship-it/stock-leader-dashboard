@@ -1,0 +1,39 @@
+name: Latest Annual Financial Score Inputs
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/financial_refresh.py'
+      - 'config/financial_targets.json'
+      - '.github/workflows/financial-refresh.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '30 0 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: annual-financial-refresh
+  cancel-in-progress: false
+jobs:
+  financials:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Fetch and calculate comparable annual financial inputs
+        run: python scripts/financial_refresh.py
+      - name: Publish financial data
+        run: |
+          git add docs/data/financial_latest.json
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'data: latest annual F-score financial inputs'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
