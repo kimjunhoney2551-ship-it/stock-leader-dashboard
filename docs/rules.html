@@ -13,17 +13,17 @@ header{background:#fff;border-bottom:1px solid var(--line)}.wrap{max-width:1470p
 <div class="stats">
 <div class="card stat"><span>미국 전체 유니버스</span><strong id="total">—</strong><span>보통주·ADR</span></div>
 <div class="card stat"><span>종가 확보</span><strong id="priced">—</strong><span id="coverage">커버리지 대기</span></div>
-<div class="card stat"><span>기본필터 관측 통과</span><strong id="first-pass">—</strong><span>거래대금·베타·시총 동시 검증</span></div>
+<div class="card stat"><span>기본필터 통과</span><strong id="first-pass">—</strong><span>10/9 거래대금·최신 TradingView 시총/β</span></div>
 <div class="card stat"><span>COMP ≥80 · F 통과</span><strong id="official" class="good">—</strong><span>모든 요건 검증된 정식통과</span></div>
 <div class="card stat"><span>가격·수급 예비 후보</span><strong id="watch" class="warn">—</strong><span>정식통과 아님 · 부족자료 존재</span></div>
 </div>
 <div class="panes">
 <div class="card"><h2>적용 투자규칙</h2><p><strong>기본 필터:</strong> 시총 ≥ 100억 원 · 10일 평균 달러 거래대금 ≥ 500만 달러 · β ≤ 2</p><p><strong>COMP 100점:</strong> 순위 모멘텀 40 (4·12·25·52주: 8·12·12·8) + 가격 모멘텀 25 + 스마트머니 20 (CMF7·거래대금강도5·기관5·13D/G3) + 밸류에이션 15</p><p><strong>정식 편입:</strong> COMP ≥ 80점 → F-score 4/4 → 복합점수 산출 → 최대 10종목 · 에너지/원유·정유·탱커 섹터 합산 30% 상한</p><p class="mini">복합점수 = F 40 + 1M 상대수익 순위 30 + 3M 상대수익 순위 20 + GPM 개선 10.</p></div>
-<div class="card"><h2>검증 요약</h2><div id="validation">확인 중…</div><p class="mini" style="margin-top:12px">수급/기관 정보가 없는 종목은 0점 처리하지 않습니다. F-score도 단일 재무비율 수준값으로 추정하지 않습니다. 4·12·25·52주 순위는 현재 수익률 백분위의 대체지표로, 주간 순위 체류율 검증이 필요합니다.</p></div>
+<div class="card"><h2>검증 요약</h2><div id="validation">확인 중…</div><p class="mini" style="margin-top:12px">TradingView 데이터는 최신 조회일(10/9 이후 가능), Yahoo 수익률은 10/9 기준입니다. 수급/기관 정보가 없는 종목은 0점 처리하지 않습니다. F-score도 단일 재무비율 수준값으로 추정하지 않습니다. 4·12·25·52주 순위는 현재 수익률 백분위의 대체지표로, 주간 순위 체류율 검증이 필요합니다.</p></div>
 </div>
 <div class="card"><div class="top"><div><h2>전체 투자규칙 평가표</h2><p class="muted">일자별 확인 가능한 점수만 합산. <strong>확정 부분점수–최대 가능점수</strong>로 표시합니다.</p></div><div class="nav"><button class="btn" id="csv">표 CSV 다운로드</button></div></div>
 <div class="filter"><label>종목 검색 <input type="search" id="search" placeholder="티커·기업명"></label><label>판정 <select id="filter"><option value="watch">예비 주도 후보</option><option value="pass">정식통과</option><option value="shadow">그림자</option><option value="pending">기타 검증대기</option><option value="fail">기본/COMP 탈락</option><option value="all">미국 전체</option></select></label><label>정렬 <select id="sort"><option value="lower">확정 부분점수 ↓</option><option value="upper">최대 가능점수 ↓</option><option value="rs">3개월 S&P 상대수익 ↓</option><option value="value">거래대금 ↓</option><option value="ticker">티커 A→Z</option></select></label><span id="count" class="muted"></span></div>
-<div class="tablebox"><table class="table"><thead><tr><th>티커</th><th>기업명 · 섹터</th><th>판정</th><th>COMP 부분–상한 / 100</th><th>F / 4</th><th>복합 / 100</th><th>1M RS %p</th><th>3M RS %p</th><th>β</th><th>10일 거래대금($M)</th><th>시총(조원)</th><th>미확정 항목</th></tr></thead><tbody id="table"><tr><td colspan="12">불러오는 중…</td></tr></tbody></table></div>
+<div class="tablebox"><table class="table"><thead><tr><th>티커</th><th>기업명 · 섹터</th><th>판정</th><th>COMP 부분–상한 / 100</th><th>F / 4</th><th>복합 / 100</th><th>1M RS %p</th><th>3M RS %p</th><th>β</th><th>10일 거래대금($M)</th><th>시총(조원)</th><th>TV Piotroski/9</th><th>미확정 항목</th></tr></thead><tbody id="table"><tr><td colspan="12">불러오는 중…</td></tr></tbody></table></div>
 <div class="top" style="margin-top:12px"><span class="muted" id="page"></span><div class="nav"><button id="prev" class="btn">← 이전</button><button id="next" class="btn">다음 →</button></div></div>
 </div>
 <div class="panes">
@@ -40,7 +40,29 @@ var $=function(id){return document.getElementById(id);};
 var ok=function(x){return typeof x==='number'&&Number.isFinite(x);};
 var format=function(n,d){return ok(n)?n.toLocaleString('ko-KR',{maximumFractionDigits:d===undefined?1:d,minimumFractionDigits:d===undefined?1:d}):'—';};
 var safe=function(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');};
-var scores={};
+var scores={},tradingview=null; 
+var tvSectors={"Technology Services":"정보기술","Electronic Technology":"정보기술","Health Technology":"헬스케어","Health Services":"헬스케어","Finance":"금융","Commercial Services":"산업재","Producer Manufacturing":"산업재","Industrial Services":"산업재","Transportation":"산업재","Consumer Services":"경기소비재","Consumer Durables":"경기소비재","Consumer Non-Durables":"필수소비재","Distribution Services":"산업재","Retail Trade":"경기소비재","Energy Minerals":"에너지","Process Industries":"소재","Non-Energy Minerals":"소재","Utilities":"유틸리티","Communications":"커뮤니케이션","Real Estate":"부동산"};
+function tvOverlay(market,overlay){
+ var by=overlay&&overlay.rows||{},count=0,missing=[];
+ market.rows.forEach(function(row){
+  var v=by[row.ticker];if(!v)return;count++;
+  if(ok(v.market_cap_basic))row.market_cap_usd=v.market_cap_basic;
+  if(ok(v.beta)){row.beta_history_oct9=row.beta;row.beta=v.beta;row.beta_source="TradingView latest";}
+  // Trade amount is kept at the 10/9 historical session; latest TV amount is shown separately.
+  if(ok(v["AvgValue.Traded_10d"]))row.avg_value_usd_latest_tv=v["AvgValue.Traded_10d"];
+  if(ok(v.return_on_common_equity_fy)){row.roe_pct=v.return_on_common_equity_fy;row.roe_source="TradingView latest FY";}
+  if(ok(v.piotroski_f_score_fy))row.tv_piotroski9=v.piotroski_f_score_fy;
+  if(ok(v.gross_margin_ttm))row.gross_margin_ttm_pct=v.gross_margin_ttm;
+  if(ok(v.gross_margin_fy))row.gross_margin_fy_pct=v.gross_margin_fy;
+  if(ok(v.sell_gen_admin_exp_other_ratio_ttm))row.sga_ratio_ttm_pct=v.sell_gen_admin_exp_other_ratio_ttm;
+  if(ok(v.oper_income_ttm))row.oper_income_ttm_usd=v.oper_income_ttm;
+  if(v.industry)row.industry=v.industry;
+  if(v.sector){row.tv_sector=v.sector;row.sector=tvSectors[v.sector]||v.sector;}
+ });
+ market.tv_overlay_count=count;
+ market.tv_overlay_queried=overlay?.queried_at_utc||null;
+ return market;
+}
 function ranking(key,fun){
  var xs=data.rows.map(function(r){return fun?fun(r[key]):r[key];}).filter(ok).sort(function(a,b){return a-b;});
  return function(v){if(!ok(v)||!xs.length)return null;var lo=0,hi=xs.length;while(lo<hi){var m=(lo+hi)>>1;if(xs[m]<=v)lo=m+1;else hi=m;}return lo/xs.length;};
@@ -111,12 +133,12 @@ function build(){
  $('first-pass').textContent=format(basic,0);
  $('official').textContent=format(counts.pass||0,0);
  $('watch').textContent=format(counts.watch||0,0);
- $('validation').innerHTML='<p>거래대금 ≥ $5M 및 β ≤ 2 관측 통과: <strong>'+format(liqBeta,0)+'종목</strong></p>'+
+ $('validation').innerHTML='<p>2026-10-09 주가·거래대금, TradingView 최신 시가총액·베타를 함께 사용합니다.</p><p>TV 자료 연결: <strong>'+format(data.tv_overlay_count||0,0)+'종목</strong> · 조회 '+safe(data.tv_overlay_queried||'미연결')+' UTC</p><p>거래대금 ≥ $5M 및 β ≤ 2 관측 통과: <strong>'+format(liqBeta,0)+'종목</strong></p>'+
  '<p>시가총액 수집: <strong>'+format(data.rows.filter(function(r){return ok(r.market_cap_usd);}).length,0)+'종목</strong></p>'+
  '<p>기관보유 변화: <strong>'+format(data.rows.filter(function(r){return ok(r.inst_change_pct);}).length,0)+'종목</strong></p>'+
  '<p>전 항목 F-score: <strong>'+format(data.rows.filter(function(r){return ['revenue_growth_pct','gpm_delta_pp','sga_ratio_delta_pp','asset_turnover_delta'].every(function(k){return ok(r[k]);});}).length,0)+'종목</strong></p>'+
  '<p>COMP 전항목: <strong>'+format(items.filter(function(x){return x.missing===0;}).length,0)+'종목</strong></p>';
- $('notice').innerHTML='<strong>시장일자 '+safe(report)+'</strong> · 데이터 생성 '+safe(data.generated_at_utc||'미확인')+' (UTC) · 시장 전체 '+format(data.universe_count,0)+'종목 중 종가 '+format(price,0)+'종목. <strong>현재 정식 통과 '+format(counts.pass||0,0)+'종목.</strong> 수집 전후 시점이 다른 지표는 별도 검증 필요. '+(data.rank_completeness!=='complete'?'전체 모멘텀 순위와 COMP 확정은 아직 검증대기.':'');
+ $('notice').innerHTML='<strong>종가 기준 '+safe(report)+'</strong> · TradingView 최신 기본/재무자료 '+format(data.tv_overlay_count||0,0)+'종목 ('+safe(data.tv_overlay_queried||'미확인')+' UTC 조회). 미국 전체 '+format(data.universe_count,0)+'종목 중 종가 '+format(price,0)+'종목. <strong>현재 정식 통과 '+format(counts.pass||0,0)+'종목.</strong> TV 값은 10월 9일 시점 정보가 아니라 최신값입니다. '+(data.rank_completeness!=='complete'?'순위모멘텀의 체류·안정성과 일부 COMP 항목은 검증대기.':'');
  var port=allocate(items.filter(function(x){return x.status==='pass';}));
  $('portfolio').innerHTML=port.length?port.map(function(x){return '<p><b>'+safe(x.r.ticker)+'</b> · '+format(x.composite,1)+'점 · '+format(x.weight*100,1)+'%</p>';}).join(''):'<p class="warn"><strong>정식통과 확정 종목 0개</strong></p><p>가격·거래대금·β를 통과한 예비 주도 후보는 아래 표에서 확인할 수 있지만, 시총·기관·재무 점수 확인 전에는 실제 포트폴리오로 편입하지 않습니다.</p>';
  $('missing').innerHTML='<p>시총 없는 종목: <strong>'+format(data.rows.filter(function(r){return !ok(r.market_cap_usd);}).length,0)+'</strong></p>'+
@@ -138,7 +160,7 @@ function redraw(){
  });
  var np=Math.max(1,Math.ceil(visible.length/PER));page=Math.min(page,np-1);var slice=visible.slice(page*PER,(page+1)*PER);
  $('count').textContent=format(visible.length,0)+'종목';
- $('table').innerHTML=slice.length?slice.map(function(x){var r=x.r;return '<tr><td><a class="ticker" target="_blank" rel="noopener noreferrer" href="https://www.tradingview.com/symbols/'+encodeURIComponent((r.exchange||'NASDAQ').replace('AMEX','AMEX'))+'-'+encodeURIComponent(r.ticker)+'/">'+safe(r.ticker)+'</a></td><td>'+safe(String(r.name||'').slice(0,37))+'<div class="mini">'+safe(r.sector||'섹터 미확인')+'</div></td><td>'+renderStatus(x)+'</td><td title="확정 부분점수 / 누락값 최대반영시 상한">'+format(x.low,1)+'–'+format(x.up,1)+'</td><td>'+(x.f===null?format(x.fKnownScore,0)+'~'+format(x.fKnownScore+4-x.fKnown,0):x.f)+'/4</td><td>'+format(x.composite,1)+'</td><td>'+format(x.rs1,1)+'</td><td>'+format(x.rs3,1)+'</td><td>'+format(r.beta,2)+'</td><td>'+format(ok(r.avg_value_usd)?r.avg_value_usd/1000000:null,1)+'</td><td>'+format(ok(r.market_cap_usd)?r.market_cap_usd*(data.fx_krw_usd||1350)/1e12:null,2)+'</td><td>'+x.missing+'개 · '+safe(x.why)+'</td></tr>';}).join(''):'<tr><td colspan="12" class="center">이 조건에 해당하는 종목이 없습니다.</td></tr>';
+ $('table').innerHTML=slice.length?slice.map(function(x){var r=x.r;return '<tr><td><a class="ticker" target="_blank" rel="noopener noreferrer" href="https://www.tradingview.com/symbols/'+encodeURIComponent((r.exchange||'NASDAQ').replace('AMEX','AMEX'))+'-'+encodeURIComponent(r.ticker)+'/">'+safe(r.ticker)+'</a></td><td>'+safe(String(r.name||'').slice(0,37))+'<div class="mini">'+safe(r.sector||'섹터 미확인')+'</div></td><td>'+renderStatus(x)+'</td><td title="확정 부분점수 / 누락값 최대반영시 상한">'+format(x.low,1)+'–'+format(x.up,1)+'</td><td>'+(x.f===null?format(x.fKnownScore,0)+'~'+format(x.fKnownScore+4-x.fKnown,0):x.f)+'/4</td><td>'+format(x.composite,1)+'</td><td>'+format(x.rs1,1)+'</td><td>'+format(x.rs3,1)+'</td><td>'+format(r.beta,2)+'</td><td>'+format(ok(r.avg_value_usd)?r.avg_value_usd/1000000:null,1)+'</td><td>'+format(ok(r.market_cap_usd)?r.market_cap_usd*(data.fx_krw_usd||1350)/1e12:null,2)+'</td><td>'+format(r.tv_piotroski9,0)+'</td><td>'+x.missing+'개 · '+safe(x.why)+'</td></tr>';}).join(''):'<tr><td colspan="13" class="center">이 조건에 해당하는 종목이 없습니다.</td></tr>';
  $('page').textContent=(page+1)+' / '+np+'페이지';
  $('prev').disabled=page===0;$('next').disabled=page+1>=np;
 }
@@ -154,6 +176,7 @@ async function load(){
  $('notice').textContent='최신 스냅샷과 점수 구성항목을 불러오는 중…';
  try{var r=await fetch('./data/latest.json?_='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
  data=await r.json();if(!Array.isArray(data.rows)||!data.rows.length)throw Error('저장된 종목 데이터 없음');
+  try{var tvResp=await fetch('./data/tradingview_latest.json?_='+Date.now(),{cache:'no-store'});if(tvResp.ok){tradingview=await tvResp.json();tvOverlay(data,tradingview);}else data.tv_overlay_warning='TradingView overlay HTTP '+tvResp.status;}catch(tvError){data.tv_overlay_warning=String(tvError);}
  build();}catch(e){$('notice').innerHTML='<strong>데이터 조회 실패:</strong> '+safe(e.message||e)+' · <a href="data/latest.json">GitHub 저장 데이터</a> 상태를 확인해 주세요.';}
 }
 $('reload').addEventListener('click',load);
