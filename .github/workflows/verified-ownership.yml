@@ -1,0 +1,36 @@
+name: Verified SEC Ownership Data
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/verified_ownership.py'
+      - '.github/workflows/verified-ownership.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '45 0 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: verified-sec-ownership
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/verified_ownership.py
+      - run: node scripts/export_scores.cjs
+      - name: Publish data and calculated scores
+        run: |
+          git add docs/data/ownership_verified.json docs/data/screen_results.json docs/data/screen_results.csv
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'data: verified comparable SEC ownership and filing evidence'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
