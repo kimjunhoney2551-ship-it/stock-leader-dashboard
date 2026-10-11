@@ -407,6 +407,22 @@ async function addLatestFinancialInputs(payload){
   }catch(error){payload.financial_warning=String(error);}
 }
 
+async function addVerifiedOwnership(payload){
+ try{
+  const res=await fetch('./data/ownership_verified.json?_='+Date.now(),{cache:'no-store'});if(!res.ok)return;
+  const doc=await res.json();
+  for(const row of payload.rows){
+   const e=doc.tickers?.[row.ticker];if(!e)continue;
+   row.ownership_evidence=e;
+   if(Number.isFinite(e.inst_change_pct)&&e.inst_change_asof>=(row.inst_change_asof||'')){
+    for(const k of ['inst_change_pct','inst_change_asof','inst_change_prev_asof','inst_change_sample_holders','inst_change_method','inst_change_source'])row[k]=e[k];
+   }
+  }
+  payload.ownership_verified_at=doc.queried_at_utc;
+  payload.institution_comparable_change_count=payload.rows.filter(r=>Number.isFinite(r.inst_change_pct)).length;
+ }catch(e){payload.ownership_warning=String(e);}
+}
+
 async function addLatestInstitutionalCache(payload){
   try{
     const response=await fetch('./data/institutional.json?_='+Date.now(),{cache:'no-store'});
@@ -481,7 +497,8 @@ async function syncRemote(force=false){
   }catch(fyError){console.warn('TradingView fiscal year comparison unavailable',fyError);}
   await addLatestFinancialInputs(payload);
   await addLatestInstitutionalCache(payload);
-  const marketStamp=(payload.generated_at_utc||'baseline')+'|'+(tvDoc?.queried_at_utc||'unavailable')+'|'+(payload.institution_cache_checked_at||'')+'|'+(payload.financial_checked_at||'');
+  await addVerifiedOwnership(payload);
+  const marketStamp=(payload.generated_at_utc||'baseline')+'|'+(tvDoc?.queried_at_utc||'unavailable')+'|'+(payload.institution_cache_checked_at||'')+'|'+(payload.financial_checked_at||'')+'|'+(payload.ownership_verified_at||'');
   const isNew=force||marketStamp!==autoSyncState.stamp;
   if(isNew){
    const remote=new Map(payload.rows.filter(x=>x&&x.ticker).map(r=>[r.ticker,r]));
