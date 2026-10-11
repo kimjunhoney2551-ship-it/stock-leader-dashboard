@@ -403,7 +403,12 @@ async function syncRemote(force=false){
   const checked=payload.generated_at_utc?new Date(payload.generated_at_utc).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}):'초기자료';
   if(count>0){
     const pc=payload.current_price_coverage_pct??Math.round(count/total*100);
-    showAutoStatus('미국 전체 상장 유니버스 '+total+'종목 · 동일일자 가격 '+count+'종목 ('+pc+'%)', '미국장 '+sourceDate+' · 데이터 생성 '+checked+' KST · 최신 기관보유 보고서 '+(payload.institution_latest_disclosure_count||0)+'종목, 동일기관 변화 비교 '+(payload.institution_comparable_change_count||0)+'종목 · 기관 보고일 ≠ 종가 기준일 가능 · 표본 불충분 시 기관 5점 미확정',true);
+    if(typeof payload.screen_liquidity_pass==='number'){
+      const allVerified=payload.screen_turnover_verified||0, pass=payload.screen_liquidity_pass||0, reject=payload.screen_liquidity_reject||0, unknown=payload.screen_liquidity_pending||0;
+      showAutoStatus('미국 전체 '+total+'종목 · 10일 거래대금 확인 '+allVerified+'종목 · 500만 달러 이상 '+pass+'종목', '미국장 '+sourceDate+' · 거래대금 미달 '+reject+'종목, 확인대기 '+unknown+'종목 · 장기 가격이력 '+count+'종목 · 시총/베타/기관/13D·G 미확정은 정식편입 보류 · 생성 '+checked+' KST',true);
+    }else{
+     showAutoStatus('미국 전체 상장 유니버스 '+total+'종목 · 동일일자 가격 '+count+'종목 ('+pc+'%)', '미국장 '+sourceDate+' · 데이터 생성 '+checked+' KST · 최신 기관보유 보고서 '+(payload.institution_latest_disclosure_count||0)+'종목, 동일기관 변화 비교 '+(payload.institution_comparable_change_count||0)+'종목 · 기관 보고일 ≠ 종가 기준일 가능 · 표본 불충분 시 기관 5점 미확정',true);
+    }
   }else{
     showAutoStatus('호스팅 연결됨 · 첫 가격 업데이트 대기',`초기자료 ${total}종목 · GitHub Actions가 처음 성공 실행되면 미국장 데이터가 반영됩니다.`,false);
   }
