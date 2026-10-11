@@ -359,6 +359,26 @@ function mergeRemoteRecord(old, incoming){
  if(!next.industry&&incoming.industry)next.industry=incoming.industry;
  return next;
 }
+const tvSectorMap={"Technology Services":"정보기술","Electronic Technology":"정보기술","Health Technology":"헬스케어","Health Services":"헬스케어","Finance":"금융","Commercial Services":"산업재","Producer Manufacturing":"산업재","Industrial Services":"산업재","Transportation":"산업재","Consumer Services":"경기소비재","Consumer Durables":"경기소비재","Consumer Non-Durables":"필수소비재","Distribution Services":"산업재","Retail Trade":"경기소비재","Energy Minerals":"에너지","Process Industries":"소재","Non-Energy Minerals":"소재","Utilities":"유틸리티","Communications":"커뮤니케이션","Real Estate":"부동산"};
+function addTradingViewLatest(payload, overlay){
+  if(!overlay || !overlay.rows || !overlay.queried_at_utc)return 0;
+  let count=0;
+  for(const r of payload.rows){
+    const v=overlay.rows[r.ticker];if(!v)continue;count++;
+    if(valid(v.market_cap_basic))r.market_cap_usd=v.market_cap_basic;
+    if(valid(v.beta)){r.beta_oct9_history=r.beta;r.beta=v.beta;r.beta_source='TradingView 최근조회';}
+    if(valid(v['AvgValue.Traded_10d']))r.avg_value_usd_latest_tv=v['AvgValue.Traded_10d'];
+    if(valid(v.return_on_common_equity_fy)){r.roe_pct=v.return_on_common_equity_fy;r.roe_period='TV FY';}
+    if(valid(v.piotroski_f_score_fy))r.tv_piotroski_9=v.piotroski_f_score_fy;
+    if(valid(v.gross_margin_ttm))r.gross_margin_ttm_pct=v.gross_margin_ttm;
+    if(valid(v.gross_margin_fy))r.gross_margin_fy_pct=v.gross_margin_fy;
+    if(valid(v.sell_gen_admin_exp_other_ratio_ttm))r.sga_ratio_ttm_pct=v.sell_gen_admin_exp_other_ratio_ttm;
+    if(v.industry)r.industry=v.industry;
+    if(v.sector){r.tv_sector=v.sector;r.sector=tvSectorMap[v.sector]||v.sector;}
+    r.tradingview_fetched_at_utc=overlay.queried_at_utc;
+  }
+  return count;
+}
 async function syncRemote(force=false){
  if(autoSyncState.busy)return;
  if(location.protocol==='file:'){
@@ -373,7 +393,15 @@ async function syncRemote(force=false){
   if(!resp.ok)throw new Error('HTTP '+resp.status);
   const payload=await resp.json();
   if(payload.schema_version!==1||!Array.isArray(payload.rows)||payload.rows.length===0)throw new Error('데이터 형식 검증 실패');
-  const isNew=force||payload.generated_at_utc!==autoSyncState.stamp;
+  let tvDoc=null;try{
+    const tvUrl=new URL('./data/tradingview_latest.json',location.href);
+    tvUrl.searchParams.set('_',String(Date.now()));
+    const tvResponse=await fetch(tvUrl.toString(),{cache:'no-store'});
+    if(tvResponse.ok)tvDoc=await tvResponse.json();
+  }catch(tvError){console.warn('TradingView latest snapshot temporarily unavailable',tvError);}
+  const tvCount=addTradingViewLatest(payload,tvDoc);
+  const marketStamp=(payload.generated_at_utc||'baseline')+'|'+(tvDoc?.queried_at_utc||'unavailable');
+  const isNew=force||marketStamp!==autoSyncState.stamp;
   if(isNew){
    const remote=new Map(payload.rows.filter(x=>x&&x.ticker).map(r=>[r.ticker,r]));
    if(state.mode==='embedded'||state.mode==='auto'||state.mode==='demo'){
@@ -394,20 +422,21 @@ async function syncRemote(force=false){
    }
    if(valid(payload.fx_krw_usd)&&payload.fx_krw_usd>300&&payload.fx_krw_usd<5000)state.settings.fx=payload.fx_krw_usd;
    if(/^\d{4}-\d{2}-\d{2}$/.test(payload.market_session||''))state.settings.asof=payload.market_session;
-   autoSyncState.stamp=payload.generated_at_utc||'baseline';
+   autoSyncState.stamp=marketStamp;
    renderAll();storageSave();
   }
   const count=payload.price_updated_count||0;
   const total=payload.universe_count||payload.rows.length;
   const sourceDate=payload.market_session||'시장 데이터 미수집';
   const checked=payload.generated_at_utc?new Date(payload.generated_at_utc).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}):'초기자료';
+  const tvInfo=tvCount?' · TradingView 최신 시총·베타·FY ROE '+tvCount+'종목 (조회 '+(tvDoc?.queried_at_utc||'미확인')+') · 10/9 가격과 기준일 별도':' · TradingView 최신 자료 연결대기';
   if(count>0){
     const pc=payload.current_price_coverage_pct??Math.round(count/total*100);
     if(typeof payload.screen_liquidity_pass==='number'){
       const allVerified=payload.screen_turnover_verified||0, pass=payload.screen_liquidity_pass||0, reject=payload.screen_liquidity_reject||0, unknown=payload.screen_liquidity_pending||0;
-      showAutoStatus('미국 전체 '+total+'종목 · 10일 거래대금 확인 '+allVerified+'종목 · 500만 달러 이상 '+pass+'종목', '미국장 '+sourceDate+' · 거래대금 미달 '+reject+'종목, 확인대기 '+unknown+'종목 · 장기 가격이력 '+count+'종목 · 시총/베타/기관/13D·G 미확정은 정식편입 보류 · 생성 '+checked+' KST',true);
+      showAutoStatus('미국 전체 '+total+'종목 · 10일 거래대금 확인 '+allVerified+'종목 · 500만 달러 이상 '+pass+'종목', '미국장 '+sourceDate+' · 거래대금 미달 '+reject+'종목, 확인대기 '+unknown+'종목 · 장기 가격이력 '+count+'종목 · 시총/베타/기관/13D·G 미확정은 정식편입 보류 · 생성 '+checked+' KST'+tvInfo,true);
     }else{
-     showAutoStatus('미국 전체 상장 유니버스 '+total+'종목 · 동일일자 가격 '+count+'종목 ('+pc+'%)', '미국장 '+sourceDate+' · 데이터 생성 '+checked+' KST · 최신 기관보유 보고서 '+(payload.institution_latest_disclosure_count||0)+'종목, 동일기관 변화 비교 '+(payload.institution_comparable_change_count||0)+'종목 · 기관 보고일 ≠ 종가 기준일 가능 · 표본 불충분 시 기관 5점 미확정',true);
+     showAutoStatus('미국 전체 상장 유니버스 '+total+'종목 · 동일일자 가격 '+count+'종목 ('+pc+'%)', '미국장 '+sourceDate+' · 데이터 생성 '+checked+' KST · 최신 기관보유 보고서 '+(payload.institution_latest_disclosure_count||0)+'종목, 동일기관 변화 비교 '+(payload.institution_comparable_change_count||0)+'종목 · 기관 보고일 ≠ 종가 기준일 가능 · 표본 불충분 시 기관 5점 미확정'+tvInfo,true);
     }
   }else{
     showAutoStatus('호스팅 연결됨 · 첫 가격 업데이트 대기',`초기자료 ${total}종목 · GitHub Actions가 처음 성공 실행되면 미국장 데이터가 반영됩니다.`,false);
