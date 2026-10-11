@@ -387,6 +387,26 @@ function addTradingViewLatest(payload, overlay){
   }
   return count;
 }
+async function addLatestFinancialInputs(payload){
+  try{
+    const response=await fetch('./data/financial_latest.json?_='+Date.now(),{cache:'no-store'});
+    if(!response.ok)return;
+    const doc=await response.json();if(!doc.rows||Array.isArray(doc.rows))return;
+    for(const row of payload.rows){
+      const incoming=doc.rows[row.ticker];if(!incoming||!incoming.financial_period_current)continue;
+      // Keep all four F tests on the same pair of fiscal years and provider.
+      for(const key of ['revenue_growth_pct','gpm_delta_pp','sga_ratio_delta_pp','asset_turnover_delta'])delete row[key];
+      for(const key of ['revenue_growth_pct','gpm_delta_pp','sga_ratio_delta_pp','asset_turnover_delta','op_income_growth_pct']){
+        if(typeof incoming[key]==='number'&&Number.isFinite(incoming[key]))row[key]=incoming[key];
+      }
+      row.fy_comparison_period=incoming.financial_period_previous+' → '+incoming.financial_period_current;
+      row.fy_comparison_source=incoming.source;
+      row.fy_comparison_fetched_at_utc=incoming.fetched_at_utc;
+    }
+    payload.financial_checked_at=doc.queried_at_utc||'';
+  }catch(error){payload.financial_warning=String(error);}
+}
+
 async function addLatestInstitutionalCache(payload){
   try{
     const response=await fetch('./data/institutional.json?_='+Date.now(),{cache:'no-store'});
@@ -459,8 +479,9 @@ async function syncRemote(force=false){
     const fyResponse=await fetch(fyUrl.toString(),{cache:'no-store'});
     if(fyResponse.ok)addTradingViewFinancialHistory(payload,await fyResponse.json());
   }catch(fyError){console.warn('TradingView fiscal year comparison unavailable',fyError);}
+  await addLatestFinancialInputs(payload);
   await addLatestInstitutionalCache(payload);
-  const marketStamp=(payload.generated_at_utc||'baseline')+'|'+(tvDoc?.queried_at_utc||'unavailable')+'|'+(payload.institution_cache_checked_at||'');
+  const marketStamp=(payload.generated_at_utc||'baseline')+'|'+(tvDoc?.queried_at_utc||'unavailable')+'|'+(payload.institution_cache_checked_at||'')+'|'+(payload.financial_checked_at||'');
   const isNew=force||marketStamp!==autoSyncState.stamp;
   if(isNew){
    const remote=new Map(payload.rows.filter(x=>x&&x.ticker).map(r=>[r.ticker,r]));
