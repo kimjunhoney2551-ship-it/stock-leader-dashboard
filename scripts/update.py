@@ -20,7 +20,7 @@ import yfinance as yf
 
 # Institution disclosures are fetched separately, may be newer than historical prices.
 from ownership import load_cache, enrich_row
-from price_cache import load as load_price_cache, to_frame, from_frame, update_frame, persist as persist_price_cache
+from liquidity_screen import daily_refresh
 
 ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/"docs"/"data"
@@ -172,76 +172,6 @@ def beta_asof(equity, benchmark):
     value=num(d.iloc[:,0].cov(d.iloc[:,1])/variation)
     return round(value,6) if value is not None else None
 
-def fetch_history(symbols,asof,warnings):
-    """First run: backfill. Later runs: fetch only last 18 calendar days.
-
-    We retain >252 daily closes/highs/volumes for all observed tickers, so
-    historical momentum, rolling highs, beta and CMF remain valid without
-    repeatedly downloading over a year of history on every run.
-    """
-    stored=load_price_cache()
-    results={}
-    now_stored={}
-    jobs={"cached":[],"incremental":[],"bootstrap":[]}
-    for sym in symbols:
-        prev=to_frame(stored.get(sym))
-        if prev is not None and len(prev)>0:
-            now_stored[sym]=prev
-        last=prev.index[-1].date() if prev is not None and len(prev)>0 else None
-        # Reuse a complete cache when generating a past historical snapshot.
-        if last is not None and last>=asof and len(prev.loc[prev.index<=pd.Timestamp(asof)])>=61:
-            jobs["cached"].append(sym)
-            results[sym]=bars_asof(prev,asof)
-        elif last is not None and len(prev)>=5 and last>=asof-timedelta(days=14):
-            jobs["incremental"].append(sym)
-        else:
-            jobs["bootstrap"].append(sym)
-    print("Price cache:",
-          "reused",len(jobs["cached"]),"incremental",len(jobs["incremental"]),
-          "backfill",len(jobs["bootstrap"]),flush=True)
-    stop=(asof+timedelta(days=1)).isoformat()
-    batch=max(5,min(65,int(os.getenv("YF_BATCH_SIZE","35"))))
-    pause=float(os.getenv("BATCH_PAUSE_SEC","0.35"))
-    done=0
-    for mode in ("incremental","bootstrap"):
-        list_symbols=jobs[mode]
-        start=(asof-timedelta(days=18 if mode=="incremental" else 575)).isoformat()
-        for pos in range(0,len(list_symbols),batch):
-            chunk=list_symbols[pos:pos+batch]
-            forms=[x.replace(".","-") for x in chunk]
-            try:
-                raw=yf.download(tickers=" ".join(forms),start=start,end=stop,interval="1d",
-                    group_by="ticker",auto_adjust=True,progress=False,threads=False,timeout=40)
-                for original,alias in zip(chunk,forms):
-                    fetched=symbol_frame(raw,alias)
-                    # Even a failed provider query leaves older cached data intact.
-                    if fetched is not None and not fetched.empty:
-                        fetched=fetched.copy()
-                        fetched.index=pd.to_datetime(fetched.index,utc=True).tz_convert(None).normalize()
-                        now_stored[original]=update_frame(now_stored.get(original),fetched)
-                    frame=bars_asof(now_stored.get(original),asof)
-                    if frame is not None:
-                        results[original]=frame
-            except Exception as ex:
-                if len(warnings)<40:
-                    warnings.append("price "+mode+" batch "+str(pos)+" failed: "+type(ex).__name__)
-                for original in chunk:
-                    frame=bars_asof(now_stored.get(original),asof)
-                    if frame is not None:
-                        results[original]=frame
-            done+=len(chunk)
-            print("Price cache sync",mode,done,"/",len(symbols),
-                  "valid frames",len(results),flush=True)
-            time.sleep(pause)
-    # Keep a fully validated, bounded 285-session cache; save even for symbols
-    # missing today's quote so subsequent dates can retry only missing deltas.
-    packed={ticker:from_frame(frame) for ticker,frame in now_stored.items()
-            if frame is not None and len(frame)>0}
-    cached_count=persist_price_cache(packed)
-    print("Price cache saved",cached_count,"symbols",flush=True)
-    return results
-
-
 def run():
     explicit=os.getenv("ASOF_DATE","").strip()
     if explicit:
@@ -256,7 +186,8 @@ def run():
     warnings=[]
     limit=int(os.getenv("PRICE_LIMIT","0"))
     observed=tickers if limit<=0 else tickers[:limit]
-    price=fetch_history(list(dict.fromkeys(observed+["SPY","KRW=X"])),requested,warnings)
+    price, short_turnover, screen= daily_refresh(list(dict.fromkeys(observed+["SPY","KRW=X"])),
+                                                    requested,warnings,symbol_frame)
     benchmark=price.get("SPY")
     bench=stats(benchmark)
     session=bench.get("price_asof")
@@ -269,6 +200,11 @@ def run():
     current=0
     for n,r in enumerate(directory_rows):
         d={"ticker":r["ticker"],"name":r["name"],"exchange":r["exchange"]}
+        if r["ticker"] in short_turnover:
+            d["avg_value_usd"]=short_turnover[r["ticker"]]
+            d["liquidity_screen_status"]="pass" if d["avg_value_usd"]>=5_000_000 else "fail"
+        else:
+            d["liquidity_screen_status"]="pending"
         frame=price.get(r["ticker"])
         st=stats(frame)
         if st and st.get("price_asof")==session:
@@ -325,13 +261,14 @@ def run():
       "rank_completeness":"incomplete","current_price_coverage_pct":coverage,
       "current_price_coverage_complete":current==len(tickers),
       "price_updated_count":current,"universe_count":len(tickers),
+      **screen,
       "info_updated_count":metadata_updated,"fx_krw_usd":fx,
       "institution_latest_disclosure_count":sum(bool(r.get("inst_holder_report_asof")) for r in outrows),
       "institution_comparable_change_count":sum(r.get("inst_change_pct") is not None for r in outrows),
       "institution_data_policy":"Latest available Yahoo top-institution disclosures, report date separated from price session; changes only for matched top holders across reporting quarters.",
       "sp500_returns":{k:bench[v] for k,v in mapping.items() if v in bench},
       "rows":outrows,"warnings":warnings,
-      "notice":"As-of date is for price history only. Universe directory is present-day, not historical. Historic cap/shares/F-score unavailable; current institutional disclosures are an explicitly latest-data, non-point-in-time exception. Sampled holder changes are NOT full institutional ownership changes; no complete COMP can be claimed."
+      "notice":"Liquid-turnover screening precedes long OHLCV requests; illiquid equities remain listed but are disqualified. Missing data remains pending. Price data are not an exhaustive all-stock historical download. As-of date is for price history only. Universe directory is present-day, not historical. Historic cap/shares/F-score unavailable; current institutional disclosures are an explicitly latest-data, non-point-in-time exception. Sampled holder changes are NOT full institutional ownership changes; no complete COMP can be claimed."
     }
     DATA.mkdir(parents=True,exist_ok=True)
     UNIVERSE.parent.mkdir(parents=True,exist_ok=True)
