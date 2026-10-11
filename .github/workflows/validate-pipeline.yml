@@ -5,6 +5,8 @@ on:
     paths:
       - 'scripts/**'
       - 'tests/**'
+      - 'docs/rules.html'
+      - 'docs/data/latest.json'
       - '.github/workflows/validate-pipeline.yml'
   workflow_dispatch:
 permissions:
@@ -22,3 +24,5 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Validate liquidity-first screen, OHLCV cache and institutional reports
         run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Validate rules dashboard with real market snapshot
+        run: node tests/rules_smoke.cjs
