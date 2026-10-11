@@ -14,6 +14,8 @@ const fy=JSON.parse(fs.readFileSync("docs/data/tradingview_financial_history_pri
 assert(Object.keys(fy.rows).length>=16,"FY historical finance samples missing");
 
 assert(Array.isArray(snapshot.rows),"Invalid market snapshot");
+const financials=JSON.parse(fs.readFileSync("docs/data/financial_latest.json","utf8"));
+const institutions=JSON.parse(fs.readFileSync("docs/data/institutional.json","utf8"));
 const ids={};
 const get=(id)=>ids[id]||(ids[id]={
   id,value:id==="filter"?"watch":id==="sort"?"lower":"",
@@ -22,7 +24,7 @@ const get=(id)=>ids[id]||(ids[id]={
 });
 const ctx={
  document:{getElementById:get},
- fetch:async(url)=>({ok:true,json:async()=>(String(url).includes("tradingview_financial_history_priority.json")?fy:String(url).includes("tradingview_latest.json")?tv:snapshot)}),
+ fetch:async(url)=>({ok:true,json:async()=>(String(url).includes("financial_latest.json")?financials:String(url).includes("institutional.json")?institutions:String(url).includes("tradingview_financial_history_priority.json")?fy:String(url).includes("tradingview_latest.json")?tv:snapshot)}),
  setTimeout,
  Blob,URL,
  console
@@ -47,7 +49,7 @@ setTimeout(()=>{
     get("search").value="NTAP";
     get("search").listeners.input();
     assert(get("table").innerHTML.includes("NTAP"),"Priority ticker not rendered");
-    assert(get("table").innerHTML.includes("2~4"),"Annual revenue/gross-margin comparison missing in F-score");
+    assert(get("table").innerHTML.includes("4/4"),"Annual revenue/gross-margin comparison missing in F-score");
     get("search").value="";
     get("search").listeners.input();
     get("filter").value="all";
