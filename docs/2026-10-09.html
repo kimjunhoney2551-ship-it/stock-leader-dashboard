@@ -387,6 +387,30 @@ function addTradingViewLatest(payload, overlay){
   }
   return count;
 }
+function addTradingViewFinancialHistory(payload, history){
+  if(!history||!history.rows||Array.isArray(history.rows))return 0;
+  let count=0;
+  for(const row of payload.rows){
+    const h=history.rows[row.ticker];
+    if(!h||!h.series)continue;
+    const years=Array.isArray(h.labels)?h.labels:[];
+    const rev=h.series.revenue||[],gp=h.series.gross_profit||[];
+    if(years.length<2||rev.length<2||gp.length<2)continue;
+    const r0=rev[rev.length-2]?.value,r1=rev[rev.length-1]?.value;
+    const g0=gp[gp.length-2]?.value,g1=gp[gp.length-1]?.value;
+    if(![r0,r1,g0,g1].every(x=>typeof x==='number'&&Number.isFinite(x))||r0<=0||r1<=0)continue;
+    // Compare matched consecutive annual fiscal years, not overlapping FY and TTM ratios.
+    row.revenue_growth_pct=100*(r1/r0-1);
+    row.gpm_delta_pp=100*(g1/r1-g0/r0);
+    row.fy_comparison_period=String(years[years.length-2])+' → '+String(years[years.length-1]);
+    row.fy_comparison_source='TradingView annual FY revenue and gross profit; latest data, not necessarily released by historic market date';
+    row.fy_comparison_fetched_at_utc=history.snapshot_utc||null;
+    count++;
+  }
+  payload.tradingview_fy_comparison_count=count;
+  payload.tradingview_fy_queried_at_utc=history.snapshot_utc||null;
+  return count;
+}
 async function syncRemote(force=false){
  if(autoSyncState.busy)return;
  if(location.protocol==='file:'){
@@ -408,6 +432,12 @@ async function syncRemote(force=false){
     if(tvResponse.ok)tvDoc=await tvResponse.json();
   }catch(tvError){console.warn('TradingView latest snapshot temporarily unavailable',tvError);}
   const tvCount=addTradingViewLatest(payload,tvDoc);
+  try{
+    const fyUrl=new URL('./data/tradingview_financial_history_priority.json',location.href);
+    fyUrl.searchParams.set('_',String(Date.now()));
+    const fyResponse=await fetch(fyUrl.toString(),{cache:'no-store'});
+    if(fyResponse.ok)addTradingViewFinancialHistory(payload,await fyResponse.json());
+  }catch(fyError){console.warn('TradingView fiscal year comparison unavailable',fyError);}
   const marketStamp=(payload.generated_at_utc||'baseline')+'|'+(tvDoc?.queried_at_utc||'unavailable');
   const isNew=force||marketStamp!==autoSyncState.stamp;
   if(isNew){
