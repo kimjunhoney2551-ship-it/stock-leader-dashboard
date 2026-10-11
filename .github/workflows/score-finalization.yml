@@ -1,0 +1,35 @@
+name: Finalize COMP and F Scores
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/weekly_rank_refresh.py'
+      - '.github/workflows/score-finalization.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: score-finalization
+  cancel-in-progress: false
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python scripts/weekly_rank_refresh.py
+      - run: node scripts/export_scores.cjs
+      - name: Save weekly ranks and recalculated scores
+        run: |
+          git add docs/data/weekly_ranks.json cache/weekly_rank_prices.json.gz docs/data/screen_results.json docs/data/screen_results.csv
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'data: approved weekly rank stability and final score calculation'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
