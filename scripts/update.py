@@ -20,6 +20,7 @@ import yfinance as yf
 
 # Institution disclosures are fetched separately, may be newer than historical prices.
 from ownership import load_cache, enrich_row
+from price_cache import load as load_price_cache, to_frame, from_frame, update_frame, persist as persist_price_cache
 
 ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/"docs"/"data"
@@ -172,28 +173,74 @@ def beta_asof(equity, benchmark):
     return round(value,6) if value is not None else None
 
 def fetch_history(symbols,asof,warnings):
+    """First run: backfill. Later runs: fetch only last 18 calendar days.
+
+    We retain >252 daily closes/highs/volumes for all observed tickers, so
+    historical momentum, rolling highs, beta and CMF remain valid without
+    repeatedly downloading over a year of history on every run.
+    """
+    stored=load_price_cache()
     results={}
+    now_stored={}
+    jobs={"cached":[],"incremental":[],"bootstrap":[]}
+    for sym in symbols:
+        prev=to_frame(stored.get(sym))
+        if prev is not None and len(prev)>0:
+            now_stored[sym]=prev
+        last=prev.index[-1].date() if prev is not None and len(prev)>0 else None
+        # Reuse a complete cache when generating a past historical snapshot.
+        if last is not None and last>=asof and len(prev.loc[prev.index<=pd.Timestamp(asof)])>=61:
+            jobs["cached"].append(sym)
+            results[sym]=bars_asof(prev,asof)
+        elif last is not None and len(prev)>=5 and last>=asof-timedelta(days=14):
+            jobs["incremental"].append(sym)
+        else:
+            jobs["bootstrap"].append(sym)
+    print("Price cache:",
+          "reused",len(jobs["cached"]),"incremental",len(jobs["incremental"]),
+          "backfill",len(jobs["bootstrap"]),flush=True)
     stop=(asof+timedelta(days=1)).isoformat()
-    start=(asof-timedelta(days=575)).isoformat()
     batch=max(5,min(65,int(os.getenv("YF_BATCH_SIZE","35"))))
-    pause=float(os.getenv("BATCH_PAUSE_SEC","0.5"))
-    for pos in range(0,len(symbols),batch):
-        chunk=symbols[pos:pos+batch]
-        forms=[x.replace(".","-") for x in chunk]
-        try:
-            raw=yf.download(tickers=" ".join(forms),start=start,end=stop,interval="1d",
-                group_by="ticker",auto_adjust=True,progress=False,threads=False,timeout=40)
-            for original,alias in zip(chunk,forms):
-                frame=bars_asof(symbol_frame(raw,alias),asof)
-                if frame is not None:
-                    results[original]=frame
-        except Exception as ex:
-            if len(warnings)<40:
-                warnings.append("batch "+str(pos)+" failed: "+type(ex).__name__)
-        print("Price bars",min(pos+batch,len(symbols)),"/",len(symbols),
-              "valid",len(results),flush=True)
-        time.sleep(pause)
+    pause=float(os.getenv("BATCH_PAUSE_SEC","0.35"))
+    done=0
+    for mode in ("incremental","bootstrap"):
+        list_symbols=jobs[mode]
+        start=(asof-timedelta(days=18 if mode=="incremental" else 575)).isoformat()
+        for pos in range(0,len(list_symbols),batch):
+            chunk=list_symbols[pos:pos+batch]
+            forms=[x.replace(".","-") for x in chunk]
+            try:
+                raw=yf.download(tickers=" ".join(forms),start=start,end=stop,interval="1d",
+                    group_by="ticker",auto_adjust=True,progress=False,threads=False,timeout=40)
+                for original,alias in zip(chunk,forms):
+                    fetched=symbol_frame(raw,alias)
+                    # Even a failed provider query leaves older cached data intact.
+                    if fetched is not None and not fetched.empty:
+                        fetched=fetched.copy()
+                        fetched.index=pd.to_datetime(fetched.index,utc=True).tz_convert(None).normalize()
+                        now_stored[original]=update_frame(now_stored.get(original),fetched)
+                    frame=bars_asof(now_stored.get(original),asof)
+                    if frame is not None:
+                        results[original]=frame
+            except Exception as ex:
+                if len(warnings)<40:
+                    warnings.append("price "+mode+" batch "+str(pos)+" failed: "+type(ex).__name__)
+                for original in chunk:
+                    frame=bars_asof(now_stored.get(original),asof)
+                    if frame is not None:
+                        results[original]=frame
+            done+=len(chunk)
+            print("Price cache sync",mode,done,"/",len(symbols),
+                  "valid frames",len(results),flush=True)
+            time.sleep(pause)
+    # Keep a fully validated, bounded 285-session cache; save even for symbols
+    # missing today's quote so subsequent dates can retry only missing deltas.
+    packed={ticker:from_frame(frame) for ticker,frame in now_stored.items()
+            if frame is not None and len(frame)>0}
+    cached_count=persist_price_cache(packed)
+    print("Price cache saved",cached_count,"symbols",flush=True)
     return results
+
 
 def run():
     explicit=os.getenv("ASOF_DATE","").strip()
