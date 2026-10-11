@@ -71,6 +71,30 @@ function tvOverlay(market,overlay){
  market.tv_overlay_queried=overlay?.queried_at_utc||null;
  return market;
 }
+function addTradingViewFinancialHistory(payload, history){
+  if(!history||!history.rows||Array.isArray(history.rows))return 0;
+  let count=0;
+  for(const row of payload.rows){
+    const h=history.rows[row.ticker];
+    if(!h||!h.series)continue;
+    const years=Array.isArray(h.labels)?h.labels:[];
+    const rev=h.series.revenue||[],gp=h.series.gross_profit||[];
+    if(years.length<2||rev.length<2||gp.length<2)continue;
+    const r0=rev[rev.length-2]?.value,r1=rev[rev.length-1]?.value;
+    const g0=gp[gp.length-2]?.value,g1=gp[gp.length-1]?.value;
+    if(![r0,r1,g0,g1].every(x=>typeof x==='number'&&Number.isFinite(x))||r0<=0||r1<=0)continue;
+    // Compare matched consecutive annual fiscal years, not overlapping FY and TTM ratios.
+    row.revenue_growth_pct=100*(r1/r0-1);
+    row.gpm_delta_pp=100*(g1/r1-g0/r0);
+    row.fy_comparison_period=String(years[years.length-2])+' → '+String(years[years.length-1]);
+    row.fy_comparison_source='TradingView annual FY revenue and gross profit; latest data, not necessarily released by historic market date';
+    row.fy_comparison_fetched_at_utc=history.snapshot_utc||null;
+    count++;
+  }
+  payload.tradingview_fy_comparison_count=count;
+  payload.tradingview_fy_queried_at_utc=history.snapshot_utc||null;
+  return count;
+}
 function ranking(key,fun){
  var fx=data.fx_krw_usd||1350;
  var xs=data.rows.filter(function(r){return r.price_asof===data.market_session&&ok(r.market_cap_usd)&&r.market_cap_usd*fx>=1e10&&ok(r.avg_value_usd)&&r.avg_value_usd>=5e6&&ok(r.beta)&&r.beta<=2;}).map(function(r){return fun?fun(r[key]):r[key];}).filter(ok).sort(function(a,b){return a-b;});
@@ -146,8 +170,9 @@ function build(){
  '<p>시가총액 수집: <strong>'+format(data.rows.filter(function(r){return ok(r.market_cap_usd);}).length,0)+'종목</strong></p>'+
  '<p>기관보유 변화: <strong>'+format(data.rows.filter(function(r){return ok(r.inst_change_pct);}).length,0)+'종목</strong></p>'+
  '<p>전 항목 F-score: <strong>'+format(data.rows.filter(function(r){return ['revenue_growth_pct','gpm_delta_pp','sga_ratio_delta_pp','asset_turnover_delta'].every(function(k){return ok(r[k]);});}).length,0)+'종목</strong></p>'+
+ '<p>TradingView 2개 FY 매출·GPM 비교: <strong>'+format(data.tradingview_fy_comparison_count||0,0)+'종목</strong></p>'+
  '<p>COMP 전항목: <strong>'+format(items.filter(function(x){return x.missing===0;}).length,0)+'종목</strong></p>';
- $('notice').innerHTML='<strong>종가 기준 '+safe(report)+'</strong> · TradingView 최신 기본/재무자료 '+format(data.tv_overlay_count||0,0)+'종목 ('+safe(data.tv_overlay_queried||'미확인')+' UTC 조회). 미국 전체 '+format(data.universe_count,0)+'종목 중 종가 '+format(price,0)+'종목. <strong>현재 정식 통과 '+format(counts.pass||0,0)+'종목.</strong> TV 값은 10월 9일 시점 정보가 아니라 최신값입니다. 선행 PER은 조회시점이 다른 EPS 예측치와 종가를 결합한 추정치입니다. '+(data.rank_completeness!=='complete'?'순위모멘텀의 체류·안정성과 일부 COMP 항목은 검증대기.':'');
+ $('notice').innerHTML='<strong>종가 기준 '+safe(report)+'</strong> · TradingView 최신 기본/재무자료 '+format(data.tv_overlay_count||0,0)+'종목 ('+safe(data.tv_overlay_queried||'미확인')+' UTC 조회). 미국 전체 '+format(data.universe_count,0)+'종목 중 종가 '+format(price,0)+'종목. <strong>현재 정식 통과 '+format(counts.pass||0,0)+'종목.</strong> TV 값은 10월 9일 시점 정보가 아니라 최신값입니다. FY 비교도 최신 2개 연간 결산만 사용하며, 10월 9일 당시 발표자료만 사용한 백테스트가 아닙니다. 선행 PER은 조회시점이 다른 EPS 예측치와 종가를 결합한 추정치입니다. '+(data.rank_completeness!=='complete'?'순위모멘텀의 체류·안정성과 일부 COMP 항목은 검증대기.':'');
  var port=allocate(items.filter(function(x){return x.status==='pass';}));
  $('portfolio').innerHTML=port.length?port.map(function(x){return '<p><b>'+safe(x.r.ticker)+'</b> · '+format(x.composite,1)+'점 · '+format(x.weight*100,1)+'%</p>';}).join(''):'<p class="warn"><strong>정식통과 확정 종목 0개</strong></p><p>가격·거래대금·β를 통과한 예비 주도 후보는 아래 표에서 확인할 수 있지만, 시총·기관·재무 점수 확인 전에는 실제 포트폴리오로 편입하지 않습니다.</p>';
  $('missing').innerHTML='<p>시총 없는 종목: <strong>'+format(data.rows.filter(function(r){return !ok(r.market_cap_usd);}).length,0)+'</strong></p>'+
@@ -186,6 +211,7 @@ async function load(){
  try{var r=await fetch('./data/latest.json?_='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
  data=await r.json();if(!Array.isArray(data.rows)||!data.rows.length)throw Error('저장된 종목 데이터 없음');
   try{var tvResp=await fetch('./data/tradingview_latest.json?_='+Date.now(),{cache:'no-store'});if(tvResp.ok){tradingview=await tvResp.json();tvOverlay(data,tradingview);}else data.tv_overlay_warning='TradingView overlay HTTP '+tvResp.status;}catch(tvError){data.tv_overlay_warning=String(tvError);}
+ try{var fyResp=await fetch('./data/tradingview_financial_history_priority.json?_='+Date.now(),{cache:'no-store'});if(fyResp.ok)addTradingViewFinancialHistory(data,await fyResp.json());}catch(e){data.fy_overlay_warning=String(e);}
  build();}catch(e){$('notice').innerHTML='<strong>데이터 조회 실패:</strong> '+safe(e.message||e)+' · <a href="data/latest.json">GitHub 저장 데이터</a> 상태를 확인해 주세요.';}
 }
 $('reload').addEventListener('click',load);
