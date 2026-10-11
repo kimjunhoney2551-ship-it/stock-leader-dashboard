@@ -414,11 +414,13 @@ async function addVerifiedOwnership(payload){
   for(const row of payload.rows){
    const e=doc.tickers?.[row.ticker];if(!e)continue;
    row.ownership_evidence=e;
+   if(e.current_period>=(row.inst_holder_report_asof||'')){row.inst_holder_report_asof=e.current_period;row.inst_holder_source=e.source_url;}
    if(Number.isFinite(e.inst_change_pct)&&e.inst_change_asof>=(row.inst_change_asof||'')){
     for(const k of ['inst_change_pct','inst_change_asof','inst_change_prev_asof','inst_change_sample_holders','inst_change_method','inst_change_source'])row[k]=e[k];
    }
   }
   payload.ownership_verified_at=doc.queried_at_utc;
+  payload.institution_latest_disclosure_count=payload.rows.filter(r=>r.inst_holder_report_asof).length;
   payload.institution_comparable_change_count=payload.rows.filter(r=>Number.isFinite(r.inst_change_pct)).length;
  }catch(e){payload.ownership_warning=String(e);}
 }
