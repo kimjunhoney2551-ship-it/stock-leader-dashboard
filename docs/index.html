@@ -412,7 +412,7 @@ async function syncRemote(force=false){
  }finally{autoSyncState.busy=false;}
 }
 
-function init(){if(!storageLoad()){state.rows=embedded20261010;state.mode='embedded';state.settings={...starterSettings,asof:'',spy1w:null,spy1m:null,spy3m:null,spy4w:null,spy12w:null,spy25w:null,spy52w:null};}bindEvents();renderAll();switchTab('sectors');$('refresh-now').addEventListener('click',()=>syncRemote(true));$('auto-refresh').addEventListener('click',()=>syncRemote(true));syncRemote();setInterval(()=>{if(!document.hidden)syncRemote();},30*60*1000);}
+function init(){if(!storageLoad()){const hosted=location.protocol==='https:'||location.protocol==='http:';state.rows=hosted?[]:embedded20261010;state.mode=hosted?'auto':'embedded';state.settings={...starterSettings,asof:'',spy1w:null,spy1m:null,spy3m:null,spy4w:null,spy12w:null,spy25w:null,spy52w:null};}bindEvents();renderAll();switchTab('sectors');$('refresh-now').addEventListener('click',()=>syncRemote(true));$('auto-refresh').addEventListener('click',()=>syncRemote(true));syncRemote();setInterval(()=>{if(!document.hidden)syncRemote();},30*60*1000);}
 window.__leaderDesk={parseCSV,normalizeRows,calculateRow,calcDcf,seedDemo,calculate,allocate,state,renderAll,syncRemote,init};
 init();
 
