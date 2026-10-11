@@ -52,6 +52,14 @@ function tvOverlay(market,overlay){
   if(ok(v["AvgValue.Traded_10d"]))row.avg_value_usd_latest_tv=v["AvgValue.Traded_10d"];
   if(ok(v.return_on_common_equity_fy)){row.roe_pct=v.return_on_common_equity_fy;row.roe_source="TradingView latest FY";}
   if(ok(v.piotroski_f_score_fy))row.tv_piotroski9=v.piotroski_f_score_fy;
+    // Mixed-vintage estimate: historical price and latest TradingView next-FY EPS.
+    if(ok(v.earnings_per_share_forecast_next_fy)&&ok(row.close_usd)&&row.close_usd>0){
+      const eps=v.earnings_per_share_forecast_next_fy;
+      row.forward_pe=eps===0?-1:row.close_usd/eps;
+      row.forward_pe_price_asof=row.price_asof;
+      row.forward_pe_estimate_fetched_at_utc=overlay.queried_at_utc;
+      row.forward_pe_source='Yahoo price / TradingView next-FY EPS (different data vintage)';
+    }
   if(ok(v.gross_margin_ttm))row.gross_margin_ttm_pct=v.gross_margin_ttm;
   if(ok(v.gross_margin_fy))row.gross_margin_fy_pct=v.gross_margin_fy;
   if(ok(v.sell_gen_admin_exp_other_ratio_ttm))row.sga_ratio_ttm_pct=v.sell_gen_admin_exp_other_ratio_ttm;
@@ -64,7 +72,8 @@ function tvOverlay(market,overlay){
  return market;
 }
 function ranking(key,fun){
- var xs=data.rows.map(function(r){return fun?fun(r[key]):r[key];}).filter(ok).sort(function(a,b){return a-b;});
+ var fx=data.fx_krw_usd||1350;
+ var xs=data.rows.filter(function(r){return r.price_asof===data.market_session&&ok(r.market_cap_usd)&&r.market_cap_usd*fx>=1e10&&ok(r.avg_value_usd)&&r.avg_value_usd>=5e6&&ok(r.beta)&&r.beta<=2;}).map(function(r){return fun?fun(r[key]):r[key];}).filter(ok).sort(function(a,b){return a-b;});
  return function(v){if(!ok(v)||!xs.length)return null;var lo=0,hi=xs.length;while(lo<hi){var m=(lo+hi)>>1;if(xs[m]<=v)lo=m+1;else hi=m;}return lo/xs.length;};
 }
 function component(a,w,v){a.max+=w;if(ok(v)){a.low+=v;a.known+=1;}else a.missing+=1;}
@@ -138,7 +147,7 @@ function build(){
  '<p>기관보유 변화: <strong>'+format(data.rows.filter(function(r){return ok(r.inst_change_pct);}).length,0)+'종목</strong></p>'+
  '<p>전 항목 F-score: <strong>'+format(data.rows.filter(function(r){return ['revenue_growth_pct','gpm_delta_pp','sga_ratio_delta_pp','asset_turnover_delta'].every(function(k){return ok(r[k]);});}).length,0)+'종목</strong></p>'+
  '<p>COMP 전항목: <strong>'+format(items.filter(function(x){return x.missing===0;}).length,0)+'종목</strong></p>';
- $('notice').innerHTML='<strong>종가 기준 '+safe(report)+'</strong> · TradingView 최신 기본/재무자료 '+format(data.tv_overlay_count||0,0)+'종목 ('+safe(data.tv_overlay_queried||'미확인')+' UTC 조회). 미국 전체 '+format(data.universe_count,0)+'종목 중 종가 '+format(price,0)+'종목. <strong>현재 정식 통과 '+format(counts.pass||0,0)+'종목.</strong> TV 값은 10월 9일 시점 정보가 아니라 최신값입니다. '+(data.rank_completeness!=='complete'?'순위모멘텀의 체류·안정성과 일부 COMP 항목은 검증대기.':'');
+ $('notice').innerHTML='<strong>종가 기준 '+safe(report)+'</strong> · TradingView 최신 기본/재무자료 '+format(data.tv_overlay_count||0,0)+'종목 ('+safe(data.tv_overlay_queried||'미확인')+' UTC 조회). 미국 전체 '+format(data.universe_count,0)+'종목 중 종가 '+format(price,0)+'종목. <strong>현재 정식 통과 '+format(counts.pass||0,0)+'종목.</strong> TV 값은 10월 9일 시점 정보가 아니라 최신값입니다. 선행 PER은 조회시점이 다른 EPS 예측치와 종가를 결합한 추정치입니다. '+(data.rank_completeness!=='complete'?'순위모멘텀의 체류·안정성과 일부 COMP 항목은 검증대기.':'');
  var port=allocate(items.filter(function(x){return x.status==='pass';}));
  $('portfolio').innerHTML=port.length?port.map(function(x){return '<p><b>'+safe(x.r.ticker)+'</b> · '+format(x.composite,1)+'점 · '+format(x.weight*100,1)+'%</p>';}).join(''):'<p class="warn"><strong>정식통과 확정 종목 0개</strong></p><p>가격·거래대금·β를 통과한 예비 주도 후보는 아래 표에서 확인할 수 있지만, 시총·기관·재무 점수 확인 전에는 실제 포트폴리오로 편입하지 않습니다.</p>';
  $('missing').innerHTML='<p>시총 없는 종목: <strong>'+format(data.rows.filter(function(r){return !ok(r.market_cap_usd);}).length,0)+'</strong></p>'+
