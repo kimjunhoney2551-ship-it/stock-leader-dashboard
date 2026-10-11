@@ -31,7 +31,9 @@ jobs:
         run: pip install -r requirements.txt
       - name: Verify report-date and missing-data rules
         run: python -m unittest discover -s tests -p 'test_ownership.py' -v
-      - name: Refresh latest institution top holders
+      # Use latest available disclosures even for the 2026-10-09 price snapshot.
+      # Compare with the previous comparable reporting quarter; never treat missing history as zero change.
+      - name: Refresh latest available institution disclosures and comparable changes
         run: python scripts/ownership.py
       - name: Commit verified institutional observations
         shell: bash
