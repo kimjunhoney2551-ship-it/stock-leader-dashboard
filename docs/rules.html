@@ -71,6 +71,27 @@ function tvOverlay(market,overlay){
  market.tv_overlay_queried=overlay?.queried_at_utc||null;
  return market;
 }
+async function addLatestInstitutionalCache(payload){
+  try{
+    const response=await fetch('./data/institutional.json?_='+Date.now(),{cache:'no-store'});
+    if(!response.ok)throw Error('HTTP '+response.status);
+    const cache=await response.json();
+    if(!cache.tickers||typeof cache.tickers!=='object')return;
+    const fields=['inst_holder_report_asof','inst_holder_fetched_at_utc','inst_holder_sample_count','inst_holder_sample_shares','inst_holder_source','inst_change_pct','inst_change_asof','inst_change_prev_asof','inst_change_sample_holders','inst_change_method','inst_change_source'];
+    for(const row of payload.rows){
+      const entry=cache.tickers[row.ticker];
+      if(!entry||!entry.inst_holder_report_asof||entry.inst_holder_report_asof<(row.inst_holder_report_asof||''))continue;
+      if(row.inst_change_method==='matched_top_institutions_proxy'){
+        for(const key of fields)if(key.startsWith('inst_change_'))delete row[key];
+      }
+      for(const key of fields)if(entry[key]!==undefined&&entry[key]!==null)row[key]=entry[key];
+    }
+    payload.institution_latest_disclosure_count=payload.rows.filter(r=>r.inst_holder_report_asof).length;
+    payload.institution_comparable_change_count=payload.rows.filter(r=>typeof r.inst_change_pct==='number'&&Number.isFinite(r.inst_change_pct)).length;
+    payload.institution_cache_checked_at=cache.last_attempt_utc||'';
+  }catch(error){payload.institution_cache_warning=String(error);}
+}
+
 function addTradingViewFinancialHistory(payload, history){
   if(!history||!history.rows||Array.isArray(history.rows))return 0;
   let count=0;
@@ -212,6 +233,7 @@ async function load(){
  data=await r.json();if(!Array.isArray(data.rows)||!data.rows.length)throw Error('저장된 종목 데이터 없음');
   try{var tvResp=await fetch('./data/tradingview_latest.json?_='+Date.now(),{cache:'no-store'});if(tvResp.ok){tradingview=await tvResp.json();tvOverlay(data,tradingview);}else data.tv_overlay_warning='TradingView overlay HTTP '+tvResp.status;}catch(tvError){data.tv_overlay_warning=String(tvError);}
  try{var fyResp=await fetch('./data/tradingview_financial_history_priority.json?_='+Date.now(),{cache:'no-store'});if(fyResp.ok)addTradingViewFinancialHistory(data,await fyResp.json());}catch(e){data.fy_overlay_warning=String(e);}
+ await addLatestInstitutionalCache(data);
  build();}catch(e){$('notice').innerHTML='<strong>데이터 조회 실패:</strong> '+safe(e.message||e)+' · <a href="data/latest.json">GitHub 저장 데이터</a> 상태를 확인해 주세요.';}
 }
 $('reload').addEventListener('click',load);
