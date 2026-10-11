@@ -30,7 +30,7 @@ header{background:#fff;border-bottom:1px solid var(--line)}.wrap{max-width:1470p
 </div>
 <div class="panes">
 <div class="card"><h2>정식 포트폴리오 (최대 10종목)</h2><div id="portfolio">검증 완료된 투자종목 없음</div><p class="mini">F-score 4/4·복합점수·시총·기관·13D/G 등이 확인되기 전에는 예비 후보를 매수 추천이나 자동편입 종목으로 표시하지 않습니다.</p></div>
-<div class="card"><h2>향후 재검증할 데이터</h2><div id="missing">확인 중…</div><p class="mini">상장종목 전체의 10월 9일 실시간 시점 데이터가 아닌 최신 재무·기관 데이터를 혼합하는 경우, 항목별 수집일을 구분해야 합니다.</p></div>
+<div class="card"><p class="mini">기관 자료: <a href="https://tradefilings.com">TradeFilings</a>가 집계한 <a href="https://www.sec.gov/edgar">SEC EDGAR</a> 공시. 동일 기관의 두 분기 보유주식 수 비교이며 전체 기관 소유비율은 아닙니다. 13F는 분기말보다 최대 45일 늦게 보고되는 미국 보고대상 매수 포지션입니다. 자료는 정정될 수 있으며 투자 조언이 아닙니다.</p></div><div class="card"><h2>향후 재검증할 데이터</h2><div id="missing">확인 중…</div><p class="mini">상장종목 전체의 10월 9일 실시간 시점 데이터가 아닌 최신 재무·기관 데이터를 혼합하는 경우, 항목별 수집일을 구분해야 합니다.</p></div>
 </div>
 <p class="foot">본 보고서는 투자자 개인이 설정한 규칙에 따른 기계적 스크리닝 결과이며 투자 권유가 아닙니다. 누락·시점 불일치와 무료 데이터의 수집 제한으로 일부 종목은 검증대기 상태일 수 있습니다.</p>
 </main>
@@ -91,6 +91,22 @@ async function addLatestFinancialInputs(payload){
     }
     payload.financial_checked_at=doc.queried_at_utc||'';
   }catch(error){payload.financial_warning=String(error);}
+}
+
+async function addVerifiedOwnership(payload){
+ try{
+  const res=await fetch('./data/ownership_verified.json?_='+Date.now(),{cache:'no-store'});if(!res.ok)return;
+  const doc=await res.json();
+  for(const row of payload.rows){
+   const e=doc.tickers?.[row.ticker];if(!e)continue;
+   row.ownership_evidence=e;
+   if(Number.isFinite(e.inst_change_pct)&&e.inst_change_asof>=(row.inst_change_asof||'')){
+    for(const k of ['inst_change_pct','inst_change_asof','inst_change_prev_asof','inst_change_sample_holders','inst_change_method','inst_change_source'])row[k]=e[k];
+   }
+  }
+  payload.ownership_verified_at=doc.queried_at_utc;
+  payload.institution_comparable_change_count=payload.rows.filter(r=>Number.isFinite(r.inst_change_pct)).length;
+ }catch(e){payload.ownership_warning=String(e);}
 }
 
 async function addLatestInstitutionalCache(payload){
@@ -224,15 +240,21 @@ function build(){
  $('portfolio').innerHTML=port.length?port.map(function(x){return '<p><b>'+safe(x.r.ticker)+'</b> · '+format(x.composite,1)+'점 · '+format(x.weight*100,1)+'%</p>';}).join(''):'<p class="warn"><strong>정식통과 확정 종목 0개</strong></p><p>가격·거래대금·β를 통과한 예비 주도 후보는 아래 표에서 확인할 수 있지만, 기관 변화·공시 및 순위 검증이 완료되면 정식 편입 여부를 판정합니다.</p>';
  $('missing').innerHTML='<p>시총 없는 종목: <strong>'+format(data.rows.filter(function(r){return !ok(r.market_cap_usd);}).length,0)+'</strong></p>'+
  '<p>기관 변화 미확인: <strong>'+format(data.rows.filter(function(r){return !ok(r.inst_change_pct);}).length,0)+'</strong></p>'+
+ '<p>13D/G 원문 확보: <strong>'+format(data.rows.filter(r=>r.ownership_evidence?.filings_13dg?.length).length,0)+'종목</strong> (점수와 별도)</p>'+
  '<p>13D/G 공시 미확인: <strong>'+format(data.rows.filter(function(r){return r.filing_13dg===undefined||r.filing_13dg===null;}).length,0)+'</strong></p>'+
  '<p>ROE/Forward PER/이익성장 미확인: <strong>'+format(data.rows.filter(function(r){return ![r.roe_pct,r.forward_pe,r.op_income_growth_pct].every(ok);}).length,0)+'</strong></p>';
  redraw();
  if(typeof globalThis.__onScoresReady==='function')globalThis.__onScoresReady({data:data,items:items});
 }
+function ownershipDetails(r){
+ const e=r.ownership_evidence;if(!e)return '';
+ const events=e.filings_13dg||[];
+ return '<p><strong>기관 변화: '+(ok(e.inst_change_pct)?format(e.inst_change_pct,2)+'%':'비교 불충분')+'</strong><br>'+safe(e.previous_period||'')+' → '+safe(e.current_period||'')+' · 동일 기관 '+(e.matched_holders||[]).length+'개<br>신규·청산 제외, 추적 기관 표본</p><p><a href="'+safe(e.source_url)+'" target="_blank" rel="noopener">TradeFilings / SEC 출처</a> · <a href="data/ownership_verified.json">기관별 원자료</a></p><p>13D/G 검색 결과 '+events.length+'건 (점수 적용기간 미설정)</p>'+events.slice(0,10).map(f=>'<div><a href="'+safe(f.source_url)+'" target="_blank" rel="noopener">'+safe(f.form)+' · '+safe(f.filed)+' · '+safe(f.filer)+'</a></div>').join('');
+}
 function detail(x){
  var names=['4주 순위','12주 순위','25주 순위','52주 순위','1주 가격','1개월 가격','3개월 가격','52주 고가','CMF20','거래대금 강도','기관 변화','13D/G','ROE','선행 PER 역수','영업이익 성장'];
  var r=x.r,tests=[['매출 증가',r.revenue_growth_pct,'%'],['GPM 개선',r.gpm_delta_pp,'pp'],['판관비율 감소',r.sga_ratio_delta_pp,'pp'],['자산회전율 개선',r.asset_turnover_delta,'']];
- return '<details style="text-align:left;white-space:normal;min-width:210px"><summary>'+x.missing+'개 COMP 미확정 · 계산 보기</summary>'+x.components.map(function(c,i){return '<div>'+names[i]+': '+(ok(c.value)?format(c.value,2):'미확정')+' / '+c.max+'</div>';}).join('')+'<hr>'+tests.map(function(t,i){return '<div>'+t[0]+': '+(ok(t[1])?format(t[1],3)+t[2]+' ('+((i===2?t[1]<0:t[1]>0)?'1':'0')+'점)':'미확정')+'</div>';}).join('')+'<p>재무: '+safe(r.fy_comparison_period||'미확인')+'</p><p>기관 보고일: '+safe(r.inst_holder_report_asof||'미확인')+'<br>비교 보고일: '+safe(r.inst_change_prev_asof||'미확인')+'</p></details>';
+ return '<details style="text-align:left;white-space:normal;min-width:210px"><summary>'+x.missing+'개 COMP 미확정 · 계산 보기</summary>'+x.components.map(function(c,i){return '<div>'+names[i]+': '+(ok(c.value)?format(c.value,2):'미확정')+' / '+c.max+'</div>';}).join('')+'<hr>'+tests.map(function(t,i){return '<div>'+t[0]+': '+(ok(t[1])?format(t[1],3)+t[2]+' ('+((i===2?t[1]<0:t[1]>0)?'1':'0')+'점)':'미확정')+'</div>';}).join('')+'<p>재무: '+safe(r.fy_comparison_period||'미확인')+'</p><p>기관 보고일: '+safe(r.inst_holder_report_asof||'미확인')+'<br>비교 보고일: '+safe(r.inst_change_prev_asof||'미확인')+'</p>'+ownershipDetails(r)+'</details>';
 }
 function renderStatus(x){var v={pass:['정식통과',''],shadow:['그림자','amber'],watch:['예비 후보','amber'],pending:['검증대기','gray'],fail:['탈락','red']}[x.status];return '<span title="'+safe(x.why)+'" class="pill '+v[1]+'">'+v[0]+'</span>';}
 function redraw(){
@@ -269,6 +291,7 @@ async function load(){
  try{var fyResp=await fetch('./data/tradingview_financial_history_priority.json?_='+Date.now(),{cache:'no-store'});if(fyResp.ok)addTradingViewFinancialHistory(data,await fyResp.json());}catch(e){data.fy_overlay_warning=String(e);}
  await addLatestFinancialInputs(data);
  await addLatestInstitutionalCache(data);
+  await addVerifiedOwnership(data);
  build();}catch(e){$('notice').innerHTML='<strong>데이터 조회 실패:</strong> '+safe(e.message||e)+' · <a href="data/latest.json">GitHub 저장 데이터</a> 상태를 확인해 주세요.';}
 }
 $('reload').addEventListener('click',load);
