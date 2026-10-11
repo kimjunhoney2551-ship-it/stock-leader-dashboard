@@ -31,3 +31,10 @@
 - Actions → Deploy Public Stock Dashboard → Run workflow. Pages가 허용되면 보통 `https://kimjunhoney2551-ship-it.github.io/stock-leader-dashboard/` 경로가 활성화됩니다.
 - 데이터 수집 및 전체 COMP 확정은 별도입니다. 가격 스냅샷 수집이 실패한 동안에는 대시보드의 데이터 미수집 상태를 확인하세요.
 - GitHub 연결 앱은 저장소 공개 전환 및 Pages 신규 활성화 권한을 제공하지 않으므로 위 두 설정은 계정 소유자가 해야 합니다.
+
+## TradingView 연결 계정 데이터 병합 (2026-10-11)
+- **실제 연결된 TradingView 플러그인을 사용한 조회 스냅샷:** `docs/data/tradingview_latest.json`. 2026-10-09 시세 유동성 컷을 통과한 3,068종목 중 3,067종목 조회, 시가총액 3,059종목, 베타 3,066종목, FY ROE 2,843종목, TV Piotroski 9점 항목 2,357종목.
+- **현재 검증 기본필터 통과 2,573종목:** 2026-10-09 일평균 거래대금 ≥500만 달러 + **2026-10-11에 조회한 최신 TradingView** 시총 ≥100억 원 및 베타 ≤2. 이 세 변수가 동일 시장시점이 아니라는 점을 보존합니다.
+- `docs/rules.html`에서 예비후보/정식통과/그림자/검증대기/탈락 및 COMP 확정 부분점수 범위를 확인하고 CSV로 다운로드합니다. `docs/index.html`과 `docs/2026-10-09.html`도 브라우저에서 TV JSON을 병합합니다.
+- 현재 TV에서는 **Piotroski F 9점 지표**는 확보되지만 사용자의 **F 4/4 정의**가 아니므로 대체하지 않습니다. 최신 FY ROE는 COMP 밸류 항목으로 적용; 직접 조회되지 않은 Forward PE, 영업이익 YoY, 기관 변화율, 13D/G 및 사용자 정의 F 증가/감소 항목은 자동으로 만들지 않습니다.
+- **운영상 중요:** 연결된 TradingView 플러그인은 ChatGPT 대화 도구이며 GitHub Actions 실행 환경에 계정 인증이 자동 전달되지 않습니다. 따라서 TV JSON은 2026-10-11에 업로드한 최신 스냅샷으로, 이후 GitHub Actions의 무료 Yahoo 가격·모멘텀 자동 갱신과 **갱신 주기가 다릅니다.** 일별 TV 전체항목 자동화를 원하면 적법한 별도 API/접근 자격이 필요하며, 그 전에는 최신 TV 일자 표시를 확인하세요.
