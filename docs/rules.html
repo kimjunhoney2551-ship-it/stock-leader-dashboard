@@ -66,8 +66,7 @@ function evaluate(r){
  var fx=data.fx_krw_usd||1350,capKnown=ok(r.market_cap_usd);
  var fail=ok(r.avg_value_usd)&&r.avg_value_usd<5000000||ok(r.beta)&&r.beta>2||(capKnown&&r.market_cap_usd*fx<10000000000);
  var priceOK=r.price_asof===data.market_session,baseReady=capKnown&&ok(r.avg_value_usd)&&ok(r.beta)&&priceOK;
- var low=parts.low,up=low+(100-parts.max+parts.max-low-(parts.max-parts.low)); // overwritten below: explicit unknown point max
- up=parts.low+parts.max-parts.low; // overwritten using missing weighted budget below
+ var low=parts.low,up=0;
  var knownMax=0,weights=[8,12,12,8,6.25,6.25,6.25,6.25,7,5,5,3,5,5,5];
  // components store point budget, but need known weighted max to bound remaining score.
  // unknown max is calculated by separately scoring each source's presence.
