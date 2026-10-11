@@ -9,6 +9,7 @@ const context={
  fetch:async url=>{const p=path.join(root,'docs',String(url).split('?')[0]);return {ok:fs.existsSync(p),json:async()=>JSON.parse(fs.readFileSync(p,'utf8'))};},
  console,setTimeout,
  __onScoresReady({data,items}){
+   if(process.env.EXPORT_INPUTS)fs.writeFileSync(process.env.EXPORT_INPUTS,JSON.stringify({market_session:data.market_session,fx_krw_usd:data.fx_krw_usd,rows:data.rows}));
    const counts={};for(const x of items)counts[x.status]=(counts[x.status]||0)+1;
    const chosen=items.filter(x=>['watch','pass','shadow'].includes(x.status)).sort((a,b)=>b.low-a.low);
    const rows=chosen.map(x=>({ticker:x.r.ticker,name:x.r.name,sector:x.r.sector,market_cap_krw:x.r.market_cap_usd*data.fx_krw_usd,
