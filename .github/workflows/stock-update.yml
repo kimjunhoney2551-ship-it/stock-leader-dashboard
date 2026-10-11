@@ -11,7 +11,7 @@ on:
       asof:
         description: 'Historical US market session YYYY-MM-DD; blank for latest'
         required: false
-        default: '2026-10-09'
+        default: ''
 permissions:
   contents: write
 concurrency:
@@ -23,7 +23,7 @@ jobs:
     timeout-minutes: 180
     env:
       YF_BATCH_SIZE: '35'
-      BATCH_PAUSE_SEC: '0.5'
+      BATCH_PAUSE_SEC: '0.35'
       PRICE_LIMIT: '0'
       INFO_PER_RUN: '25'
     steps:
@@ -34,6 +34,8 @@ jobs:
           cache: 'pip'
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Test incremental cache, integrity and institutional change rules
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Collect and validate market session
         env:
           ASOF_DATE: ${{ github.event_name == 'push' && '2026-10-09' || (github.event_name == 'workflow_dispatch' && inputs.asof) || '' }}
@@ -45,6 +47,7 @@ jobs:
           name: us-market-snapshot-${{ github.run_id }}
           path: |
             config/universe.csv
+            cache/prices/
             docs/data/latest.json
             docs/data/snapshots/
           if-no-files-found: error
@@ -52,7 +55,7 @@ jobs:
       - name: Check changes and commit verified data
         shell: bash
         run: |
-          git add config/universe.csv docs/data/
+          git add config/universe.csv docs/data/ cache/prices/
           if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
