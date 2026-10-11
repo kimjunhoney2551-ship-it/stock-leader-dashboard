@@ -1,0 +1,54 @@
+// Node-only browser-emulation smoke test for the public rules dashboard.
+// Uses latest real published snapshot; no fabricated passers or third-party requests.
+const fs=require("fs");
+const vm=require("vm");
+const assert=require("assert");
+const html=fs.readFileSync("docs/rules.html","utf8");
+const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
+assert(scripts.length===1,"Expected one standalone dashboard script");
+new vm.Script(scripts[0][1],{filename:"rules.js"});
+const snapshot=JSON.parse(fs.readFileSync("docs/data/latest.json","utf8"));
+assert(Array.isArray(snapshot.rows),"Invalid market snapshot");
+const ids={};
+const get=(id)=>ids[id]||(ids[id]={
+  id,value:id==="filter"?"watch":id==="sort"?"lower":"",
+  textContent:"",innerHTML:"",disabled:false,
+  listeners:{},addEventListener(kind,fn){this.listeners[kind]=fn;}
+});
+const ctx={
+ document:{getElementById:get},
+ fetch:async()=>({ok:true,json:async()=>snapshot}),
+ setTimeout,
+ Blob,URL,
+ console
+};
+vm.runInNewContext(scripts[0][1],ctx,{timeout:15000});
+setTimeout(()=>{
+  try{
+    assert(get("notice").innerHTML.includes("시장일자"),"missing asof");
+    assert(get("total").textContent!=="—","universe not loaded");
+    assert(get("priced").textContent!=="—","coverage not loaded");
+    const official=Number(get("official").textContent.replace(/,/g,""));
+    assert(Number.isFinite(official),"missing official count");
+    if(snapshot.rows.length>1000){
+      // The current price-only market data must NEVER create
+      // fabricated fully eligible investment recommendations.
+      assert(official===0,"Unverified passers incorrectly treated as confirmed");
+      assert(get("portfolio").innerHTML.includes("0개"),"fake allocation shown");
+    }
+    assert(get("validation").innerHTML.includes("시가총액 수집"),"coverage detail missing");
+    get("filter").value="all";
+    get("filter").listeners.change();
+    assert(get("table").innerHTML.includes("<tr>"),"table failed to render");
+    get("filter").value="watch";
+    get("filter").listeners.change();
+    assert(get("table").innerHTML.length>50,"watchlist did not render");
+    console.log("Dashboard validated:",{
+      market_session:snapshot.market_session,universe:snapshot.universe_count,
+      quoted:snapshot.price_updated_count,
+      official:official,
+      prelim:get("watch").textContent,
+      market_cap_count:(get("validation").innerHTML.match(/시가총액 수집.*?<strong>(.*?)<\/strong>/)||[])[1]
+    });
+  }catch(e){console.error(e);process.exitCode=1;}
+},400);
