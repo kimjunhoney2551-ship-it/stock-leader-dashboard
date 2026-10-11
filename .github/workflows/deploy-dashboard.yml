@@ -6,7 +6,7 @@ on:
       - 'docs/**'
       - '.github/workflows/deploy-dashboard.yml'
   workflow_run:
-    workflows: ['Latest Annual Financial Score Inputs', 'Latest Institutional Ownership Refresh', 'US Equity Snapshot & Daily Refresh']
+    workflows: ['Verified SEC Ownership Data', 'Latest Annual Financial Score Inputs', 'Latest Institutional Ownership Refresh', 'US Equity Snapshot & Daily Refresh']
     types: [completed]
     branches: [main]
   workflow_dispatch:
