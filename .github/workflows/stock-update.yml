@@ -1,0 +1,52 @@
+name: US Equity Snapshot & Daily Refresh
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/stock-update.yml'
+  schedule:
+    - cron: '30 23 * * *'
+  workflow_dispatch:
+    inputs:
+      asof:
+        description: 'Historical US market session YYYY-MM-DD; blank for latest'
+        required: false
+        default: '2026-10-09'
+permissions:
+  contents: write
+concurrency:
+  group: us-all-market-refresh
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      YF_BATCH_SIZE: '35'
+      BATCH_PAUSE_SEC: '0.5'
+      PRICE_LIMIT: '0'
+      INFO_PER_RUN: '25'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Collect and validate market session
+        env:
+          ASOF_DATE: ${{ github.event_name == 'push' && '2026-10-09' || (github.event_name == 'workflow_dispatch' && inputs.asof) || '' }}
+        run: python scripts/update.py
+      - name: Check changes and commit verified data
+        shell: bash
+        run: |
+          git add config/universe.csv docs/data/
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m "data: update US market snapshot [skip ci]"
+            git push
+          else
+            echo 'No new verified market data'
+          fi
