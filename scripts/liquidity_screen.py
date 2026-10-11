@@ -89,10 +89,15 @@ def daily_refresh(tickers, market_date, warnings, extract_symbol):
     # Fetch <=35 calendar-day light history for the entire universe. On later
     # days, cached stocks request <=12 calendar days and missing stocks retry.
     has_cache=[t for t in tickers if frames.get(t) is not None and len(frames[t])>=10]
-    no_cache=[t for t in tickers if t not in set(has_cache)]
+    have=set(has_cache)
+    no_cache=[t for t in tickers if t not in have]
     update_chunks(has_cache,(market_date-timedelta(days=12)).isoformat(),"recent")
     update_chunks(no_cache,(market_date-timedelta(days=35)).isoformat(),"liquidity_probe")
 
+    ref=as_of_frame(frames.get("SPY"),market_date)
+    if ref is None:
+        raise RuntimeError("SPY short history unavailable; cannot verify market session for liquidity screen")
+    session=ref.index[-1].date()
     liquidity={}
     shortlist=[]
     missing=[]
@@ -101,7 +106,7 @@ def daily_refresh(tickers, market_date, warnings, extract_symbol):
         if t in ("SPY","KRW=X"):
             shortlist.append(t)
             continue
-        amount=average_traded_dollars(frames.get(t),market_date)
+        amount=average_traded_dollars(frames.get(t),session)
         if amount is None:
             missing.append(t)
         else:
@@ -112,8 +117,10 @@ def daily_refresh(tickers, market_date, warnings, extract_symbol):
                 excluded.append(t)
 
     # Download >1 year OHLCV only for liquid stocks without sufficient cache.
-    bootstrap=[t for t in shortlist if frames.get(t) is None
-               or len(as_of_frame(frames.get(t),market_date))<HISTORY_BARS_REQUIRED]
+    def incomplete(t):
+        hist=as_of_frame(frames.get(t),market_date)
+        return hist is None or len(hist)<HISTORY_BARS_REQUIRED
+    bootstrap=[t for t in shortlist if incomplete(t)]
     update_chunks(bootstrap,(market_date-timedelta(days=575)).isoformat(),"long_backfill")
 
     # Keep older price bars for all formerly tracked symbols; do not fake a
@@ -123,7 +130,8 @@ def daily_refresh(tickers, market_date, warnings, extract_symbol):
     full={t:as_of_frame(frames.get(t),market_date) for t in shortlist
           if frames.get(t) is not None and len(as_of_frame(frames.get(t),market_date))>=61}
     meta={
-        "screen_method":"10-session close × volume daily mean; current date verified",
+        "screen_method":"10-session close × volume daily mean; latest SPY market session verified",
+        "screen_reference_session":session.isoformat(),
         "screen_min_avg_value_usd":LIQUIDITY_MIN_USD,
         "screen_total":sum(1 for t in tickers if t not in ("SPY","KRW=X")),
         "screen_turnover_verified":len(shortlist)-sum(x in shortlist for x in ("SPY","KRW=X"))+len(excluded),
