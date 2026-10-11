@@ -27,9 +27,11 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Fetch and calculate comparable annual financial inputs
         run: python scripts/financial_refresh.py
+      - name: Recalculate dashboard score exports
+        run: node scripts/export_scores.cjs
       - name: Publish financial data
         run: |
-          git add docs/data/financial_latest.json
+          git add docs/data/financial_latest.json docs/data/screen_results.json docs/data/screen_results.csv
           if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
