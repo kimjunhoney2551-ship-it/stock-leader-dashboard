@@ -26,3 +26,5 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Validate rules dashboard with real market snapshot
         run: node tests/rules_smoke.cjs
+      - name: Validate both main dashboard scripts and TradingView integration
+        run: node tests/main_js_smoke.cjs
