@@ -1,0 +1,1532 @@
+{
+  "asof": "2026-10-12",
+  "rows": {
+    "ECO": {
+      "financial_basis": "TTM_YOY",
+      "ttm_start": "2025-07-01",
+      "ttm_end": "2026-06-30",
+      "previous_ttm_start": "2024-07-01",
+      "previous_ttm_end": "2025-06-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/1964954/000110465926090429/eco-20260630xex99d2.htm",
+      "fetched_at_utc": "2026-10-12T07:50:00+00:00",
+      "raw_ttm": {
+        "revenue": [
+          706471626,
+          344213634
+        ],
+        "operating_expenses": [
+          266043883,
+          230828911
+        ],
+        "sga": [
+          13224674,
+          11704919
+        ],
+        "operating_income": [
+          440427743,
+          113384723
+        ],
+        "assets": [
+          1649255990,
+          1083120219,
+          1135215785
+        ],
+        "gross_profit": [
+          453652417,
+          125089642
+        ]
+      },
+      "evidence": {
+        "revenue": [
+          {
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "val": 391548819,
+            "filed": "2026-03-20",
+            "accn": "0001104659-26-032731",
+            "form": "20-F",
+            "tag": "Revenue"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "val": 393229831,
+            "filed": "2026-03-20",
+            "accn": "0001104659-26-032731",
+            "form": "20-F",
+            "tag": "Revenue"
+          },
+          {
+            "start": "2025-01-01",
+            "end": "2025-06-30",
+            "val": 174094786,
+            "filed": "2025-08-12",
+            "accn": "0001410578-25-001702",
+            "form": "6-K",
+            "tag": "Revenue"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-06-30",
+            "val": 223110983,
+            "filed": "2025-08-12",
+            "accn": "0001410578-25-001702",
+            "form": "6-K",
+            "tag": "Revenue"
+          }
+        ],
+        "operating_expenses": [
+          {
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "val": 229018127,
+            "filed": "2026-03-20",
+            "accn": "0001104659-26-032731",
+            "form": "20-F",
+            "tag": "OperatingExpense"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "val": 230284858,
+            "filed": "2026-03-20",
+            "accn": "0001104659-26-032731",
+            "form": "20-F",
+            "tag": "OperatingExpense"
+          },
+          {
+            "start": "2025-01-01",
+            "end": "2025-06-30",
+            "val": 114880571,
+            "filed": "2025-08-12",
+            "accn": "0001410578-25-001702",
+            "form": "6-K",
+            "tag": "OperatingExpense"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-06-30",
+            "val": 114336518,
+            "filed": "2025-08-12",
+            "accn": "0001410578-25-001702",
+            "form": "6-K",
+            "tag": "OperatingExpense"
+          }
+        ],
+        "sga": [
+          {
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "val": 11604900,
+            "filed": "2026-03-20",
+            "accn": "0001104659-26-032731",
+            "form": "20-F",
+            "tag": "GeneralAndAdministrativeExpense"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "val": 10910862,
+            "filed": "2026-03-20",
+            "accn": "0001104659-26-032731",
+            "form": "20-F",
+            "tag": "GeneralAndAdministrativeExpense"
+          },
+          {
+            "start": "2025-01-01",
+            "end": "2025-06-30",
+            "val": 8463067,
+            "filed": "2025-08-12",
+            "accn": "0001410578-25-001702",
+            "form": "6-K",
+            "tag": "GeneralAndAdministrativeExpense"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-06-30",
+            "val": 7669010,
+            "filed": "2025-08-12",
+            "accn": "0001410578-25-001702",
+            "form": "6-K",
+            "tag": "GeneralAndAdministrativeExpense"
+          }
+        ],
+        "operating_income": [
+          {
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "val": 162530692,
+            "filed": "2026-03-20",
+            "accn": "0001104659-26-032731",
+            "form": "20-F",
+            "tag": "ProfitLossFromOperatingActivities"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "val": 162944973,
+            "filed": "2026-03-20",
+            "accn": "0001104659-26-032731",
+            "form": "20-F",
+            "tag": "ProfitLossFromOperatingActivities"
+          },
+          {
+            "start": "2025-01-01",
+            "end": "2025-06-30",
+            "val": 59214215,
+            "filed": "2025-08-12",
+            "accn": "0001410578-25-001702",
+            "form": "6-K",
+            "tag": "ProfitLossFromOperatingActivities"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-06-30",
+            "val": 108774465,
+            "filed": "2025-08-12",
+            "accn": "0001410578-25-001702",
+            "form": "6-K",
+            "tag": "ProfitLossFromOperatingActivities"
+          }
+        ]
+      },
+      "raw_fy2025_fy2024_h12025_h12024": {
+        "revenue": [
+          391548819,
+          393229831,
+          174094786,
+          223110983
+        ],
+        "operating_expenses": [
+          229018127,
+          230284858,
+          114880571,
+          114336518
+        ],
+        "sga": [
+          11604900,
+          10910862,
+          8463067,
+          7669010
+        ],
+        "operating_income": [
+          162530692,
+          162944973,
+          59214215,
+          108774465
+        ]
+      },
+      "raw_h12026": {
+        "revenue": 489017593,
+        "operating_expenses": 151906327,
+        "sga": 10082841,
+        "operating_income": 337111266
+      },
+      "asset_evidence": [
+        {
+          "end": "2026-06-30",
+          "val": 1649255990,
+          "source": "https://www.sec.gov/Archives/edgar/data/1964954/000110465926090429/eco-20260630xex99d2.htm"
+        },
+        {
+          "end": "2025-06-30",
+          "val": 1083120219,
+          "filed": "2025-08-12",
+          "accn": "0001410578-25-001702",
+          "form": "6-K",
+          "tag": "Assets"
+        },
+        {
+          "end": "2024-06-30",
+          "val": 1135215785,
+          "filed": "2024-08-09",
+          "accn": "0001104659-24-087463",
+          "form": "6-K",
+          "tag": "Assets"
+        }
+      ],
+      "gross_profit_method": "Reconstructed: revenue minus direct operating costs including voyage, vessel operating, management fees and depreciation; total operating expenses less separately reported administrative expenses. Excludes asset disposal and other operating gains from gross revenue/profit.",
+      "sga_method": "Only administrative expense line on primary consolidated income statement; no separate selling line.",
+      "f_inputs_complete": true,
+      "stale": false,
+      "error": null,
+      "revenue_growth_pct": 105.24219735003291,
+      "gpm_delta_pp": 27.873120427615078,
+      "sga_ratio_delta_pp": -1.5285481477555474,
+      "asset_turnover_delta": 0.2067765498090423,
+      "op_income_growth_pct": 288.43658241331156
+    },
+    "FRO": {
+      "financial_basis": "TTM_YOY",
+      "ttm_start": "2025-07-01",
+      "ttm_end": "2026-06-30",
+      "previous_ttm_start": "2024-07-01",
+      "previous_ttm_end": "2025-06-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/913290/000162828026062234/fro-20260630.htm",
+      "fetched_at_utc": "2026-10-12T07:50:00+00:00",
+      "raw_ttm": {
+        "revenue": [
+          2714702000,
+          1823905000
+        ],
+        "operating_expenses": [
+          1380811000,
+          1342317000
+        ],
+        "sga": [
+          64916000,
+          33539000
+        ],
+        "operating_income": [
+          1630333000,
+          499572000
+        ],
+        "other_income": [
+          296442000,
+          17984000
+        ],
+        "assets": [
+          5812734000,
+          6109528000,
+          6451415000
+        ],
+        "gross_profit": [
+          1398807000,
+          515127000
+        ]
+      },
+      "evidence": {
+        "revenue": [
+          {
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "val": 1971173000,
+            "filed": "2026-03-27",
+            "accn": "0001628280-26-021774",
+            "form": "20-F",
+            "tag": "Revenue"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "val": 2162506000,
+            "filed": "2026-03-27",
+            "accn": "0001628280-26-021774",
+            "form": "20-F",
+            "tag": "Revenue"
+          },
+          {
+            "start": "2025-01-01",
+            "end": "2025-06-30",
+            "val": 908035000,
+            "filed": "2025-09-17",
+            "accn": "0000913290-25-000017",
+            "form": "6-K",
+            "tag": "Revenue"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-06-30",
+            "val": 1228652000,
+            "filed": "2025-09-17",
+            "accn": "0000913290-25-000017",
+            "form": "6-K",
+            "tag": "Revenue"
+          }
+        ],
+        "operating_expenses": [
+          {
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "val": 1372421000,
+            "filed": "2026-03-27",
+            "accn": "0001628280-26-021774",
+            "form": "20-F",
+            "tag": "OperatingExpense"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "val": 1380793000,
+            "filed": "2026-03-27",
+            "accn": "0001628280-26-021774",
+            "form": "20-F",
+            "tag": "OperatingExpense"
+          },
+          {
+            "start": "2025-01-01",
+            "end": "2025-06-30",
+            "val": 682990000,
+            "filed": "2025-09-17",
+            "accn": "0000913290-25-000017",
+            "form": "6-K",
+            "tag": "OperatingExpense"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-06-30",
+            "val": 721466000,
+            "filed": "2025-09-17",
+            "accn": "0000913290-25-000017",
+            "form": "6-K",
+            "tag": "OperatingExpense"
+          }
+        ],
+        "sga": [
+          {
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "val": 51367000,
+            "filed": "2026-03-27",
+            "accn": "0001628280-26-021774",
+            "form": "20-F",
+            "tag": "AdministrativeExpense"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "val": 36086000,
+            "filed": "2026-03-27",
+            "accn": "0001628280-26-021774",
+            "form": "20-F",
+            "tag": "AdministrativeExpense"
+          },
+          {
+            "start": "2025-01-01",
+            "end": "2025-06-30",
+            "val": 24865000,
+            "filed": "2025-09-17",
+            "accn": "0000913290-25-000017",
+            "form": "6-K",
+            "tag": "AdministrativeExpense"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-06-30",
+            "val": 27412000,
+            "filed": "2025-09-17",
+            "accn": "0000913290-25-000017",
+            "form": "6-K",
+            "tag": "AdministrativeExpense"
+          }
+        ],
+        "operating_income": [
+          {
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "val": 598752000,
+            "filed": "2026-03-27",
+            "accn": "0001628280-26-021774",
+            "form": "20-F",
+            "tag": "ProfitLossFromOperatingActivities"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "val": 781713000,
+            "filed": "2026-03-27",
+            "accn": "0001628280-26-021774",
+            "form": "20-F",
+            "tag": "ProfitLossFromOperatingActivities"
+          },
+          {
+            "start": "2025-01-01",
+            "end": "2025-06-30",
+            "val": 225045000,
+            "filed": "2025-09-17",
+            "accn": "0000913290-25-000017",
+            "form": "6-K",
+            "tag": "ProfitLossFromOperatingActivities"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-06-30",
+            "val": 507186000,
+            "filed": "2025-09-17",
+            "accn": "0000913290-25-000017",
+            "form": "6-K",
+            "tag": "ProfitLossFromOperatingActivities"
+          }
+        ],
+        "other_income": [
+          {
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "val": 6069000,
+            "filed": "2026-03-27",
+            "accn": "0001628280-26-021774",
+            "form": "20-F",
+            "tag": "OtherOperatingIncomeExpense"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "val": 112121000,
+            "filed": "2026-03-27",
+            "accn": "0001628280-26-021774",
+            "form": "20-F",
+            "tag": "OtherOperatingIncomeExpense"
+          },
+          {
+            "start": "2025-01-01",
+            "end": "2025-06-30",
+            "val": 92000,
+            "filed": "2025-09-17",
+            "accn": "0000913290-25-000017",
+            "form": "6-K",
+            "tag": "OtherOperatingIncomeExpense"
+          },
+          {
+            "start": "2024-01-01",
+            "end": "2024-06-30",
+            "val": 94229000,
+            "filed": "2025-09-17",
+            "accn": "0000913290-25-000017",
+            "form": "6-K",
+            "tag": "OtherOperatingIncomeExpense"
+          }
+        ]
+      },
+      "raw_fy2025_fy2024_h12025_h12024": {
+        "revenue": [
+          1965104000,
+          2050385000,
+          907943000,
+          1134423000
+        ],
+        "operating_expenses": [
+          1372421000,
+          1380793000,
+          682990000,
+          721466000
+        ],
+        "sga": [
+          51367000,
+          36086000,
+          24865000,
+          27412000
+        ],
+        "operating_income": [
+          598752000,
+          781713000,
+          225045000,
+          507186000
+        ],
+        "other_income": [
+          6069000,
+          112121000,
+          92000,
+          94229000
+        ]
+      },
+      "raw_h12026": {
+        "revenue": 1657541000,
+        "operating_expenses": 691380000,
+        "sga": 38414000,
+        "operating_income": 1256626000,
+        "other_income": 290465000
+      },
+      "asset_evidence": [
+        {
+          "end": "2026-06-30",
+          "val": 5812734000,
+          "source": "https://www.sec.gov/Archives/edgar/data/913290/000162828026062234/fro-20260630.htm"
+        },
+        {
+          "end": "2025-06-30",
+          "val": 6109528000,
+          "filed": "2025-09-17",
+          "accn": "0000913290-25-000017",
+          "form": "6-K",
+          "tag": "Assets"
+        },
+        {
+          "end": "2024-06-30",
+          "val": 6451415000,
+          "filed": "2024-09-27",
+          "accn": "0000913290-24-000004",
+          "form": "6-K",
+          "tag": "Assets"
+        }
+      ],
+      "gross_profit_method": "Reconstructed: revenue minus direct operating costs including voyage, vessel operating, management fees and depreciation; total operating expenses less separately reported administrative expenses. Excludes asset disposal and other operating gains from gross revenue/profit.",
+      "sga_method": "Only administrative expense line on primary consolidated income statement; no separate selling line.",
+      "f_inputs_complete": true,
+      "stale": false,
+      "error": null,
+      "revenue_growth_pct": 48.840098579695756,
+      "gpm_delta_pp": 23.28400927208108,
+      "sga_ratio_delta_pp": 0.5524186204362704,
+      "asset_turnover_delta": 0.1649915649384638,
+      "op_income_growth_pct": 226.34595213502757
+    },
+    "VLO": {
+      "ttm_end": "2026-06-30",
+      "previous_ttm_end": "2025-06-30",
+      "ttm_start": "2025-07-01",
+      "previous_ttm_start": "2024-07-01",
+      "financial_basis": "TTM_YOY",
+      "raw_ttm": {
+        "revenue": [
+          139397000000,
+          123779000000
+        ],
+        "cost": [
+          128200000000,
+          120640000000
+        ],
+        "operating_income": [
+          10011000000,
+          952000000
+        ],
+        "gross_profit": [
+          11197000000,
+          3139000000
+        ],
+        "assets": [
+          64663000000,
+          59433000000,
+          63615000000
+        ],
+        "sga": [
+          1129000000,
+          1041000000
+        ]
+      },
+      "evidence": {
+        "revenue": [
+          [
+            {
+              "start": "2025-07-01",
+              "end": "2025-09-30",
+              "val": 32168000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "RevenueFromContractWithCustomerIncludingAssessedTax"
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "val": 122687000000,
+              "filed": "2026-02-25",
+              "accn": "0001628280-26-011499",
+              "form": "10-K",
+              "tag": "RevenueFromContractWithCustomerIncludingAssessedTax",
+              "coefficient": 1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-09-30",
+              "val": 92315000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "RevenueFromContractWithCustomerIncludingAssessedTax",
+              "coefficient": -1
+            },
+            {
+              "start": "2026-01-01",
+              "end": "2026-06-30",
+              "val": 76857000000,
+              "filed": "2026-07-30",
+              "accn": "0001628280-26-050937",
+              "form": "10-Q",
+              "tag": "RevenueFromContractWithCustomerIncludingAssessedTax"
+            }
+          ],
+          [
+            {
+              "start": "2024-07-01",
+              "end": "2024-09-30",
+              "val": 32876000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "RevenueFromContractWithCustomerIncludingAssessedTax"
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "val": 129881000000,
+              "filed": "2026-02-25",
+              "accn": "0001628280-26-011499",
+              "form": "10-K",
+              "tag": "RevenueFromContractWithCustomerIncludingAssessedTax",
+              "coefficient": 1
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-09-30",
+              "val": 99125000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "RevenueFromContractWithCustomerIncludingAssessedTax",
+              "coefficient": -1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-06-30",
+              "val": 60147000000,
+              "filed": "2026-07-30",
+              "accn": "0001628280-26-050937",
+              "form": "10-Q",
+              "tag": "RevenueFromContractWithCustomerIncludingAssessedTax"
+            }
+          ]
+        ],
+        "cost": [
+          [
+            {
+              "start": "2025-07-01",
+              "end": "2025-09-30",
+              "val": 30396000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "CostOfRevenue"
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "val": 117255000000,
+              "filed": "2026-02-25",
+              "accn": "0001628280-26-011499",
+              "form": "10-K",
+              "tag": "CostOfRevenue",
+              "coefficient": 1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-09-30",
+              "val": 88787000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "CostOfRevenue",
+              "coefficient": -1
+            },
+            {
+              "start": "2026-01-01",
+              "end": "2026-06-30",
+              "val": 69336000000,
+              "filed": "2026-07-30",
+              "accn": "0001628280-26-050937",
+              "form": "10-Q",
+              "tag": "CostOfRevenue"
+            }
+          ],
+          [
+            {
+              "start": "2024-07-01",
+              "end": "2024-09-30",
+              "val": 32122000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "CostOfRevenue"
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "val": 125076000000,
+              "filed": "2026-02-25",
+              "accn": "0001628280-26-011499",
+              "form": "10-K",
+              "tag": "CostOfRevenue",
+              "coefficient": 1
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-09-30",
+              "val": 94949000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "CostOfRevenue",
+              "coefficient": -1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-06-30",
+              "val": 58391000000,
+              "filed": "2026-07-30",
+              "accn": "0001628280-26-050937",
+              "form": "10-Q",
+              "tag": "CostOfRevenue"
+            }
+          ]
+        ],
+        "operating_income": [
+          [
+            {
+              "start": "2025-07-01",
+              "end": "2025-09-30",
+              "val": 1509000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "OperatingIncomeLoss"
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "val": 3181000000,
+              "filed": "2026-02-25",
+              "accn": "0001628280-26-011499",
+              "form": "10-K",
+              "tag": "OperatingIncomeLoss",
+              "coefficient": 1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-09-30",
+              "val": 1606000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "OperatingIncomeLoss",
+              "coefficient": -1
+            },
+            {
+              "start": "2026-01-01",
+              "end": "2026-06-30",
+              "val": 6927000000,
+              "filed": "2026-07-30",
+              "accn": "0001628280-26-050937",
+              "form": "10-Q",
+              "tag": "OperatingIncomeLoss"
+            }
+          ],
+          [
+            {
+              "start": "2024-07-01",
+              "end": "2024-09-30",
+              "val": 507000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "OperatingIncomeLoss"
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "val": 3755000000,
+              "filed": "2026-02-25",
+              "accn": "0001628280-26-011499",
+              "form": "10-K",
+              "tag": "OperatingIncomeLoss",
+              "coefficient": 1
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-09-30",
+              "val": 3407000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "OperatingIncomeLoss",
+              "coefficient": -1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-06-30",
+              "val": 97000000,
+              "filed": "2026-07-30",
+              "accn": "0001628280-26-050937",
+              "form": "10-Q",
+              "tag": "OperatingIncomeLoss"
+            }
+          ]
+        ],
+        "assets": [
+          {
+            "end": "2026-06-30",
+            "val": 64663000000,
+            "filed": "2026-07-30",
+            "accn": "0001628280-26-050937",
+            "form": "10-Q",
+            "tag": "Assets"
+          },
+          {
+            "end": "2025-06-30",
+            "val": 59433000000,
+            "filed": "2025-07-24",
+            "accn": "0001035002-25-000061",
+            "form": "10-Q",
+            "tag": "Assets"
+          },
+          {
+            "end": "2024-06-30",
+            "val": 63615000000,
+            "filed": "2024-07-25",
+            "accn": "0001035002-24-000051",
+            "form": "10-Q",
+            "tag": "Assets"
+          }
+        ],
+        "GeneralAndAdministrativeExpense": [
+          [
+            {
+              "start": "2025-07-01",
+              "end": "2025-09-30",
+              "val": 246000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "GeneralAndAdministrativeExpense"
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "val": 1042000000,
+              "filed": "2026-02-25",
+              "accn": "0001628280-26-011499",
+              "form": "10-K",
+              "tag": "GeneralAndAdministrativeExpense",
+              "coefficient": 1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-09-30",
+              "val": 727000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "GeneralAndAdministrativeExpense",
+              "coefficient": -1
+            },
+            {
+              "start": "2026-01-01",
+              "end": "2026-06-30",
+              "val": 518000000,
+              "filed": "2026-07-30",
+              "accn": "0001628280-26-050937",
+              "form": "10-Q",
+              "tag": "GeneralAndAdministrativeExpense"
+            }
+          ],
+          [
+            {
+              "start": "2024-07-01",
+              "end": "2024-09-30",
+              "val": 234000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "GeneralAndAdministrativeExpense"
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "val": 961000000,
+              "filed": "2026-02-25",
+              "accn": "0001628280-26-011499",
+              "form": "10-K",
+              "tag": "GeneralAndAdministrativeExpense",
+              "coefficient": 1
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-09-30",
+              "val": 695000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "GeneralAndAdministrativeExpense",
+              "coefficient": -1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-06-30",
+              "val": 481000000,
+              "filed": "2026-07-30",
+              "accn": "0001628280-26-050937",
+              "form": "10-Q",
+              "tag": "GeneralAndAdministrativeExpense"
+            }
+          ]
+        ],
+        "DepreciationAndAmortization": [
+          [
+            {
+              "start": "2025-07-01",
+              "end": "2025-09-30",
+              "val": 12000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "DepreciationAndAmortization"
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "val": 63000000,
+              "filed": "2026-02-25",
+              "accn": "0001628280-26-011499",
+              "form": "10-K",
+              "tag": "DepreciationAndAmortization",
+              "coefficient": 1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-09-30",
+              "val": 51000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "DepreciationAndAmortization",
+              "coefficient": -1
+            },
+            {
+              "start": "2026-01-01",
+              "end": "2026-06-30",
+              "val": 26000000,
+              "filed": "2026-07-30",
+              "accn": "0001628280-26-050937",
+              "form": "10-Q",
+              "tag": "DepreciationAndAmortization"
+            }
+          ],
+          [
+            {
+              "start": "2024-07-01",
+              "end": "2024-09-30",
+              "val": 10000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "DepreciationAndAmortization"
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "val": 45000000,
+              "filed": "2026-02-25",
+              "accn": "0001628280-26-011499",
+              "form": "10-K",
+              "tag": "DepreciationAndAmortization",
+              "coefficient": 1
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-09-30",
+              "val": 34000000,
+              "filed": "2025-10-23",
+              "accn": "0001628280-25-046072",
+              "form": "10-Q",
+              "tag": "DepreciationAndAmortization",
+              "coefficient": -1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-06-30",
+              "val": 39000000,
+              "filed": "2026-07-30",
+              "accn": "0001628280-26-050937",
+              "form": "10-Q",
+              "tag": "DepreciationAndAmortization"
+            }
+          ]
+        ]
+      },
+      "entity_name": "VALERO ENERGY CORP/TX",
+      "cik": 1035002,
+      "gross_profit_method": "reported revenue minus reported cost of revenue/goods and services; no operating-expense proxy",
+      "revenue_growth_pct": 12.617649197359814,
+      "gpm_delta_pp": 5.4964827017043945,
+      "asset_turnover_delta": 0.23471786474837053,
+      "op_income_growth_pct": 951.5756302521008,
+      "f_inputs_complete": true,
+      "stale": false,
+      "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001035002.json",
+      "fetched_at_utc": "2026-10-12T07:40:08.063400+00:00",
+      "sga_method": "Primary statement general/admin expense plus separately stated administrative depreciation; no current separate selling line",
+      "manual_primary_source": "https://www.sec.gov/Archives/edgar/data/1035002/000162828026050822/a6302026exh9901earningsrel.htm",
+      "sga_ratio_delta_pp": -0.031098035212031618
+    },
+    "INSW": {
+      "ttm_end": "2026-06-30",
+      "previous_ttm_end": "2025-06-30",
+      "ttm_start": "2025-07-01",
+      "previous_ttm_start": "2024-07-01",
+      "financial_basis": "TTM_YOY",
+      "raw_ttm": {
+        "revenue": [
+          1257030000,
+          798838000
+        ],
+        "operating_income": [
+          806758000,
+          274554000
+        ],
+        "assets": [
+          3018942000,
+          2523215000,
+          2674670000
+        ],
+        "gross_profit": [
+          743768000,
+          302456000
+        ],
+        "sga": [
+          50768000,
+          53906000
+        ]
+      },
+      "evidence": {
+        "revenue": [
+          [
+            {
+              "start": "2025-07-01",
+              "end": "2025-09-30",
+              "val": 196388000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "RevenueFromContractWithCustomerExcludingAssessedTax"
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "val": 843302000,
+              "filed": "2026-02-26",
+              "accn": "0001104659-26-020113",
+              "form": "10-K",
+              "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+              "coefficient": 1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-09-30",
+              "val": 575423000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+              "coefficient": -1
+            },
+            {
+              "start": "2026-01-01",
+              "end": "2026-06-30",
+              "val": 792763000,
+              "filed": "2026-08-10",
+              "accn": "0001104659-26-093061",
+              "form": "10-Q",
+              "tag": "RevenueFromContractWithCustomerExcludingAssessedTax"
+            }
+          ],
+          [
+            {
+              "start": "2024-07-01",
+              "end": "2024-09-30",
+              "val": 225190000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "RevenueFromContractWithCustomerExcludingAssessedTax"
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "val": 951613000,
+              "filed": "2026-02-26",
+              "accn": "0001104659-26-020113",
+              "form": "10-K",
+              "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+              "coefficient": 1
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-09-30",
+              "val": 757000000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+              "coefficient": -1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-06-30",
+              "val": 379035000,
+              "filed": "2026-08-10",
+              "accn": "0001104659-26-093061",
+              "form": "10-Q",
+              "tag": "RevenueFromContractWithCustomerExcludingAssessedTax"
+            }
+          ]
+        ],
+        "operating_income": [
+          [
+            {
+              "start": "2025-07-01",
+              "end": "2025-09-30",
+              "val": 78683000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "OperatingIncomeLoss"
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "val": 345385000,
+              "filed": "2026-02-26",
+              "accn": "0001104659-26-020113",
+              "form": "10-K",
+              "tag": "OperatingIncomeLoss",
+              "coefficient": 1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-09-30",
+              "val": 207223000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "OperatingIncomeLoss",
+              "coefficient": -1
+            },
+            {
+              "start": "2026-01-01",
+              "end": "2026-06-30",
+              "val": 589913000,
+              "filed": "2026-08-10",
+              "accn": "0001104659-26-093061",
+              "form": "10-Q",
+              "tag": "OperatingIncomeLoss"
+            }
+          ],
+          [
+            {
+              "start": "2024-07-01",
+              "end": "2024-09-30",
+              "val": 100972000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "OperatingIncomeLoss"
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "val": 455225000,
+              "filed": "2026-02-26",
+              "accn": "0001104659-26-020113",
+              "form": "10-K",
+              "tag": "OperatingIncomeLoss",
+              "coefficient": 1
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-09-30",
+              "val": 410183000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "OperatingIncomeLoss",
+              "coefficient": -1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-06-30",
+              "val": 128540000,
+              "filed": "2026-08-10",
+              "accn": "0001104659-26-093061",
+              "form": "10-Q",
+              "tag": "OperatingIncomeLoss"
+            }
+          ]
+        ],
+        "assets": [
+          {
+            "end": "2026-06-30",
+            "val": 3018942000,
+            "filed": "2026-08-10",
+            "accn": "0001104659-26-093061",
+            "form": "10-Q",
+            "tag": "Assets"
+          },
+          {
+            "end": "2025-06-30",
+            "val": 2523215000,
+            "filed": "2026-08-10",
+            "accn": "0001104659-26-093061",
+            "form": "10-Q",
+            "tag": "Assets"
+          },
+          {
+            "end": "2024-06-30",
+            "val": 2674670000,
+            "filed": "2025-08-06",
+            "accn": "0001558370-25-010411",
+            "form": "10-Q",
+            "tag": "Assets"
+          }
+        ],
+        "GeneralAndAdministrativeExpense": [
+          [
+            {
+              "start": "2025-07-01",
+              "end": "2025-09-30",
+              "val": 11804000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "GeneralAndAdministrativeExpense"
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "val": 50235000,
+              "filed": "2026-02-26",
+              "accn": "0001104659-26-020113",
+              "form": "10-K",
+              "tag": "GeneralAndAdministrativeExpense",
+              "coefficient": 1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-09-30",
+              "val": 37186000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "GeneralAndAdministrativeExpense",
+              "coefficient": -1
+            },
+            {
+              "start": "2026-01-01",
+              "end": "2026-06-30",
+              "val": 25915000,
+              "filed": "2026-08-10",
+              "accn": "0001104659-26-093061",
+              "form": "10-Q",
+              "tag": "GeneralAndAdministrativeExpense"
+            }
+          ],
+          [
+            {
+              "start": "2024-07-01",
+              "end": "2024-09-30",
+              "val": 13411000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "GeneralAndAdministrativeExpense"
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "val": 52607000,
+              "filed": "2026-02-26",
+              "accn": "0001104659-26-020113",
+              "form": "10-K",
+              "tag": "GeneralAndAdministrativeExpense",
+              "coefficient": 1
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-09-30",
+              "val": 37494000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "GeneralAndAdministrativeExpense",
+              "coefficient": -1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-06-30",
+              "val": 25382000,
+              "filed": "2026-08-10",
+              "accn": "0001104659-26-093061",
+              "form": "10-Q",
+              "tag": "GeneralAndAdministrativeExpense"
+            }
+          ]
+        ],
+        "CostsAndExpenses": [
+          [
+            {
+              "start": "2025-07-01",
+              "end": "2025-09-30",
+              "val": 117705000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "CostsAndExpenses"
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "val": 497917000,
+              "filed": "2026-02-26",
+              "accn": "0001104659-26-020113",
+              "form": "10-K",
+              "tag": "CostsAndExpenses",
+              "coefficient": 1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-09-30",
+              "val": 368200000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "CostsAndExpenses",
+              "coefficient": -1
+            },
+            {
+              "start": "2026-01-01",
+              "end": "2026-06-30",
+              "val": 207193000,
+              "filed": "2026-08-10",
+              "accn": "0001104659-26-093061",
+              "form": "10-Q",
+              "tag": "CostsAndExpenses"
+            }
+          ],
+          [
+            {
+              "start": "2024-07-01",
+              "end": "2024-09-30",
+              "val": 124218000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "CostsAndExpenses"
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "val": 496388000,
+              "filed": "2026-02-26",
+              "accn": "0001104659-26-020113",
+              "form": "10-K",
+              "tag": "CostsAndExpenses",
+              "coefficient": 1
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-09-30",
+              "val": 346817000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "CostsAndExpenses",
+              "coefficient": -1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-06-30",
+              "val": 250495000,
+              "filed": "2026-08-10",
+              "accn": "0001104659-26-093061",
+              "form": "10-Q",
+              "tag": "CostsAndExpenses"
+            }
+          ]
+        ],
+        "GainLossOnDispositionOfAssets1": [
+          [
+            {
+              "start": "2025-07-01",
+              "end": "2025-09-30",
+              "val": 13658000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "GainLossOnDispositionOfAssets1"
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "val": 42537000,
+              "filed": "2026-02-26",
+              "accn": "0001104659-26-020113",
+              "form": "10-K",
+              "tag": "GainLossOnDispositionOfAssets1",
+              "coefficient": 1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-09-30",
+              "val": 34908000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "GainLossOnDispositionOfAssets1",
+              "coefficient": -1
+            },
+            {
+              "start": "2026-01-01",
+              "end": "2026-06-30",
+              "val": 88128000,
+              "filed": "2026-08-10",
+              "accn": "0001104659-26-093061",
+              "form": "10-Q",
+              "tag": "GainLossOnDispositionOfAssets1"
+            }
+          ],
+          [
+            {
+              "start": "2024-07-01",
+              "end": "2024-09-30",
+              "val": 13499000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "GainLossOnDispositionOfAssets1"
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-12-31",
+              "val": 32657000,
+              "filed": "2026-02-26",
+              "accn": "0001104659-26-020113",
+              "form": "10-K",
+              "tag": "GainLossOnDispositionOfAssets1",
+              "coefficient": 1
+            },
+            {
+              "start": "2024-01-01",
+              "end": "2024-09-30",
+              "val": 41402000,
+              "filed": "2025-11-06",
+              "accn": "0001104659-25-107428",
+              "form": "10-Q",
+              "tag": "GainLossOnDispositionOfAssets1",
+              "coefficient": -1
+            },
+            {
+              "start": "2025-01-01",
+              "end": "2025-06-30",
+              "val": 21250000,
+              "filed": "2026-08-10",
+              "accn": "0001104659-26-093061",
+              "form": "10-Q",
+              "tag": "GainLossOnDispositionOfAssets1"
+            }
+          ]
+        ]
+      },
+      "entity_name": "INTERNATIONAL SEAWAYS, INC.",
+      "cik": 1679049,
+      "revenue_growth_pct": 57.35731149494641,
+      "asset_turnover_delta": 0.1462544235205006,
+      "op_income_growth_pct": 193.84310554572141,
+      "f_inputs_complete": true,
+      "stale": false,
+      "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001679049.json",
+      "fetched_at_utc": "2026-10-12T07:40:15.236317+00:00",
+      "gross_profit_method": "Reconstructed revenue less total operating expenses after removing admin expense and adding back net asset-disposal gains; includes voyage/vessel/charter-hire/depreciation and other operating costs. No asset-sale profit in GPM.",
+      "sga_method": "Primary statement sole general and administrative expense line",
+      "manual_primary_source": "https://www.sec.gov/Archives/edgar/data/1679049/000110465926093033/tm2622617d1_ex99-1.htm",
+      "sga_ratio_delta_pp": -2.7093253410392593,
+      "gpm_delta_pp": 21.30668082264106
+    }
+  }
+}
