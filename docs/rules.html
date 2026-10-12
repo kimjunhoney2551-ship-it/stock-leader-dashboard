@@ -20,7 +20,7 @@ header{background:#fff;border-bottom:1px solid var(--line)}.wrap{max-width:1470p
 <div class="card stat"><span>F-score 4/4 후보</span><strong id="f-four">—</strong><span>확정·검증대기 별도 표시</span></div>
 </div>
 <div class="panes">
-<div class="card"><h2>적용 투자규칙</h2><p><strong>기본 필터:</strong> 시총 ≥ 100억 원 · 10일 평균 달러 거래대금 ≥ 500만 달러 · β ≤ 2</p><p><strong>COMP 100점:</strong> 순위 모멘텀 40 (4·12·25·52주: 8·12·12·8) + 가격 모멘텀 25 + 스마트머니 20 (CMF7·거래대금강도5·기관5·13D/G3) + 밸류에이션 15</p><p><strong>정식 편입:</strong> COMP ≥ 80점 → F-score 4/4 → 복합점수 산출 → 최대 10종목 · 에너지/원유·정유·탱커 섹터 합산 30% 상한</p><p class="mini">복합점수 = F 40 + 1M 상대수익 순위 30 + 3M 상대수익 순위 20 + GPM 개선 10.</p></div>
+<div class="card"><h2>적용 투자규칙</h2><p><a href="scoring-method.md">확정 산식·자료 처리 기준</a></p><p><strong>기본 필터:</strong> 시총 ≥ 100억 원 · 10일 평균 달러 거래대금 ≥ 500만 달러 · β ≤ 2</p><p><strong>COMP 100점:</strong> 순위 모멘텀 40 (4·12·25·52주: 8·12·12·8) + 가격 모멘텀 25 + 스마트머니 20 (CMF7·거래대금강도5·기관5·13D/G3) + 밸류에이션 15</p><p><strong>정식 편입:</strong> COMP ≥ 80점 → F-score 4/4 → 복합점수 산출 → 최대 10종목 · 에너지/원유·정유·탱커 섹터 합산 30% 상한</p><p class="mini">복합점수 = F 40 + 1M 상대수익 순위 30 + 3M 상대수익 순위 20 + GPM 개선 10.</p></div>
 <div class="card"><h2>검증 요약</h2><div id="validation">확인 중…</div><p class="mini" style="margin-top:12px">TradingView 데이터는 최신 조회일(10/9 이후 가능), Yahoo 수익률은 10/9 기준입니다. 수급/기관 정보가 없는 종목은 0점 처리하지 않습니다. F-score도 단일 재무비율 수준값으로 추정하지 않습니다. 영업이익 증감률은 (당기−전기)/전기 절대값으로 계산해 적자 축소도 반영합니다. 순위 모멘텀은 최근 12주간 각 기간 수익률 백분위의 평균−표준편차로 계산합니다. 13D/G는 최근 90일 신규·지분증가 공시만 가점하며, 확인된 적격 이벤트가 없으면 0점입니다.</p></div>
 </div>
 <div class="card"><div class="top"><div><h2>전체 투자규칙 평가표</h2><p class="muted">확정 산식: 12주 주간 순위 평균−표준편차 · 최근 90일 13D/G. 모든 입력값이 있으면 단일 확정점수, 부족하면 범위를 표시합니다. <strong>확정값 또는 미확정 항목 반영 범위</strong>로 표시합니다.</p></div><div class="nav"><button class="btn" id="csv">현재 표 CSV 다운로드</button><a class="btn" href="data/screen_results.csv" download>저장된 계산 결과</a></div></div>
@@ -78,14 +78,17 @@ async function addLatestFinancialInputs(payload){
     const response=await fetch('./data/financial_latest.json?_='+Date.now(),{cache:'no-store'});
     if(!response.ok)return;
     const doc=await response.json();if(!doc.rows||Array.isArray(doc.rows))return;
+    try{const o=await fetch('./data/financial_overrides.json',{cache:'no-store'});if(o.ok){const v=await o.json();for(const [t,e] of Object.entries(v.rows||{})){if(doc.rows[t]&&e.financial_period_current===doc.rows[t].financial_period_current)Object.assign(doc.rows[t],e);}}}catch(e){}
     for(const row of payload.rows){
       const incoming=doc.rows[row.ticker];if(!incoming||!incoming.financial_period_current)continue;
+      const op=incoming.raw_annual?.operating_income;
+      if(!Number.isFinite(incoming.op_income_growth_pct)&&Array.isArray(op)&&op.length===2&&op.every(v=>typeof v==='number'&&Number.isFinite(v))&&op[1]!==0)incoming.op_income_growth_pct=100*(op[0]-op[1])/Math.abs(op[1]);
       // Keep all four F tests on the same pair of fiscal years and provider.
       for(const key of ['revenue_growth_pct','gpm_delta_pp','sga_ratio_delta_pp','asset_turnover_delta'])delete row[key];
       for(const key of ['revenue_growth_pct','gpm_delta_pp','sga_ratio_delta_pp','asset_turnover_delta','op_income_growth_pct']){
         if(typeof incoming[key]==='number'&&Number.isFinite(incoming[key]))row[key]=incoming[key];
       }
-      if(!ok(row.roe_pct)&&ok(incoming.roe_fallback_pct)){row.roe_pct=incoming.roe_fallback_pct;row.roe_source='Annual net income / average common equity';}
+      if(!ok(row.roe_pct)&&ok(incoming.roe_fallback_pct)){row.roe_pct=incoming.roe_fallback_pct;row.roe_source=incoming.roe_source||'Annual net income / average common equity';}
       row.fy_comparison_period=incoming.financial_period_previous+' → '+incoming.financial_period_current;
       row.fy_comparison_source=incoming.source;
       row.fy_comparison_fetched_at_utc=incoming.fetched_at_utc;
