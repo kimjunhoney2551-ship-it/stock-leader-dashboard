@@ -35,7 +35,7 @@ def fetch(t):
 if __name__=='__main__':
     subprocess.run(['node','scripts/export_scores.cjs'],cwd=ROOT,env=dict(os.environ,EXPORT_INPUTS='/tmp/score-inputs.json'),check=True)
     inp=json.loads(Path('/tmp/score-inputs.json').read_text());fx=inp['fx_krw_usd']
-    targets=[r['ticker'] for r in inp['rows'] if r.get('price_asof')==inp['market_session'] and (r.get('market_cap_usd') or 0)*fx>=1e10 and (r.get('avg_value_usd') or 0)>=5e6 and r.get('beta') is not None and r['beta']<=2]
+    targets=[r['ticker'] for r in inp['rows'] if r.get('price_asof')==inp['market_session'] and (r.get('market_cap_usd') or 0)*fx>=5e11 and (r.get('avg_value_usd') or 0)>=5e6 and r.get('beta') is not None and r['beta']<=2]
     path=ROOT/'docs/data/financial_latest.json';doc=json.loads(path.read_text());errors=[]
     with ThreadPoolExecutor(max_workers=4) as pool:
         jobs={pool.submit(fetch,t):t for t in targets}
