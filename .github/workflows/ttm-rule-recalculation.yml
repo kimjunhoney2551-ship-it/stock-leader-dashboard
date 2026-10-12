@@ -1,0 +1,44 @@
+name: Recalculate TTM Investment Rules
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/ttm-rule-recalculation.yml', 'scripts/ttm_financials.py']
+  workflow_run:
+    workflows: ['US Equity Snapshot & Daily Refresh']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: ttm-investment-rules
+  cancel-in-progress: false
+jobs:
+  recalculate:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python scripts/recalculate_filters.py
+      - run: python scripts/weekly_rank_refresh.py
+      - run: python scripts/ttm_financials.py
+      - run: node scripts/export_scores.cjs
+      - run: python -m unittest discover -s tests -p 'test_ttm*.py'
+      - run: node tests/rules_smoke.cjs
+      - name: Publish recalculated data
+        run: |
+          git add docs/data/filter_inputs.json docs/data/financial_ttm.json docs/data/weekly_ranks.json cache/sec_tickers.json cache/weekly_rank_prices.json.gz docs/data/screen_results.json docs/data/screen_results.csv
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'data: 500bn KRW universe and strictly comparable SEC TTM scores'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
