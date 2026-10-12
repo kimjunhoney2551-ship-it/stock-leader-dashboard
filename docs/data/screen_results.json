@@ -1,6 +1,6 @@
 {
   "price_asof": "2026-10-09",
-  "generated_at_utc": "2026-10-12T02:21:20.221Z",
+  "generated_at_utc": "2026-10-12T02:36:36.677Z",
   "method": "Approved 12 weekly rank mean minus population SD; 90-day verified positive 13D/G events. Price date and latest disclosures differ. Financial percentiles use available base-universe inputs. Missing inputs stay bounded.",
   "counts": {
     "fail": 6114,
