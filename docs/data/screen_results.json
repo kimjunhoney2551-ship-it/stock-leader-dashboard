@@ -1,11 +1,11 @@
 {
   "price_asof": "2026-10-09",
-  "generated_at_utc": "2026-10-12T07:55:16.154Z",
+  "generated_at_utc": "2026-10-12T07:58:52.345Z",
   "method": "Approved 12 weekly rank mean minus population SD; 90-day verified positive 13D/G events. Price date and latest disclosures differ. Financial percentiles use available base-universe inputs. Missing inputs stay bounded.",
   "counts": {
-    "fail": 5892,
-    "pending": 381,
-    "watch": 48,
+    "fail": 5905,
+    "pending": 402,
+    "watch": 14,
     "pass": 5,
     "shadow": 1
   },
@@ -20,9 +20,9 @@
       "sector": "산업재",
       "market_cap_krw": 4795351641840.328,
       "status": "pass",
-      "comp_score": 88.17031274407773,
-      "comp_lower": 88.17031274407773,
-      "comp_upper": 88.17031274407773,
+      "comp_score": 87.98337193700084,
+      "comp_lower": 87.98337193700084,
+      "comp_upper": 87.98337193700084,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -32,6 +32,12 @@
       "rs3m": 83.257024,
       "beta": 0.30900174566836847,
       "financial_period": "2024-07-01~2025-06-30 → 2025-07-01~2026-06-30",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "https://www.sec.gov/Archives/edgar/data/1964954/000110465926090429/eco-20260630xex99d2.htm",
+      "revenue_growth_pct": 105.24219735003291,
+      "gpm_delta_pp": 27.873120427615078,
+      "sga_ratio_delta_pp": -1.5285481477555474,
+      "asset_turnover_delta": 0.2067765498090423,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": 25.09054084994835,
@@ -42,19 +48,19 @@
       "components": [
         {
           "max": 8,
-          "value": 7.216623750006624
+          "value": 7.16519795111367
         },
         {
           "max": 12,
-          "value": 8.938749794361303
+          "value": 8.777378041161095
         },
         {
           "max": 12,
-          "value": 10.85945273748838
+          "value": 10.824877243977047
         },
         {
           "max": 8,
-          "value": 7.701916576538139
+          "value": 7.762348815065748
         },
         {
           "max": 6.25,
@@ -108,9 +114,9 @@
       "sector": "산업재",
       "market_cap_krw": 1165478013250.103,
       "status": "pass",
-      "comp_score": 84.66311286184516,
-      "comp_lower": 84.66311286184516,
-      "comp_upper": 84.66311286184515,
+      "comp_score": 84.77453255790563,
+      "comp_lower": 84.77453255790563,
+      "comp_upper": 84.77453255790562,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -120,6 +126,12 @@
       "rs3m": 64.34829400000001,
       "beta": 0.8746428427150555,
       "financial_period": "2024-07-01~2025-06-30 → 2025-07-01~2026-06-30",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001496443.json",
+      "revenue_growth_pct": 46.838456273773474,
+      "gpm_delta_pp": 1.0029910474025017,
+      "sga_ratio_delta_pp": -7.413438097057906,
+      "asset_turnover_delta": 0.02961845161981863,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": 26.810989415017627,
@@ -148,19 +160,19 @@
       "components": [
         {
           "max": 8,
-          "value": 4.6407316880664204
+          "value": 4.651682036312114
         },
         {
           "max": 12,
-          "value": 11.45145148676918
+          "value": 11.46274797761876
         },
         {
           "max": 12,
-          "value": 11.834092476916156
+          "value": 11.850018522376866
         },
         {
           "max": 8,
-          "value": 5.516294652518613
+          "value": 5.589541464023084
         },
         {
           "max": 6.25,
@@ -214,9 +226,9 @@
       "sector": "산업재",
       "market_cap_krw": 7970432960464.832,
       "status": "pass",
-      "comp_score": 82.3482563723193,
-      "comp_lower": 82.3482563723193,
-      "comp_upper": 82.3482563723193,
+      "comp_score": 82.09790479569445,
+      "comp_lower": 82.09790479569445,
+      "comp_upper": 82.09790479569443,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -224,8 +236,14 @@
       "composite": 95.53375527426161,
       "rs1m": 14.317696999999999,
       "rs3m": 41.920687,
-      "beta": 0.24572008337798942,
+      "beta": 0.2457200833779894,
       "financial_period": "2024-07-01~2025-06-30 → 2025-07-01~2026-06-30",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001679049.json",
+      "revenue_growth_pct": 57.35731149494641,
+      "gpm_delta_pp": 21.30668082264106,
+      "sga_ratio_delta_pp": -2.7093253410392593,
+      "asset_turnover_delta": 0.1462544235205006,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": 6.041844213452396,
@@ -254,19 +272,19 @@
       "components": [
         {
           "max": 8,
-          "value": 5.69029442587572
+          "value": 5.6117533486873565
         },
         {
           "max": 12,
-          "value": 8.955623538536866
+          "value": 8.77765991983609
         },
         {
           "max": 12,
-          "value": 10.96193775945865
+          "value": 10.902496587553818
         },
         {
           "max": 8,
-          "value": 7.632681455428718
+          "value": 7.698275746597836
         },
         {
           "max": 6.25,
@@ -320,9 +338,9 @@
       "sector": "산업재",
       "market_cap_krw": 16772795418885.402,
       "status": "shadow",
-      "comp_score": 82.17053337999259,
-      "comp_lower": 82.17053337999259,
-      "comp_upper": 82.1705333799926,
+      "comp_score": 81.88089816821567,
+      "comp_lower": 81.88089816821567,
+      "comp_upper": 81.88089816821565,
       "f_score": 3,
       "f_known": 4,
       "f_lower": 3,
@@ -330,8 +348,14 @@
       "composite": 87.85126582278481,
       "rs1m": 20.725381,
       "rs3m": 58.003833,
-      "beta": 0.43508984649880855,
+      "beta": 0.4350898464988085,
       "financial_period": "2024-07-01~2025-06-30 → 2025-07-01~2026-06-30",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "https://www.sec.gov/Archives/edgar/data/913290/000162828026062234/fro-20260630.htm",
+      "revenue_growth_pct": 48.840098579695756,
+      "gpm_delta_pp": 23.28400927208108,
+      "sga_ratio_delta_pp": 0.5524186204362704,
+      "asset_turnover_delta": 0.1649915649384638,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": 18.603410393078292,
@@ -342,19 +366,19 @@
       "components": [
         {
           "max": 8,
-          "value": 6.045021493843702
+          "value": 5.96234532418821
         },
         {
           "max": 12,
-          "value": 7.76419028756658
+          "value": 7.532191241620316
         },
         {
           "max": 12,
-          "value": 9.903500963740969
+          "value": 9.840399785922987
         },
         {
           "max": 8,
-          "value": 7.496875635063516
+          "value": 7.585016816706331
         },
         {
           "max": 6.25,
@@ -408,9 +432,9 @@
       "sector": "에너지",
       "market_cap_krw": 167724053275664.9,
       "status": "pass",
-      "comp_score": 81.24461352097592,
-      "comp_lower": 81.24461352097592,
-      "comp_upper": 81.24461352097592,
+      "comp_score": 81.0989222786921,
+      "comp_lower": 81.0989222786921,
+      "comp_upper": 81.0989222786921,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -420,6 +444,12 @@
       "rs3m": 43.025491,
       "beta": -0.2849765011641795,
       "financial_period": "2024-07-01~2025-06-30 → 2025-07-01~2026-06-30",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001035002.json",
+      "revenue_growth_pct": 12.617649197359814,
+      "gpm_delta_pp": 5.4964827017043945,
+      "sga_ratio_delta_pp": -0.031098035212031618,
+      "asset_turnover_delta": 0.23471786474837053,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": -6.025131245702231,
@@ -448,19 +478,19 @@
       "components": [
         {
           "max": 8,
-          "value": 6.457211633631813
+          "value": 6.4008672810731415
         },
         {
           "max": 12,
-          "value": 10.28681946671891
+          "value": 10.172188486254017
         },
         {
           "max": 12,
-          "value": 11.051223931102419
+          "value": 10.99548738067573
         },
         {
           "max": 8,
-          "value": 7.537976448475974
+          "value": 7.618997089642415
         },
         {
           "max": 6.25,
@@ -514,9 +544,9 @@
       "sector": "소재",
       "market_cap_krw": 1461003025064.6968,
       "status": "pass",
-      "comp_score": 80.08907963532324,
-      "comp_lower": 80.08907963532324,
-      "comp_upper": 80.08907963532323,
+      "comp_score": 80.23524003829604,
+      "comp_lower": 80.23524003829604,
+      "comp_upper": 80.23524003829604,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -526,6 +556,12 @@
       "rs3m": 54.541016,
       "beta": 0.6044912511954132,
       "financial_period": "2024-07-01~2025-06-30 → 2025-07-01~2026-06-30",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001758021.json",
+      "revenue_growth_pct": 11.617311042236956,
+      "gpm_delta_pp": 1.5493259136045157,
+      "sga_ratio_delta_pp": -1.5172649380123415,
+      "asset_turnover_delta": 0.14760433693108843,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": 9.443306344176827,
@@ -536,19 +572,19 @@
       "components": [
         {
           "max": 8,
-          "value": 6.467941045896064
+          "value": 6.4873735706976685
         },
         {
           "max": 12,
-          "value": 11.596669204558113
+          "value": 11.614654728056447
         },
         {
           "max": 12,
-          "value": 11.44504975098041
+          "value": 11.427704129174408
         },
         {
           "max": 8,
-          "value": 6.779377651612215
+          "value": 6.905465628091087
         },
         {
           "max": 6.25,
@@ -602,9 +638,9 @@
       "sector": "에너지",
       "market_cap_krw": 171612203133824.7,
       "status": "fail",
-      "comp_score": 78.43569678394645,
-      "comp_lower": 78.43569678394645,
-      "comp_upper": 78.43569678394647,
+      "comp_score": 78.34149846415166,
+      "comp_lower": 78.34149846415166,
+      "comp_upper": 78.34149846415164,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -614,6 +650,12 @@
       "rs3m": 49.507941,
       "beta": -0.1486121242096892,
       "financial_period": "2024-07-01~2025-06-30 → 2025-07-01~2026-06-30",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001510295.json",
+      "revenue_growth_pct": 14.987271638215027,
+      "gpm_delta_pp": 3.9058650220720468,
+      "sga_ratio_delta_pp": -0.19464757734117058,
+      "asset_turnover_delta": 0.14593744482572335,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": -2.9276367783936275,
@@ -624,19 +666,19 @@
       "components": [
         {
           "max": 8,
-          "value": 6.444782430920123
+          "value": 6.401826849535422
         },
         {
           "max": 12,
-          "value": 10.174896290902566
+          "value": 10.050782161558594
         },
         {
           "max": 12,
-          "value": 11.14122179407386
+          "value": 11.099956295292863
         },
         {
           "max": 8,
-          "value": 7.206147661799509
+          "value": 7.320284551514378
         },
         {
           "max": 6.25,
@@ -691,8 +733,8 @@
       "market_cap_krw": 13415260762167.29,
       "status": "watch",
       "comp_score": null,
-      "comp_lower": 77.98136314296664,
-      "comp_upper": 82.98136314296664,
+      "comp_lower": 77.95070704697218,
+      "comp_upper": 82.95070704697218,
       "f_score": null,
       "f_known": 0,
       "f_lower": 0,
@@ -702,6 +744,8 @@
       "rs3m": 43.071776,
       "beta": -0.4872200828151481,
       "financial_period": "TTM 자료 미확인",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "Yahoo Finance annual income statement and balance sheet via yfinance",
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": 9.486719042014435,
@@ -747,19 +791,19 @@
       "components": [
         {
           "max": 8,
-          "value": 5.826693984722489
+          "value": 5.801024433107216
         },
         {
           "max": 12,
-          "value": 11.505868306838607
+          "value": 11.494268282178709
         },
         {
           "max": 12,
-          "value": 11.156816501707297
+          "value": 11.107963465116228
         },
         {
           "max": 8,
-          "value": 7.730840403519532
+          "value": 7.786306920391297
         },
         {
           "max": 6.25,
@@ -814,8 +858,8 @@
       "market_cap_krw": 11151458116419.873,
       "status": "watch",
       "comp_score": null,
-      "comp_lower": 77.24315337970658,
-      "comp_upper": 82.2431533797066,
+      "comp_lower": 77.1749105330449,
+      "comp_upper": 82.17491053304491,
       "f_score": null,
       "f_known": 0,
       "f_lower": 0,
@@ -825,6 +869,8 @@
       "rs3m": 10.150926,
       "beta": 1.018665088446136,
       "financial_period": "TTM 자료 미확인",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "Yahoo Finance annual income statement and balance sheet via yfinance",
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": 51.17207162517825,
@@ -921,19 +967,19 @@
       "components": [
         {
           "max": 8,
-          "value": 3.1565687319513787
+          "value": 2.9968263862889786
         },
         {
           "max": 12,
-          "value": 10.345258077414218
+          "value": 10.292162883103744
         },
         {
           "max": 12,
-          "value": 11.733051120315722
+          "value": 11.74471514231417
         },
         {
           "max": 8,
-          "value": 6.227434943869928
+          "value": 6.360365615182654
         },
         {
           "max": 6.25,
@@ -988,8 +1034,8 @@
       "market_cap_krw": 28961821977511.34,
       "status": "watch",
       "comp_score": null,
-      "comp_lower": 76.90225061241888,
-      "comp_upper": 81.90225061241887,
+      "comp_lower": 76.80114444684885,
+      "comp_upper": 81.80114444684887,
       "f_score": null,
       "f_known": 0,
       "f_lower": 0,
@@ -999,6 +1045,8 @@
       "rs3m": 45.207929,
       "beta": -0.16665275552144643,
       "financial_period": "TTM 자료 미확인",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "Yahoo Finance annual income statement and balance sheet via yfinance",
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": 7.8617201023908345,
@@ -1078,19 +1126,19 @@
       "components": [
         {
           "max": 8,
-          "value": 5.877095362690022
+          "value": 5.816356686407534
         },
         {
           "max": 12,
-          "value": 10.036560575229323
+          "value": 9.90577838659793
         },
         {
           "max": 12,
-          "value": 11.156062229761613
+          "value": 11.135590102593781
         },
         {
           "max": 8,
-          "value": 7.3178252166916975
+          "value": 7.428712043203377
         },
         {
           "max": 6.25,
@@ -1145,8 +1193,8 @@
       "market_cap_krw": 8893873768152.352,
       "status": "watch",
       "comp_score": null,
-      "comp_lower": 76.52660801930269,
-      "comp_upper": 81.52660801930267,
+      "comp_lower": 76.50478866858664,
+      "comp_upper": 81.50478866858663,
       "f_score": null,
       "f_known": 0,
       "f_lower": 0,
@@ -1156,6 +1204,8 @@
       "rs3m": 257.69878,
       "beta": 1.1926787206768117,
       "financial_period": "TTM 자료 미확인",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "Yahoo Finance annual income statement and balance sheet via yfinance",
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": 8.946177952836965,
@@ -1201,19 +1251,19 @@
       "components": [
         {
           "max": 8,
-          "value": 5.801220533940916
+          "value": 5.728348810076327
         },
         {
           "max": 12,
-          "value": 10.639376382887859
+          "value": 10.593198004350775
         },
         {
           "max": 12,
-          "value": 11.503960233455963
+          "value": 11.513038679940415
         },
         {
           "max": 8,
-          "value": 6.968789342815787
+          "value": 7.056941648016988
         },
         {
           "max": 6.25,
@@ -1268,8 +1318,8 @@
       "market_cap_krw": 4133778037652.608,
       "status": "watch",
       "comp_score": null,
-      "comp_lower": 75.62140982720909,
-      "comp_upper": 80.6214098272091,
+      "comp_lower": 75.38858349151411,
+      "comp_upper": 80.38858349151411,
       "f_score": null,
       "f_known": 0,
       "f_lower": 0,
@@ -1279,6 +1329,8 @@
       "rs3m": 27.467762,
       "beta": 0.6017500218466643,
       "financial_period": "TTM 자료 미확인",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "Yahoo Finance annual income statement and balance sheet via yfinance",
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": 8.734844895342686,
@@ -1289,19 +1341,19 @@
       "components": [
         {
           "max": 8,
-          "value": 6.100441729381192
+          "value": 6.068262035986107
         },
         {
           "max": 12,
-          "value": 7.588840930036833
+          "value": 7.317557367153563
         },
         {
           "max": 12,
-          "value": 9.94169048020468
+          "value": 9.875992580128278
         },
         {
           "max": 8,
-          "value": 6.3018769538180415
+          "value": 6.438211774477813
         },
         {
           "max": 6.25,
@@ -1356,8 +1408,8 @@
       "market_cap_krw": 2408690304305.937,
       "status": "watch",
       "comp_score": null,
-      "comp_lower": 75.38302888163636,
-      "comp_upper": 80.38302888163636,
+      "comp_lower": 75.17231959052569,
+      "comp_upper": 80.17231959052569,
       "f_score": null,
       "f_known": 0,
       "f_lower": 0,
@@ -1367,6 +1419,8 @@
       "rs3m": 40.262588,
       "beta": 0.09186086558204137,
       "financial_period": "TTM 자료 미확인",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "Yahoo Finance annual income statement and balance sheet via yfinance",
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": 15.24070543850804,
@@ -1377,19 +1431,19 @@
       "components": [
         {
           "max": 8,
-          "value": 5.725067464941622
+          "value": 5.642395054417221
         },
         {
           "max": 12,
-          "value": 9.771917189161046
+          "value": 9.642300408696913
         },
         {
           "max": 12,
-          "value": 10.111593205352497
+          "value": 10.043998644475007
         },
         {
           "max": 8,
-          "value": 7.604379288847239
+          "value": 7.673553749602592
         },
         {
           "max": 6.25,
@@ -1443,9 +1497,9 @@
       "sector": "정보기술",
       "market_cap_krw": 62557502686299.13,
       "status": "fail",
-      "comp_score": 74.89529796044505,
-      "comp_lower": 74.89529796044505,
-      "comp_upper": 74.89529796044505,
+      "comp_score": 74.75413939694248,
+      "comp_lower": 74.75413939694248,
+      "comp_upper": 74.75413939694249,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -1455,6 +1509,12 @@
       "rs3m": 40.809319,
       "beta": 1.3048749035811404,
       "financial_period": "2024-07-27~2025-07-25 → 2025-07-26~2026-07-31",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001002047.json",
+      "revenue_growth_pct": 12.154779969650997,
+      "gpm_delta_pp": 0.6264375591936155,
+      "sga_ratio_delta_pp": -2.250933085372875,
+      "asset_turnover_delta": 0.02234092383604047,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": -3.312917396367576,
@@ -1465,19 +1525,19 @@
       "components": [
         {
           "max": 8,
-          "value": 5.118598724452591
+          "value": 5.071991163466764
         },
         {
           "max": 12,
-          "value": 8.9488449235327
+          "value": 8.737331034327129
         },
         {
           "max": 12,
-          "value": 11.572710542069302
+          "value": 11.558646330555428
         },
         {
           "max": 8,
-          "value": 6.684384619386352
+          "value": 6.815411717589046
         },
         {
           "max": 6.25,
@@ -1531,9 +1591,9 @@
       "sector": "정보기술",
       "market_cap_krw": 8889966980724.98,
       "status": "fail",
-      "comp_score": 74.35698837395653,
-      "comp_lower": 74.35698837395653,
-      "comp_upper": 74.35698837395654,
+      "comp_score": 74.45068329585314,
+      "comp_lower": 74.45068329585314,
+      "comp_upper": 74.45068329585314,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -1543,6 +1603,12 @@
       "rs3m": 84.71532300000001,
       "beta": 1.0820267533401258,
       "financial_period": "2024-07-01~2025-06-30 → 2025-07-01~2026-06-30",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001384905.json",
+      "revenue_growth_pct": 5.219097694332153,
+      "gpm_delta_pp": 1.054743307548689,
+      "sga_ratio_delta_pp": -2.0468925420371042,
+      "asset_turnover_delta": 0.30131439123087245,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": 0.9328672993149656,
@@ -1605,19 +1671,19 @@
       "components": [
         {
           "max": 8,
-          "value": 7.355435987307233
+          "value": 7.429338909021796
         },
         {
           "max": 12,
-          "value": 9.85456117934104
+          "value": 9.789227167393054
         },
         {
           "max": 12,
-          "value": 11.43571006474761
+          "value": 11.414207740879478
         },
         {
           "max": 8,
-          "value": 7.334843558566831
+          "value": 7.441471894564995
         },
         {
           "max": 6.25,
@@ -1672,8 +1738,8 @@
       "market_cap_krw": 2182066805710.7021,
       "status": "watch",
       "comp_score": null,
-      "comp_lower": 71.81107203768806,
-      "comp_upper": 81.81107203768806,
+      "comp_lower": 71.65381032239438,
+      "comp_upper": 81.65381032239438,
       "f_score": null,
       "f_known": 0,
       "f_lower": 0,
@@ -1681,8 +1747,10 @@
       "composite": null,
       "rs1m": -4.871893,
       "rs3m": 20.382523,
-      "beta": -0.01747529081004684,
+      "beta": -0.017475290810046822,
       "financial_period": "TTM 자료 미확인",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "Yahoo Finance annual income statement and balance sheet via yfinance",
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
       "institution_change_pct": 1.8626813069476444,
@@ -1693,19 +1761,19 @@
       "components": [
         {
           "max": 8,
-          "value": 5.17415724082699
+          "value": 5.209970855791748
         },
         {
           "max": 12,
-          "value": 8.050539055559796
+          "value": 7.80201977399654
         },
         {
           "max": 12,
-          "value": 11.13196927976311
+          "value": 11.078870200991243
         },
         {
           "max": 8,
-          "value": 7.277242421458273
+          "value": 7.385785451534946
         },
         {
           "max": 6.25,
@@ -1760,8 +1828,8 @@
       "market_cap_krw": 8359784471856.303,
       "status": "watch",
       "comp_score": null,
-      "comp_lower": 70.0527255352568,
-      "comp_upper": 80.0527255352568,
+      "comp_lower": 70.11545610373682,
+      "comp_upper": 80.11545610373682,
       "f_score": null,
       "f_known": 0,
       "f_lower": 0,
@@ -1771,6 +1839,8 @@
       "rs3m": 26.733247,
       "beta": 0.2343192232958262,
       "financial_period": "TTM 자료 미확인",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "Yahoo Finance annual income statement and balance sheet via yfinance",
       "institution_report": null,
       "institution_comparison": null,
       "institution_change_pct": null,
@@ -1816,19 +1886,19 @@
       "components": [
         {
           "max": 8,
-          "value": 5.124326742346533
+          "value": 5.168144459739975
         },
         {
           "max": 12,
-          "value": 10.115587827811167
+          "value": 10.064809831799849
         },
         {
           "max": 12,
-          "value": 11.011593835463705
+          "value": 10.99381350916342
         },
         {
           "max": 8,
-          "value": 7.490103529701054
+          "value": 7.57757470309923
         },
         {
           "max": 6.25,
@@ -1883,8 +1953,8 @@
       "market_cap_krw": 4466489009326.472,
       "status": "watch",
       "comp_score": null,
-      "comp_lower": 67.51795176621715,
-      "comp_upper": 80.51795176621715,
+      "comp_lower": 67.51205332176393,
+      "comp_upper": 80.51205332176391,
       "f_score": null,
       "f_known": 0,
       "f_lower": 0,
@@ -1894,6 +1964,8 @@
       "rs3m": 14.853141,
       "beta": 1.5052075741902773,
       "financial_period": "TTM 자료 미확인",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "Yahoo Finance annual income statement and balance sheet via yfinance",
       "institution_report": "2026-06-30",
       "institution_comparison": null,
       "institution_change_pct": null,
@@ -1904,19 +1976,19 @@
       "components": [
         {
           "max": 8,
-          "value": 5.579118097083138
+          "value": 5.604688416440129
         },
         {
           "max": 12,
-          "value": 10.046811179045328
+          "value": 9.922062554131514
         },
         {
           "max": 12,
-          "value": 11.069947618259823
+          "value": 11.054922778093065
         },
         {
           "max": 8,
-          "value": 7.204754439297058
+          "value": 7.313059140567407
         },
         {
           "max": 6.25,
@@ -1957,2998 +2029,6 @@
         {
           "max": 5,
           "value": 2.4379625598606878
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "OPRT",
-      "name": "Oportun Financial Corporation - common stock",
-      "sector": "금융",
-      "market_cap_krw": 550902980347.8889,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 42.006160254832665,
-      "comp_upper": 95.00616025483265,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 13.457211000000001,
-      "rs3m": 52.034754,
-      "beta": 1.7089570173758313,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.7252109704641345
-        },
-        {
-          "max": 6.25,
-          "value": 5.949367088607595
-        },
-        {
-          "max": 6.25,
-          "value": 6.139240506329114
-        },
-        {
-          "max": 6.25,
-          "value": 6.062763713080169
-        },
-        {
-          "max": 7,
-          "value": 6.601265822784811
-        },
-        {
-          "max": 5,
-          "value": 4.767932489451477
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 1.8779242875372182
-        },
-        {
-          "max": 5,
-          "value": 4.882455376578145
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "NTSK",
-      "name": "Netskope, Inc. - Class A Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 11388874560786.576,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 37.92272823127603,
-      "comp_upper": 90.92272823127604,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 34.458444,
-      "rs3m": 57.96602,
-      "beta": 1.7695371136058218,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 6.197257383966245
-        },
-        {
-          "max": 6.25,
-          "value": 6.207805907172996
-        },
-        {
-          "max": 6.25,
-          "value": 6.168248945147679
-        },
-        {
-          "max": 6.25,
-          "value": 3.3386075949367084
-        },
-        {
-          "max": 7,
-          "value": 6.9232067510548525
-        },
-        {
-          "max": 5,
-          "value": 4.213080168776371
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 4.8745214802211825
-        },
-        {
-          "max": 5,
-          "value": 0
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "PLTR",
-      "name": "Palantir Technologies Inc. - Class A Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 674663567770466.2,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 37.01944332667768,
-      "comp_upper": 90.01944332667767,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 23.048157,
-      "rs3m": 56.57583,
-      "beta": 1.92700761195353,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 6.07331223628692
-        },
-        {
-          "max": 6.25,
-          "value": 6.136603375527426
-        },
-        {
-          "max": 6.25,
-          "value": 6.160337552742616
-        },
-        {
-          "max": 6.25,
-          "value": 6.2104430379746836
-        },
-        {
-          "max": 7,
-          "value": 6.887763713080169
-        },
-        {
-          "max": 5,
-          "value": 0.6139240506329114
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 4.2513823904721395
-        },
-        {
-          "max": 5,
-          "value": 0.6856769699608184
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "KSS",
-      "name": "Kohl's Corporation Common Stock",
-      "sector": "경기소비재",
-      "market_cap_krw": 3098560790853.2764,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 36.484225546664106,
-      "comp_upper": 89.4842255466641,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 18.211215,
-      "rs3m": 19.60982,
-      "beta": 1.8533427411844177,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.888713080168776
-        },
-        {
-          "max": 6.25,
-          "value": 6.07331223628692
-        },
-        {
-          "max": 6.25,
-          "value": 5.690928270042194
-        },
-        {
-          "max": 6.25,
-          "value": 3.3597046413502114
-        },
-        {
-          "max": 7,
-          "value": 5.650210970464135
-        },
-        {
-          "max": 5,
-          "value": 3.7383966244725735
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 1.8970650786899192
-        },
-        {
-          "max": 5,
-          "value": 4.185894645189378
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "RXO",
-      "name": "RXO, Inc. Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 6442413769277.637,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 36.469984381062915,
-      "comp_upper": 89.46998438106291,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 46.059888,
-      "rs3m": 3.163474,
-      "beta": 1.834300847956097,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 6.228902953586498
-        },
-        {
-          "max": 6.25,
-          "value": 6.234177215189874
-        },
-        {
-          "max": 6.25,
-          "value": 4.715189873417722
-        },
-        {
-          "max": 6.25,
-          "value": 5.944092827004219
-        },
-        {
-          "max": 7,
-          "value": 6.858227848101266
-        },
-        {
-          "max": 5,
-          "value": 4.981012658227848
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 0.8379413015737984
-        },
-        {
-          "max": 5,
-          "value": 0.6704397039616892
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "AMC",
-      "name": "AMC Entertainment Holdings, Inc. Class A Common Stock",
-      "sector": "경기소비재",
-      "market_cap_krw": 3572302028830.131,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 36.3962553864322,
-      "comp_upper": 89.39625538643219,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 23.279315,
-      "rs3m": 55.17588,
-      "beta": 1.51964664552655,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.8280590717299585
-        },
-        {
-          "max": 6.25,
-          "value": 6.139240506329114
-        },
-        {
-          "max": 6.25,
-          "value": 6.155063291139241
-        },
-        {
-          "max": 6.25,
-          "value": 4.309071729957806
-        },
-        {
-          "max": 7,
-          "value": 6.270464135021097
-        },
-        {
-          "max": 5,
-          "value": 3.187763713080169
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 4.506592939174819
-        },
-        {
-          "max": 5,
-          "value": 0
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "CAI",
-      "name": "Caris Life Sciences, Inc. - Common Stock",
-      "sector": "헬스케어",
-      "market_cap_krw": 11271818653434.455,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 36.36516874950115,
-      "comp_upper": 89.36516874950115,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 20.552214,
-      "rs3m": 69.909043,
-      "beta": 1.3100815896843165,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.29535864978903
-        },
-        {
-          "max": 6.25,
-          "value": 6.112869198312236
-        },
-        {
-          "max": 6.25,
-          "value": 6.213080168776371
-        },
-        {
-          "max": 6.25,
-          "value": 4.475210970464135
-        },
-        {
-          "max": 7,
-          "value": 6.140506329113924
-        },
-        {
-          "max": 5,
-          "value": 2.708860759493671
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 4.757549978732454
-        },
-        {
-          "max": 5,
-          "value": 0.6617326948193296
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "NVAX",
-      "name": "Novavax, Inc. - Common Stock",
-      "sector": "헬스케어",
-      "market_cap_krw": 2824385825423.455,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 35.61841419487533,
-      "comp_upper": 88.61841419487533,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 34.104893,
-      "rs3m": 38.915237,
-      "beta": 1.8852683993882347,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 6.220991561181434
-        },
-        {
-          "max": 6.25,
-          "value": 6.205168776371308
-        },
-        {
-          "max": 6.25,
-          "value": 6.015295358649789
-        },
-        {
-          "max": 6.25,
-          "value": 5.709388185654008
-        },
-        {
-          "max": 7,
-          "value": 6.40337552742616
-        },
-        {
-          "max": 5,
-          "value": 4.951476793248945
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 0.11271799234368354
-        },
-        {
-          "max": 5,
-          "value": 0
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "SHOP",
-      "name": "Shopify Inc. - Class A Subordinate Voting Shares",
-      "sector": "산업재",
-      "market_cap_krw": 295220268722049.7,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 34.99775651069043,
-      "comp_upper": 87.99775651069044,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 31.960735,
-      "rs3m": 32.782485,
-      "beta": 1.8784205916605339,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 6.131329113924051
-        },
-        {
-          "max": 6.25,
-          "value": 6.19198312236287
-        },
-        {
-          "max": 6.25,
-          "value": 5.957278481012658
-        },
-        {
-          "max": 6.25,
-          "value": 5.501054852320674
-        },
-        {
-          "max": 7,
-          "value": 6.666244725738396
-        },
-        {
-          "max": 5,
-          "value": 1.4177215189873418
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 2.415993194385368
-        },
-        {
-          "max": 5,
-          "value": 0.7161515019590771
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "RPD",
-      "name": "Rapid7, Inc. - Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 1243722631281.093,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 34.91830258931843,
-      "comp_upper": 87.91830258931844,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 27.865263,
-      "rs3m": 11.086045,
-      "beta": 0.6668151025395218,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 6.126054852320675
-        },
-        {
-          "max": 6.25,
-          "value": 6.173523206751055
-        },
-        {
-          "max": 6.25,
-          "value": 5.337552742616033
-        },
-        {
-          "max": 6.25,
-          "value": 1.505801687763713
-        },
-        {
-          "max": 7,
-          "value": 6.285232067510549
-        },
-        {
-          "max": 5,
-          "value": 0.6160337552742616
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 4.281156954487452
-        },
-        {
-          "max": 5,
-          "value": 4.592947322594688
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "FIVN",
-      "name": "Five9, Inc. - Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 3652847813204.738,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 34.72483726891007,
-      "comp_upper": 87.72483726891008,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 17.338706000000002,
-      "rs3m": 36.848208,
-      "beta": 1.4242604392412288,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.55379746835443
-        },
-        {
-          "max": 6.25,
-          "value": 6.0548523206751055
-        },
-        {
-          "max": 6.25,
-          "value": 5.9915611814346
-        },
-        {
-          "max": 6.25,
-          "value": 5.005274261603375
-        },
-        {
-          "max": 7,
-          "value": 4.917721518987341
-        },
-        {
-          "max": 5,
-          "value": 1.7257383966244726
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 1.7014036580178649
-        },
-        {
-          "max": 5,
-          "value": 3.774488463212886
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "RBRK",
-      "name": "Rubrik, Inc. Class A Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 34839949010331.82,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 34.47023856102897,
-      "comp_upper": 92.47023856102896,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 37.757188,
-      "rs3m": 45.078093,
-      "beta": 1.5933476326571046,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 8,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.458860759493671
-        },
-        {
-          "max": 6.25,
-          "value": 6.213080168776371
-        },
-        {
-          "max": 6.25,
-          "value": 6.0891350210970465
-        },
-        {
-          "max": 6.25,
-          "value": 6.015295358649789
-        },
-        {
-          "max": 7,
-          "value": 6.99409282700422
-        },
-        {
-          "max": 5,
-          "value": 3.0358649789029535
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 0.6639094471049195
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "TEAM",
-      "name": "Atlassian Corporation  - Class A Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 70300926166130.586,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 34.01186622922551,
-      "comp_upper": 87.01186622922552,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 12.166548,
-      "rs3m": 110.86541299999999,
-      "beta": 0.7814639830612011,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 6.039029535864978
-        },
-        {
-          "max": 6.25,
-          "value": 5.917721518987342
-        },
-        {
-          "max": 6.25,
-          "value": 6.2368143459915615
-        },
-        {
-          "max": 6.25,
-          "value": 6.205168776371308
-        },
-        {
-          "max": 7,
-          "value": 6.813924050632911
-        },
-        {
-          "max": 5,
-          "value": 0.8396624472573839
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 0.905997447894513
-        },
-        {
-          "max": 5,
-          "value": 1.0535481062255116
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "PRGO",
-      "name": "Perrigo Company plc Ordinary Shares",
-      "sector": "헬스케어",
-      "market_cap_krw": 2806667860549.5317,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 33.030070393701536,
-      "comp_upper": 86.03007039370152,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 7.8249010000000006,
-      "rs3m": 46.950189,
-      "beta": 1.0557778459567848,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.466772151898734
-        },
-        {
-          "max": 6.25,
-          "value": 5.775316455696203
-        },
-        {
-          "max": 6.25,
-          "value": 6.110232067510549
-        },
-        {
-          "max": 6.25,
-          "value": 2.020042194092827
-        },
-        {
-          "max": 7,
-          "value": 5.452320675105485
-        },
-        {
-          "max": 5,
-          "value": 3.1223628691983123
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 0.3572947681837516
-        },
-        {
-          "max": 5,
-          "value": 4.725729212015672
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "ARHS",
-      "name": "Arhaus, Inc. - Class A Common Stock",
-      "sector": "경기소비재",
-      "market_cap_krw": 1844696424275.0195,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 32.99553420239359,
-      "comp_upper": 85.9955342023936,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 19.048418,
-      "rs3m": 21.173342,
-      "beta": 1.6226380392653086,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 0.4588607594936709
-        },
-        {
-          "max": 6.25,
-          "value": 6.086497890295359
-        },
-        {
-          "max": 6.25,
-          "value": 5.738396624472574
-        },
-        {
-          "max": 6.25,
-          "value": 3.5601265822784813
-        },
-        {
-          "max": 7,
-          "value": 6.562869198312236
-        },
-        {
-          "max": 5,
-          "value": 4.50210970464135
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 3.683538919608677
-        },
-        {
-          "max": 5,
-          "value": 2.403134523291249
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "MDB",
-      "name": "MongoDB, Inc. - Class A Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 41752362049948.484,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 32.593845895593155,
-      "comp_upper": 85.59384589559315,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 0.2338420000000001,
-      "rs3m": 10.008197000000001,
-      "beta": 1.7346075962781755,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.8465189873417724
-        },
-        {
-          "max": 6.25,
-          "value": 4.889240506329114
-        },
-        {
-          "max": 6.25,
-          "value": 5.261075949367089
-        },
-        {
-          "max": 6.25,
-          "value": 3.0933544303797467
-        },
-        {
-          "max": 7,
-          "value": 6.7725738396624475
-        },
-        {
-          "max": 5,
-          "value": 4.932489451476793
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 0.9931943853679286
-        },
-        {
-          "max": 5,
-          "value": 0.805398345668263
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "PUBM",
-      "name": "PubMatic, Inc. - Class A Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 1140269899085.8352,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 32.22218034519829,
-      "comp_upper": 85.2221803451983,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 11.857166,
-      "rs3m": 33.179417,
-      "beta": 1.263656603620044,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 3.594409282700422
-        },
-        {
-          "max": 6.25,
-          "value": 5.904535864978903
-        },
-        {
-          "max": 6.25,
-          "value": 5.9678270042194095
-        },
-        {
-          "max": 6.25,
-          "value": 5.7674050632911396
-        },
-        {
-          "max": 7,
-          "value": 6.143459915611815
-        },
-        {
-          "max": 5,
-          "value": 3.9725738396624473
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 0.8719693747341557
-        },
-        {
-          "max": 5,
-          "value": 0
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "PVH",
-      "name": "PVH Corp. Common Stock",
-      "sector": "필수소비재",
-      "market_cap_krw": 5040661272165.406,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 31.919476937345337,
-      "comp_upper": 84.91947693734534,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 14.311655000000002,
-      "rs3m": 0.4620259999999998,
-      "beta": 1.210018580489156,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.8386075949367084
-        },
-        {
-          "max": 6.25,
-          "value": 5.973101265822785
-        },
-        {
-          "max": 6.25,
-          "value": 4.398734177215189
-        },
-        {
-          "max": 6.25,
-          "value": 2.9272151898734178
-        },
-        {
-          "max": 7,
-          "value": 5.056540084388186
-        },
-        {
-          "max": 5,
-          "value": 1.8080168776371308
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 1.1675882603147598
-        },
-        {
-          "max": 5,
-          "value": 4.749673487157161
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "OSCR",
-      "name": "Oscar Health, Inc. Class A Common Stock",
-      "sector": "헬스케어",
-      "market_cap_krw": 12255670090687.803,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 31.234732514547847,
-      "comp_upper": 84.23473251454786,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": -0.5670869999999999,
-      "rs3m": 1.4188520000000002,
-      "beta": 1.4244610439181022,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.851793248945148
-        },
-        {
-          "max": 6.25,
-          "value": 4.717827004219409
-        },
-        {
-          "max": 6.25,
-          "value": 4.551687763713081
-        },
-        {
-          "max": 6.25,
-          "value": 5.888713080168776
-        },
-        {
-          "max": 7,
-          "value": 5.670886075949367
-        },
-        {
-          "max": 5,
-          "value": 1.7531645569620253
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 0.31263292216078264
-        },
-        {
-          "max": 5,
-          "value": 2.4880278624292558
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "BTG",
-      "name": "B2Gold Corp Common shares (Canada)",
-      "sector": "소재",
-      "market_cap_krw": 9316699712148.74,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 31.190135634571877,
-      "comp_upper": 84.19013563457187,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": -5.044119,
-      "rs3m": 35.209707,
-      "beta": 1.9087578729356283,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 3.4651898734177213
-        },
-        {
-          "max": 6.25,
-          "value": 3.306962025316456
-        },
-        {
-          "max": 6.25,
-          "value": 5.986286919831223
-        },
-        {
-          "max": 6.25,
-          "value": 3.6260548523206753
-        },
-        {
-          "max": 7,
-          "value": 6.3472573839662445
-        },
-        {
-          "max": 5,
-          "value": 1.229957805907173
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 2.8945129732028922
-        },
-        {
-          "max": 5,
-          "value": 4.333913800609491
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "WPP",
-      "name": "WPP plc American Depositary Shares",
-      "sector": "산업재",
-      "market_cap_krw": 7395507820245.832,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 31.133055545387116,
-      "comp_upper": 84.13305554538712,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 1.5425840000000006,
-      "rs3m": 33.109143,
-      "beta": 1.0322213024361353,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.3006329113924044
-        },
-        {
-          "max": 6.25,
-          "value": 5.1002109704641345
-        },
-        {
-          "max": 6.25,
-          "value": 5.962552742616034
-        },
-        {
-          "max": 6.25,
-          "value": 5.437763713080169
-        },
-        {
-          "max": 7,
-          "value": 2.90042194092827
-        },
-        {
-          "max": 5,
-          "value": 0.9367088607594937
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 0.8060399829859634
-        },
-        {
-          "max": 5,
-          "value": 4.688724423160645
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "DOCS",
-      "name": "Doximity, Inc. Class A Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 7301168137211.407,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 31.01599115765637,
-      "comp_upper": 84.01599115765637,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 20.439936,
-      "rs3m": 32.650246,
-      "beta": 0.6560511265230834,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.9915611814346
-        },
-        {
-          "max": 6.25,
-          "value": 6.1075949367088604
-        },
-        {
-          "max": 6.25,
-          "value": 5.954641350210971
-        },
-        {
-          "max": 6.25,
-          "value": 0.20833333333333334
-        },
-        {
-          "max": 7,
-          "value": 5.691561181434599
-        },
-        {
-          "max": 5,
-          "value": 1.3734177215189876
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 3.845172267120374
-        },
-        {
-          "max": 5,
-          "value": 1.8437091858946453
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "MGNI",
-      "name": "Magnite, Inc. - Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 4892477221845.025,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 30.640288414015103,
-      "comp_upper": 83.64028841401512,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 4.8637500000000005,
-      "rs3m": 20.26639,
-      "beta": 1.0886482186845692,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 4.4145569620253164
-        },
-        {
-          "max": 6.25,
-          "value": 5.5168776371308015
-        },
-        {
-          "max": 6.25,
-          "value": 5.709388185654008
-        },
-        {
-          "max": 6.25,
-          "value": 5.635548523206751
-        },
-        {
-          "max": 7,
-          "value": 1.7839662447257385
-        },
-        {
-          "max": 5,
-          "value": 2.088607594936709
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 3.6367503190131862
-        },
-        {
-          "max": 5,
-          "value": 1.8545929473225948
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "META",
-      "name": "Meta Platforms, Inc. - Class A Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 2458767816810747,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 30.604138684755846,
-      "comp_upper": 83.60413868475584,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 8.625044,
-      "rs3m": 5.335533,
-      "beta": 1.4525732716009603,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 1.9778481012658229
-        },
-        {
-          "max": 6.25,
-          "value": 5.80168776371308
-        },
-        {
-          "max": 6.25,
-          "value": 4.907700421940929
-        },
-        {
-          "max": 6.25,
-          "value": 5.232067510548523
-        },
-        {
-          "max": 7,
-          "value": 3.5649789029535865
-        },
-        {
-          "max": 5,
-          "value": 2.9451476793248945
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 4.383241173968524
-        },
-        {
-          "max": 5,
-          "value": 1.7914671310404875
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "STLN",
-      "name": "Starling Oncology, Inc. - Common Stock",
-      "sector": "헬스케어",
-      "market_cap_krw": 890250414951.9155,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 29.916829672982324,
-      "comp_upper": 82.91682967298232,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 3.9436109999999998,
-      "rs3m": 1.8975930000000005,
-      "beta": 1.6219448277179445,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.126582278481013
-        },
-        {
-          "max": 6.25,
-          "value": 5.419303797468354
-        },
-        {
-          "max": 6.25,
-          "value": 4.585970464135021
-        },
-        {
-          "max": 6.25,
-          "value": 5.398206751054852
-        },
-        {
-          "max": 7,
-          "value": 3.340506329113924
-        },
-        {
-          "max": 5,
-          "value": 1.0654008438818565
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 4.980859208847299
-        },
-        {
-          "max": 5,
-          "value": 0
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "LYFT",
-      "name": "Lyft, Inc. - Class A Common Stock",
-      "sector": "산업재",
-      "market_cap_krw": 8245854644990.428,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 29.859650328746213,
-      "comp_upper": 82.85965032874623,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 4.9974620000000005,
-      "rs3m": -0.6725219999999998,
-      "beta": 1.4143389802956674,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.287447257383966
-        },
-        {
-          "max": 6.25,
-          "value": 5.527426160337553
-        },
-        {
-          "max": 6.25,
-          "value": 4.261603375527426
-        },
-        {
-          "max": 6.25,
-          "value": 1.0733122362869199
-        },
-        {
-          "max": 7,
-          "value": 6.474261603375528
-        },
-        {
-          "max": 5,
-          "value": 0.9556962025316456
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 4.9085495533815395
-        },
-        {
-          "max": 5,
-          "value": 1.3713539399216368
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "PRCH",
-      "name": "Porch Group, Inc. - Common Stock",
-      "sector": "금융",
-      "market_cap_krw": 2677127349031.452,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 29.854944074917015,
-      "comp_upper": 87.854944074917,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 4.8043070000000005,
-      "rs3m": 26.764643,
-      "beta": 1.983873385323156,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 8,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 3.7420886075949364
-        },
-        {
-          "max": 6.25,
-          "value": 5.503691983122363
-        },
-        {
-          "max": 6.25,
-          "value": 5.8465189873417724
-        },
-        {
-          "max": 6.25,
-          "value": 5.756856540084388
-        },
-        {
-          "max": 7,
-          "value": 5.9101265822784805
-        },
-        {
-          "max": 5,
-          "value": 2.4556962025316458
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 0.6399651719634305
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "VSTM",
-      "name": "Verastem, Inc. - Common Stock",
-      "sector": "헬스케어",
-      "market_cap_krw": 1019224144404.416,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 29.512147851618934,
-      "comp_upper": 82.51214785161892,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 6.981878,
-      "rs3m": 51.869738,
-      "beta": 1.1462177387115435,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.970464135021096
-        },
-        {
-          "max": 6.25,
-          "value": 5.704113924050633
-        },
-        {
-          "max": 6.25,
-          "value": 6.136603375527426
-        },
-        {
-          "max": 6.25,
-          "value": 2.492088607594937
-        },
-        {
-          "max": 7,
-          "value": 4.770042194092827
-        },
-        {
-          "max": 5,
-          "value": 4.436708860759493
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 0.002126754572522331
-        },
-        {
-          "max": 5,
-          "value": 0
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "RELY",
-      "name": "Remitly Global, Inc. - Common stock",
-      "sector": "산업재",
-      "market_cap_krw": 6859906898612.963,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 29.464391356438032,
-      "comp_upper": 82.46439135643803,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 7.040036000000001,
-      "rs3m": -2.282076,
-      "beta": 1.3794889000805226,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 6.078586497890296
-        },
-        {
-          "max": 6.25,
-          "value": 5.714662447257384
-        },
-        {
-          "max": 6.25,
-          "value": 4.037447257383967
-        },
-        {
-          "max": 6.25,
-          "value": 4.351265822784811
-        },
-        {
-          "max": 7,
-          "value": 3.4527426160337553
-        },
-        {
-          "max": 5,
-          "value": 1.0801687763713081
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 2.228838792003403
-        },
-        {
-          "max": 5,
-          "value": 2.5206791467131042
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "IBTA",
-      "name": "Ibotta, Inc. Class A Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 1340561075996.907,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 28.97375118227812,
-      "comp_upper": 81.97375118227814,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 4.254138,
-      "rs3m": 35.067508000000004,
-      "beta": 1.226144150472174,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 4.810126582278481
-        },
-        {
-          "max": 6.25,
-          "value": 5.440400843881857
-        },
-        {
-          "max": 6.25,
-          "value": 5.983649789029536
-        },
-        {
-          "max": 6.25,
-          "value": 6.0548523206751055
-        },
-        {
-          "max": 7,
-          "value": 1.8459915611814346
-        },
-        {
-          "max": 5,
-          "value": 3.6392405063291138
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 1.1994895789025946
-        },
-        {
-          "max": 5,
-          "value": 0
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "OGN",
-      "name": "Organon & Co. Common Stock",
-      "sector": "헬스케어",
-      "market_cap_krw": 4870536412965.408,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 28.782631094337688,
-      "comp_upper": 81.78263109433769,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": -1.6712589999999998,
-      "rs3m": -1.7367659999999998,
-      "beta": 0.6428059548708763,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 3.288502109704641
-        },
-        {
-          "max": 6.25,
-          "value": 4.454113924050633
-        },
-        {
-          "max": 6.25,
-          "value": 4.124472573839663
-        },
-        {
-          "max": 6.25,
-          "value": 6.2368143459915615
-        },
-        {
-          "max": 7,
-          "value": 0.24810126582278483
-        },
-        {
-          "max": 5,
-          "value": 1.0717299578059072
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 4.4002552105487025
-        },
-        {
-          "max": 5,
-          "value": 4.9586417065737916
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "ACVA",
-      "name": "ACV Auctions Inc. Class A Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 2380846309059.796,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 28.700185587326853,
-      "comp_upper": 81.70018558732684,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 41.606458,
-      "rs3m": 49.121551,
-      "beta": 1.4171374384680946,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": "2026-06-30",
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 2.7320675105485233
-        },
-        {
-          "max": 6.25,
-          "value": 6.228902953586498
-        },
-        {
-          "max": 6.25,
-          "value": 6.118143459915612
-        },
-        {
-          "max": 6.25,
-          "value": 6.162974683544304
-        },
-        {
-          "max": 7,
-          "value": 2.548945147679325
-        },
-        {
-          "max": 5,
-          "value": 3.4156118143459917
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 0.635899617184177
-        },
-        {
-          "max": 5,
-          "value": 0.8576404005224205
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "GTM",
-      "name": "ZoomInfo Technologies Inc. - Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 1516916612358.528,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 27.570820573866563,
-      "comp_upper": 80.57082057386657,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": -0.8866109999999998,
-      "rs3m": 21.791624,
-      "beta": 0.9700677210978726,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.174050632911392
-        },
-        {
-          "max": 6.25,
-          "value": 4.649261603375527
-        },
-        {
-          "max": 6.25,
-          "value": 5.743670886075949
-        },
-        {
-          "max": 6.25,
-          "value": 0.07647679324894516
-        },
-        {
-          "max": 7,
-          "value": 3.6860759493670887
-        },
-        {
-          "max": 5,
-          "value": 1.2278481012658229
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 2.039557635048915
-        },
-        {
-          "max": 5,
-          "value": 4.973878972572921
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "ELF",
-      "name": "e.l.f. Beauty, Inc. Common Stock",
-      "sector": "필수소비재",
-      "market_cap_krw": 8656166181014.635,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 27.020692294963077,
-      "comp_upper": 80.02069229496308,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": 11.074539,
-      "rs3m": 41.26367,
-      "beta": 1.7157249790818725,
-      "financial_period": "TTM 자료 미확인",
-      "institution_report": null,
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 7,
-      "components": [
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 12,
-          "value": null
-        },
-        {
-          "max": 8,
-          "value": null
-        },
-        {
-          "max": 6.25,
-          "value": 5.110759493670886
-        },
-        {
-          "max": 6.25,
-          "value": 5.875527426160337
-        },
-        {
-          "max": 6.25,
-          "value": 6.039029535864978
-        },
-        {
-          "max": 6.25,
-          "value": 2.1624472573839664
-        },
-        {
-          "max": 7,
-          "value": 4.90590717299578
-        },
-        {
-          "max": 5,
-          "value": 0.24050632911392406
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 1.3717566992769035
-        },
-        {
-          "max": 5,
-          "value": 1.3147583804962995
         },
         {
           "max": 5,
