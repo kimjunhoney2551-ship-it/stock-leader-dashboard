@@ -1,11 +1,11 @@
 {
   "price_asof": "2026-10-09",
-  "generated_at_utc": "2026-10-11T21:27:15.303Z",
+  "generated_at_utc": "2026-10-12T00:58:00.282Z",
   "method": "Provisional available-data percentiles; missing inputs bounded, not imputed. Ranking stability and full input universe remain unverified.",
   "counts": {
     "watch": 109,
-    "fail": 5936,
-    "pending": 282
+    "fail": 6023,
+    "pending": 195
   },
   "f_complete": 202,
   "f4_candidates": 22,
@@ -16,8 +16,8 @@
       "sector": "산업재",
       "market_cap_krw": 4795351641840.328,
       "status": "watch",
-      "comp_lower": 90.03607818837722,
-      "comp_upper": 93.03607818837722,
+      "comp_lower": 90.0380222008189,
+      "comp_upper": 93.03802220081889,
       "f_score": 1,
       "f_known": 4,
       "f_lower": 1,
@@ -73,7 +73,7 @@
         },
         {
           "max": 5,
-          "value": 4.4148522550544325
+          "value": 4.416796267496112
         },
         {
           "max": 5,
@@ -661,8 +661,8 @@
       "sector": "산업재",
       "market_cap_krw": 7970432960464.832,
       "status": "watch",
-      "comp_lower": 85.86433019588243,
-      "comp_upper": 88.86433019588242,
+      "comp_lower": 85.86705181330079,
+      "comp_upper": 88.8670518133008,
       "f_score": 0,
       "f_known": 4,
       "f_lower": 0,
@@ -732,7 +732,7 @@
         },
         {
           "max": 7,
-          "value": 5.990279937791602
+          "value": 5.993001555209954
         },
         {
           "max": 5,
@@ -766,8 +766,8 @@
       "sector": "에너지",
       "market_cap_krw": 28961821977511.34,
       "status": "watch",
-      "comp_lower": 85.64688096728099,
-      "comp_upper": 88.64688096728099,
+      "comp_lower": 85.6523242021177,
+      "comp_upper": 88.65232420211771,
       "f_score": 1,
       "f_known": 4,
       "f_lower": 1,
@@ -888,7 +888,7 @@
         },
         {
           "max": 7,
-          "value": 4.828149300155522
+          "value": 4.833592534992224
         },
         {
           "max": 5,
@@ -1148,8 +1148,8 @@
       "sector": "소재",
       "market_cap_krw": 1461003025064.6968,
       "status": "watch",
-      "comp_lower": 83.71314458177473,
-      "comp_upper": 86.71314458177471,
+      "comp_lower": 83.7150885942164,
+      "comp_upper": 86.71508859421641,
       "f_score": 3,
       "f_known": 4,
       "f_lower": 3,
@@ -1205,7 +1205,7 @@
         },
         {
           "max": 5,
-          "value": 4.171850699844478
+          "value": 4.173794712286158
         },
         {
           "max": 5,
@@ -1409,8 +1409,8 @@
       "sector": "헬스케어",
       "market_cap_krw": 7252206547002.954,
       "status": "watch",
-      "comp_lower": 83.28524344154178,
-      "comp_upper": 86.28524344154178,
+      "comp_lower": 83.28990907140182,
+      "comp_upper": 86.28990907140184,
       "f_score": 1,
       "f_known": 4,
       "f_lower": 1,
@@ -1462,11 +1462,11 @@
         },
         {
           "max": 7,
-          "value": 3.951788491446345
+          "value": 3.954510108864697
         },
         {
           "max": 5,
-          "value": 4.228227060653188
+          "value": 4.230171073094867
         },
         {
           "max": 5,
@@ -1722,8 +1722,8 @@
       "sector": "산업재",
       "market_cap_krw": 5335490535928.648,
       "status": "watch",
-      "comp_lower": 82.84433062756248,
-      "comp_upper": 85.8443306275625,
+      "comp_lower": 82.84705224498084,
+      "comp_upper": 85.84705224498083,
       "f_score": 1,
       "f_known": 4,
       "f_lower": 1,
@@ -1793,7 +1793,7 @@
         },
         {
           "max": 7,
-          "value": 4.297433903576983
+          "value": 4.300155520995334
         },
         {
           "max": 5,
@@ -1914,8 +1914,8 @@
       "sector": "헬스케어",
       "market_cap_krw": 64320721366128.82,
       "status": "watch",
-      "comp_lower": 82.39561306500428,
-      "comp_upper": 85.39561306500428,
+      "comp_lower": 82.38628180528421,
+      "comp_upper": 85.38628180528423,
       "f_score": 3,
       "f_known": 4,
       "f_lower": 3,
@@ -1967,11 +1967,11 @@
         },
         {
           "max": 7,
-          "value": 6.131804043545879
+          "value": 6.139968895800933
         },
         {
           "max": 5,
-          "value": 4.1018662519440126
+          "value": 4.084370139968896
         },
         {
           "max": 5,
@@ -2193,8 +2193,8 @@
       "sector": "정보기술",
       "market_cap_krw": 24646062983721.297,
       "status": "watch",
-      "comp_lower": 82.14259056051719,
-      "comp_upper": 85.14259056051719,
+      "comp_lower": 82.13986894309885,
+      "comp_upper": 85.13986894309886,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -2315,7 +2315,7 @@
         },
         {
           "max": 7,
-          "value": 6.855754276827372
+          "value": 6.85303265940902
         },
         {
           "max": 5,
@@ -2471,8 +2471,8 @@
       "sector": "헬스케어",
       "market_cap_krw": 16830953658161.072,
       "status": "watch",
-      "comp_lower": 81.8731056266236,
-      "comp_upper": 84.87310562662361,
+      "comp_lower": 81.87504963906528,
+      "comp_upper": 84.87504963906528,
       "f_score": 3,
       "f_known": 4,
       "f_lower": 3,
@@ -2528,7 +2528,7 @@
         },
         {
           "max": 5,
-          "value": 3.814152410575428
+          "value": 3.8160964230171075
         },
         {
           "max": 5,
@@ -2748,8 +2748,8 @@
       "sector": "산업재",
       "market_cap_krw": 2032884983663.056,
       "status": "watch",
-      "comp_lower": 81.74155425410156,
-      "comp_upper": 84.74155425410157,
+      "comp_lower": 81.73805503170654,
+      "comp_upper": 84.73805503170655,
       "f_score": 2,
       "f_known": 4,
       "f_lower": 2,
@@ -2801,11 +2801,11 @@
         },
         {
           "max": 7,
-          "value": 4.830870917573872
+          "value": 4.825427682737169
         },
         {
           "max": 5,
-          "value": 4.305987558320373
+          "value": 4.307931570762053
         },
         {
           "max": 5,
@@ -2835,8 +2835,8 @@
       "sector": "헬스케어",
       "market_cap_krw": 6368974550735.354,
       "status": "watch",
-      "comp_lower": 81.69745134433641,
-      "comp_upper": 84.6974513443364,
+      "comp_lower": 81.69472972691806,
+      "comp_upper": 84.69472972691807,
       "f_score": 3,
       "f_known": 4,
       "f_lower": 3,
@@ -2940,7 +2940,7 @@
         },
         {
           "max": 7,
-          "value": 6.159020217729394
+          "value": 6.156298600311042
         },
         {
           "max": 5,
@@ -3061,8 +3061,8 @@
       "sector": "헬스케어",
       "market_cap_krw": 56410511086691.61,
       "status": "watch",
-      "comp_lower": 81.22984219417236,
-      "comp_upper": 84.22984219417236,
+      "comp_lower": 81.22906458919569,
+      "comp_upper": 84.22906458919567,
       "f_score": 2,
       "f_known": 4,
       "f_lower": 2,
@@ -3132,11 +3132,11 @@
         },
         {
           "max": 7,
-          "value": 3.181570762052877
+          "value": 3.1788491446345257
         },
         {
           "max": 5,
-          "value": 4.288491446345256
+          "value": 4.290435458786936
         },
         {
           "max": 5,
@@ -3375,8 +3375,8 @@
       "sector": "헬스케어",
       "market_cap_krw": 120638199968097.44,
       "status": "watch",
-      "comp_lower": 80.57107940895409,
-      "comp_upper": 88.57107940895409,
+      "comp_lower": 80.57302342139577,
+      "comp_upper": 88.57302342139576,
       "f_score": 1,
       "f_known": 4,
       "f_lower": 1,
@@ -3484,7 +3484,7 @@
         },
         {
           "max": 5,
-          "value": 4.403188180404355
+          "value": 4.405132192846034
         },
         {
           "max": 5,
@@ -3514,8 +3514,8 @@
       "sector": "산업재",
       "market_cap_krw": 8027719101188.858,
       "status": "watch",
-      "comp_lower": 80.36504634987948,
-      "comp_upper": 83.36504634987949,
+      "comp_lower": 80.36893437476283,
+      "comp_upper": 83.36893437476283,
       "f_score": 2,
       "f_known": 4,
       "f_lower": 2,
@@ -3571,7 +3571,7 @@
         },
         {
           "max": 5,
-          "value": 4.2340590979782275
+          "value": 4.237947122861586
         },
         {
           "max": 5,
@@ -4298,8 +4298,8 @@
       "sector": "산업재",
       "market_cap_krw": 5273784838831.393,
       "status": "watch",
-      "comp_lower": 79.615937850471,
-      "comp_upper": 82.615937850471,
+      "comp_lower": 79.61865946788936,
+      "comp_upper": 82.61865946788936,
       "f_score": 1,
       "f_known": 4,
       "f_lower": 1,
@@ -4351,7 +4351,7 @@
         },
         {
           "max": 7,
-          "value": 5.884136858475895
+          "value": 5.886858475894246
         },
         {
           "max": 5,
@@ -4734,8 +4734,8 @@
       "sector": "필수소비재",
       "market_cap_krw": 3520907355743.2793,
       "status": "watch",
-      "comp_lower": 79.4428875092913,
-      "comp_upper": 82.4428875092913,
+      "comp_lower": 79.44483152173298,
+      "comp_upper": 82.44483152173297,
       "f_score": 3,
       "f_known": 4,
       "f_lower": 3,
@@ -4809,7 +4809,7 @@
         },
         {
           "max": 5,
-          "value": 4.368195956454121
+          "value": 4.370139968895801
         },
         {
           "max": 5,
@@ -5153,8 +5153,8 @@
       "sector": "유틸리티",
       "market_cap_krw": 14002935785458.51,
       "status": "watch",
-      "comp_lower": 78.61436655824484,
-      "comp_upper": 81.61436655824485,
+      "comp_lower": 78.6170881756632,
+      "comp_upper": 81.61708817566318,
       "f_score": null,
       "f_known": 3,
       "f_lower": 3,
@@ -5206,7 +5206,7 @@
         },
         {
           "max": 7,
-          "value": 4.9315707620528775
+          "value": 4.934292379471229
         },
         {
           "max": 5,
@@ -5379,8 +5379,8 @@
       "sector": "커뮤니케이션",
       "market_cap_krw": 6576626373755.002,
       "status": "watch",
-      "comp_lower": 78.33689973345992,
-      "comp_upper": 81.33689973345992,
+      "comp_lower": 78.33962135087828,
+      "comp_upper": 81.33962135087828,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -5467,7 +5467,7 @@
         },
         {
           "max": 7,
-          "value": 4.093312597200622
+          "value": 4.096034214618974
         },
         {
           "max": 5,
@@ -5501,8 +5501,8 @@
       "sector": "소재",
       "market_cap_krw": 12865150334574.453,
       "status": "watch",
-      "comp_lower": 78.06612605178094,
-      "comp_upper": 81.06612605178094,
+      "comp_lower": 78.06807006422262,
+      "comp_upper": 81.06807006422264,
       "f_score": 3,
       "f_known": 4,
       "f_lower": 3,
@@ -5558,7 +5558,7 @@
         },
         {
           "max": 5,
-          "value": 4.354587869362364
+          "value": 4.3565318818040435
         },
         {
           "max": 5,
@@ -5675,8 +5675,8 @@
       "sector": "에너지",
       "market_cap_krw": 1349862384274.062,
       "status": "watch",
-      "comp_lower": 77.98236808622121,
-      "comp_upper": 80.98236808622121,
+      "comp_lower": 77.98508970363956,
+      "comp_upper": 80.98508970363957,
       "f_score": 0,
       "f_known": 4,
       "f_lower": 0,
@@ -5763,7 +5763,7 @@
         },
         {
           "max": 7,
-          "value": 5.924961119751167
+          "value": 5.927682737169518
         },
         {
           "max": 5,
@@ -5797,8 +5797,8 @@
       "sector": "헬스케어",
       "market_cap_krw": 1897199488488.6504,
       "status": "watch",
-      "comp_lower": 77.86990931253102,
-      "comp_upper": 80.86990931253104,
+      "comp_lower": 77.8718533249727,
+      "comp_upper": 80.8718533249727,
       "f_score": 3,
       "f_known": 4,
       "f_lower": 3,
@@ -5854,7 +5854,7 @@
         },
         {
           "max": 5,
-          "value": 4.257387247278382
+          "value": 4.259331259720062
         },
         {
           "max": 5,
@@ -5884,8 +5884,8 @@
       "sector": "금융",
       "market_cap_krw": 1713684397281.6504,
       "status": "watch",
-      "comp_lower": 77.85807241780928,
-      "comp_upper": 85.8580724178093,
+      "comp_lower": 77.86273804766931,
+      "comp_upper": 85.86273804766932,
       "f_score": null,
       "f_known": 3,
       "f_lower": 1,
@@ -5937,11 +5937,11 @@
         },
         {
           "max": 7,
-          "value": 5.919517884914463
+          "value": 5.922239502332815
         },
         {
           "max": 5,
-          "value": 3.7947122861586315
+          "value": 3.796656298600311
         },
         {
           "max": 5,
@@ -6093,8 +6093,8 @@
       "sector": "경기소비재",
       "market_cap_krw": 34996195874304.285,
       "status": "watch",
-      "comp_lower": 77.67791261118599,
-      "comp_upper": 80.677912611186,
+      "comp_lower": 77.75411789889985,
+      "comp_upper": 80.75411789889984,
       "f_score": 3,
       "f_known": 4,
       "f_lower": 3,
@@ -6181,7 +6181,7 @@
         },
         {
           "max": 7,
-          "value": 4.509720062208398
+          "value": 4.585925349922239
         },
         {
           "max": 5,
@@ -6459,8 +6459,8 @@
       "sector": "헬스케어",
       "market_cap_krw": 23105323026264.344,
       "status": "watch",
-      "comp_lower": 77.4246248238329,
-      "comp_upper": 80.42462482383291,
+      "comp_lower": 77.42656883627457,
+      "comp_upper": 80.42656883627455,
       "f_score": 3,
       "f_known": 4,
       "f_lower": 3,
@@ -6585,7 +6585,7 @@
         },
         {
           "max": 5,
-          "value": 4.350699844479005
+          "value": 4.352643856920684
         },
         {
           "max": 5,
@@ -6615,8 +6615,8 @@
       "sector": "산업재",
       "market_cap_krw": 1135211135134.5403,
       "status": "watch",
-      "comp_lower": 77.36289462646312,
-      "comp_upper": 80.36289462646312,
+      "comp_lower": 77.36483863890479,
+      "comp_upper": 80.36483863890479,
       "f_score": 2,
       "f_known": 4,
       "f_lower": 2,
@@ -6690,7 +6690,7 @@
         },
         {
           "max": 5,
-          "value": 4.422628304821151
+          "value": 4.424572317262831
         },
         {
           "max": 5,
@@ -6807,8 +6807,8 @@
       "sector": "금융",
       "market_cap_krw": 13449397749310.6,
       "status": "watch",
-      "comp_lower": 77.08283545927299,
-      "comp_upper": 80.08283545927299,
+      "comp_lower": 77.08555707669134,
+      "comp_upper": 80.08555707669134,
       "f_score": 2,
       "f_known": 4,
       "f_lower": 2,
@@ -6878,7 +6878,7 @@
         },
         {
           "max": 7,
-          "value": 5.993001555209954
+          "value": 5.9957231726283045
         },
         {
           "max": 5,
@@ -7815,8 +7815,8 @@
       "sector": "금융",
       "market_cap_krw": 5234785361147.902,
       "status": "watch",
-      "comp_lower": 75.48528056312114,
-      "comp_upper": 83.48528056312114,
+      "comp_lower": 75.48722457556282,
+      "comp_upper": 83.48722457556283,
       "f_score": 3,
       "f_known": 4,
       "f_lower": 3,
@@ -7872,7 +7872,7 @@
         },
         {
           "max": 5,
-          "value": 4.1076982892690515
+          "value": 4.109642301710731
         },
         {
           "max": 5,
@@ -7893,6 +7893,111 @@
         {
           "max": 5,
           "value": 3.0246913580246915
+        }
+      ]
+    },
+    {
+      "ticker": "SNOW",
+      "name": "Snowflake Inc. Common Stock",
+      "sector": "정보기술",
+      "market_cap_krw": 174782616634227,
+      "status": "watch",
+      "comp_lower": 75.06445139649968,
+      "comp_upper": 83.06445139649969,
+      "f_score": 4,
+      "f_known": 4,
+      "f_lower": 4,
+      "f_upper": 4,
+      "composite": 93.23328046931668,
+      "rs1m": 8.887903,
+      "rs3m": 33.130088,
+      "beta": 1.5662985,
+      "financial_period": "2025-01-31 → 2026-01-31",
+      "institution_report": "2026-06-30",
+      "institution_comparison": "2026-03-31",
+      "institution_change_pct": 6.729059757919242,
+      "institution_matched_holders": 162,
+      "institution_source": "https://tradefilings.com/stock/SNOW",
+      "filings_13dg": [
+        {
+          "accession": "0002012383-26-003152",
+          "form": "SC 13G/A",
+          "filed": "2026-07-30",
+          "filer": "BlackRock, Inc.",
+          "filer_cik": 2012383,
+          "subject": "Snowflake Inc.",
+          "subject_cik": 1640147,
+          "ticker": "SNOW",
+          "pct_owned": null,
+          "shares": 22250796,
+          "event_date": null,
+          "source_url": "https://www.sec.gov/Archives/edgar/data/2012383/000201238326003152/0002012383-26-003152-index.htm",
+          "superseded_by": null,
+          "source_ingested_at": "2026-08-26T23:44:08.049060+00:00",
+          "revised_at": null
+        }
+      ],
+      "missing_comp": 2,
+      "components": [
+        {
+          "max": 8,
+          "value": 7.443234836702955
+        },
+        {
+          "max": 12,
+          "value": 11.41213063763608
+        },
+        {
+          "max": 12,
+          "value": 11.915060951631931
+        },
+        {
+          "max": 8,
+          "value": 6.515923566878981
+        },
+        {
+          "max": 6.25,
+          "value": 5.8660575427682735
+        },
+        {
+          "max": 6.25,
+          "value": 5.7542768273716955
+        },
+        {
+          "max": 6.25,
+          "value": 5.960715674834695
+        },
+        {
+          "max": 6.25,
+          "value": 5.832172701949861
+        },
+        {
+          "max": 7,
+          "value": 5.889580093312597
+        },
+        {
+          "max": 5,
+          "value": 2.468895800933126
+        },
+        {
+          "max": 5,
+          "value": 5
+        },
+        {
+          "max": 3,
+          "value": null
+        },
+        {
+          "max": 5,
+          "value": 0.256198347107438
+        },
+        {
+          "max": 5,
+          "value": 0.750204415372036
+        },
+        {
+          "max": 5,
+          "value": null
         }
       ]
     },
@@ -8036,118 +8141,13 @@
       ]
     },
     {
-      "ticker": "SNOW",
-      "name": "Snowflake Inc. Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 174782616634227,
-      "status": "watch",
-      "comp_lower": 75.05978576663965,
-      "comp_upper": 83.05978576663966,
-      "f_score": 4,
-      "f_known": 4,
-      "f_lower": 4,
-      "f_upper": 4,
-      "composite": 93.23328046931668,
-      "rs1m": 8.887903,
-      "rs3m": 33.130088,
-      "beta": 1.5662985,
-      "financial_period": "2025-01-31 → 2026-01-31",
-      "institution_report": "2026-06-30",
-      "institution_comparison": "2026-03-31",
-      "institution_change_pct": 6.729059757919242,
-      "institution_matched_holders": 162,
-      "institution_source": "https://tradefilings.com/stock/SNOW",
-      "filings_13dg": [
-        {
-          "accession": "0002012383-26-003152",
-          "form": "SC 13G/A",
-          "filed": "2026-07-30",
-          "filer": "BlackRock, Inc.",
-          "filer_cik": 2012383,
-          "subject": "Snowflake Inc.",
-          "subject_cik": 1640147,
-          "ticker": "SNOW",
-          "pct_owned": null,
-          "shares": 22250796,
-          "event_date": null,
-          "source_url": "https://www.sec.gov/Archives/edgar/data/2012383/000201238326003152/0002012383-26-003152-index.htm",
-          "superseded_by": null,
-          "source_ingested_at": "2026-08-26T23:44:08.049060+00:00",
-          "revised_at": null
-        }
-      ],
-      "missing_comp": 2,
-      "components": [
-        {
-          "max": 8,
-          "value": 7.443234836702955
-        },
-        {
-          "max": 12,
-          "value": 11.41213063763608
-        },
-        {
-          "max": 12,
-          "value": 11.915060951631931
-        },
-        {
-          "max": 8,
-          "value": 6.515923566878981
-        },
-        {
-          "max": 6.25,
-          "value": 5.8660575427682735
-        },
-        {
-          "max": 6.25,
-          "value": 5.7542768273716955
-        },
-        {
-          "max": 6.25,
-          "value": 5.960715674834695
-        },
-        {
-          "max": 6.25,
-          "value": 5.832172701949861
-        },
-        {
-          "max": 7,
-          "value": 5.886858475894246
-        },
-        {
-          "max": 5,
-          "value": 2.4669517884914463
-        },
-        {
-          "max": 5,
-          "value": 5
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 0.256198347107438
-        },
-        {
-          "max": 5,
-          "value": 0.750204415372036
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
       "ticker": "TK",
       "name": "Teekay Corporation Ltd. Common Stock",
       "sector": "산업재",
       "market_cap_krw": 1798327027684.057,
       "status": "watch",
-      "comp_lower": 75.00439876186964,
-      "comp_upper": 83.00439876186965,
+      "comp_lower": 75.007120379288,
+      "comp_upper": 83.00712037928798,
       "f_score": 0,
       "f_known": 4,
       "f_lower": 0,
@@ -8217,7 +8217,7 @@
         },
         {
           "max": 7,
-          "value": 4.234836702954898
+          "value": 4.2375583203732505
         },
         {
           "max": 5,
@@ -8259,7 +8259,7 @@
       "f_upper": 2,
       "composite": null,
       "rs1m": -4.871893,
-      "rs3m": 20.382531,
+      "rs3m": 20.382523,
       "beta": -0.09701143,
       "financial_period": "2024-12-31 → 2025-12-31",
       "institution_report": "2026-06-30",
@@ -8530,8 +8530,8 @@
       "sector": "정보기술",
       "market_cap_krw": 2628806060189.6133,
       "status": "watch",
-      "comp_lower": 74.76656287754864,
-      "comp_upper": 82.76656287754864,
+      "comp_lower": 74.76850688999032,
+      "comp_upper": 82.7685068899903,
       "f_score": 3,
       "f_known": 4,
       "f_lower": 3,
@@ -8622,7 +8622,7 @@
         },
         {
           "max": 5,
-          "value": 4.300155520995334
+          "value": 4.302099533437014
         },
         {
           "max": 5,
@@ -8757,8 +8757,8 @@
       "sector": "산업재",
       "market_cap_krw": 2661650350974.834,
       "status": "watch",
-      "comp_lower": 74.50914936183217,
-      "comp_upper": 82.50914936183216,
+      "comp_lower": 74.51109337427384,
+      "comp_upper": 82.51109337427386,
       "f_score": 3,
       "f_known": 4,
       "f_lower": 3,
@@ -8814,7 +8814,7 @@
         },
         {
           "max": 5,
-          "value": 4.140746500777605
+          "value": 4.142690513219285
         },
         {
           "max": 5,
@@ -9419,8 +9419,8 @@
       "sector": "정보기술",
       "market_cap_krw": 6151863736297.817,
       "status": "watch",
-      "comp_lower": 73.9148759865125,
-      "comp_upper": 81.9148759865125,
+      "comp_lower": 73.91759760393086,
+      "comp_upper": 81.91759760393086,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -9541,7 +9541,7 @@
         },
         {
           "max": 7,
-          "value": 6.85303265940902
+          "value": 6.855754276827372
         },
         {
           "max": 5,
@@ -10428,8 +10428,8 @@
       "sector": "금융",
       "market_cap_krw": 6557656715350.381,
       "status": "watch",
-      "comp_lower": 72.95411491634401,
-      "comp_upper": 80.954114916344,
+      "comp_lower": 72.9560589287857,
+      "comp_upper": 80.9560589287857,
       "f_score": null,
       "f_known": 3,
       "f_lower": 2,
@@ -10537,7 +10537,7 @@
         },
         {
           "max": 5,
-          "value": 4.385692068429238
+          "value": 4.387636080870918
         },
         {
           "max": 5,
@@ -10567,8 +10567,8 @@
       "sector": "헬스케어",
       "market_cap_krw": 2658887402895.035,
       "status": "watch",
-      "comp_lower": 72.92679977097436,
-      "comp_upper": 80.92679977097436,
+      "comp_lower": 72.92952138839271,
+      "comp_upper": 80.92952138839271,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -10655,7 +10655,7 @@
         },
         {
           "max": 7,
-          "value": 5.043157076205288
+          "value": 5.0458786936236395
         },
         {
           "max": 5,
@@ -10794,8 +10794,8 @@
       "sector": "정보기술",
       "market_cap_krw": 6268392306543.363,
       "status": "watch",
-      "comp_lower": 72.15661604176165,
-      "comp_upper": 80.15661604176165,
+      "comp_lower": 72.15389442434329,
+      "comp_upper": 80.15389442434329,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -10916,7 +10916,7 @@
         },
         {
           "max": 7,
-          "value": 5.7589424572317265
+          "value": 5.756220839813375
         },
         {
           "max": 5,
@@ -11072,8 +11072,8 @@
       "sector": "헬스케어",
       "market_cap_krw": 465200840968.3667,
       "status": "watch",
-      "comp_lower": 69.58117187955777,
-      "comp_upper": 82.58117187955776,
+      "comp_lower": 69.58311589199946,
+      "comp_upper": 82.58311589199946,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -11181,7 +11181,7 @@
         },
         {
           "max": 5,
-          "value": 4.183514774494556
+          "value": 4.185458786936237
         },
         {
           "max": 5,
@@ -11211,8 +11211,8 @@
       "sector": "Miscellaneous",
       "market_cap_krw": 2356610073775.7812,
       "status": "watch",
-      "comp_lower": 67.77123242422574,
-      "comp_upper": 80.77123242422573,
+      "comp_lower": 67.77045481924907,
+      "comp_upper": 80.77045481924907,
       "f_score": null,
       "f_known": 3,
       "f_lower": 0,
@@ -11264,11 +11264,11 @@
         },
         {
           "max": 7,
-          "value": 3.8020995334370142
+          "value": 3.7993779160186625
         },
         {
           "max": 5,
-          "value": 4.73950233281493
+          "value": 4.74144634525661
         },
         {
           "max": 5,
@@ -11437,8 +11437,8 @@
       "sector": "정보기술",
       "market_cap_krw": 197335693757.30273,
       "status": "watch",
-      "comp_lower": 63.910300718349,
-      "comp_upper": 81.91030071834899,
+      "comp_lower": 63.91224473079068,
+      "comp_upper": 81.91224473079069,
       "f_score": 4,
       "f_known": 4,
       "f_lower": 4,
@@ -11494,7 +11494,7 @@
         },
         {
           "max": 5,
-          "value": 4.265163297045101
+          "value": 4.26710730948678
         },
         {
           "max": 5,
@@ -11782,8 +11782,8 @@
       "sector": "정보기술",
       "market_cap_krw": 7397650027485.744,
       "status": "watch",
-      "comp_lower": 51.486006643988844,
-      "comp_upper": 85.73600664398884,
+      "comp_lower": 51.48795065643052,
+      "comp_upper": 85.73795065643051,
       "f_score": null,
       "f_known": 3,
       "f_lower": 3,
@@ -11839,7 +11839,7 @@
         },
         {
           "max": 5,
-          "value": 0.6726283048211508
+          "value": 0.6745723172628305
         },
         {
           "max": 5,
@@ -11991,8 +11991,8 @@
       "sector": "정보기술",
       "market_cap_krw": 449098126416.42847,
       "status": "watch",
-      "comp_lower": 40.32030496896006,
-      "comp_upper": 84.57030496896004,
+      "comp_lower": 40.32302658637841,
+      "comp_upper": 84.5730265863784,
       "f_score": null,
       "f_known": 0,
       "f_lower": 0,
@@ -12043,7 +12043,7 @@
         },
         {
           "max": 7,
-          "value": 4.86353032659409
+          "value": 4.866251944012442
         },
         {
           "max": 5,
