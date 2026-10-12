@@ -4,13 +4,12 @@ from pathlib import Path
 from datetime import datetime,timezone,timedelta
 import pandas as pd
 import numpy as np
-import yfinance as yf
 ROOT=Path(__file__).resolve().parents[1]
 def main():
     env=dict(os.environ,EXPORT_INPUTS='/tmp/score-inputs.json')
     subprocess.run(['node','scripts/export_scores.cjs'],cwd=ROOT,env=env,check=True)
     doc=json.loads(Path('/tmp/score-inputs.json').read_text());asof=doc['market_session'];fx=doc['fx_krw_usd']
-    rows=[r for r in doc['rows'] if r.get('price_asof')==asof and (r.get('market_cap_usd') or 0)*fx>=1e10 and (r.get('avg_value_usd') or 0)>=5e6 and r.get('beta') is not None and r['beta']<=2]
+    rows=[r for r in doc['rows'] if r.get('price_asof')==asof and (r.get('market_cap_usd') or 0)*fx>=5e11 and (r.get('avg_value_usd') or 0)>=5e6 and r.get('beta') is not None and r['beta']<=2]
     ticks=[r['ticker'] for r in rows];dates=pd.date_range(end=asof,periods=64,freq='W-FRI');start=(dates[0]-pd.Timedelta(days=7)).date().isoformat();end=(pd.Timestamp(asof)+pd.Timedelta(days=1)).date().isoformat()
     cache=ROOT/'cache/weekly_rank_prices.json.gz';stored={}
     if cache.exists():
@@ -21,6 +20,7 @@ def main():
     todo=[t for t in ticks if t not in series]
     for offset in range(0,len(todo),75):
         batch=todo[offset:offset+75];mapping={t:t.replace('.','-') for t in batch}
+        import yfinance as yf
         bars=yf.download(list(mapping.values()),start=start,end=end,auto_adjust=True,threads=6,progress=False,group_by='ticker',timeout=25)
         for t,sym in mapping.items():
             try:
