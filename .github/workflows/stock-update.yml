@@ -1,13 +1,5 @@
 name: US Equity Snapshot & Daily Refresh
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/stock-update.yml'
-      - 'scripts/update.py'
-      - 'scripts/liquidity_screen.py'
-      - 'scripts/price_cache.py'
-      - 'tests/**'
   schedule:
     - cron: '30 23 * * *'
   workflow_dispatch:
