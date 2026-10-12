@@ -25,7 +25,7 @@ const get=(id)=>ids[id]||(ids[id]={
 const ctx={
  document:{getElementById:get},
  fetch:async(url)=>{const p='docs/'+String(url).split('?')[0].replace(/^\.\//,'');return {ok:fs.existsSync(p),json:async()=>JSON.parse(fs.readFileSync(p,'utf8'))};},
- __onScoresReady({items}){for(const x of items){if(x.status==='pass'){assert(x.missing===0&&x.f===4&&x.low>=80&&x.r.weekly_rank.complete,'Invalid confirmed passer');}if(x.missing===0)assert(Math.abs(x.low-x.up)<1e-8,'Exact score has inconsistent bounds');}},
+ __onScoresReady({items}){for(const x of items){if(x.status==='pass'){assert(x.missing===0&&x.f===4&&x.low>=80&&x.r.weekly_rank.complete,'Invalid confirmed passer');assert(x.r.financial_basis==='TTM_YOY'&&x.r.market_cap_usd*1342.989990234375>=5e11,'Wrong financial basis or market cap');}if(x.missing===0)assert(Math.abs(x.low-x.up)<1e-8,'Exact score has inconsistent bounds');}},
  setTimeout,
  Blob,URL,
  console
@@ -39,7 +39,7 @@ setTimeout(()=>{
     const official=Number(get("official").textContent.replace(/,/g,""));
     assert(Number.isFinite(official),"missing official count");
     assert(get("validation").innerHTML.includes("시가총액 수집"),"coverage detail missing");
-    assert(get("validation").innerHTML.includes("TradingView"),"TV overlay not connected");
+    assert(get("validation").innerHTML.includes("TV 자료"),"TV overlay not connected");
     assert(get("validation").innerHTML.includes("FY 매출"),"FY YoY comparison not connected");
     get("filter").value="all"; get("filter").listeners.change();
     get("search").value="NTAP";
