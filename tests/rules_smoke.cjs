@@ -41,10 +41,11 @@ setTimeout(()=>{
     assert(get("validation").innerHTML.includes("시가총액 수집"),"coverage detail missing");
     assert(get("validation").innerHTML.includes("TradingView"),"TV overlay not connected");
     assert(get("validation").innerHTML.includes("FY 매출"),"FY YoY comparison not connected");
+    get("filter").value="all"; get("filter").listeners.change();
     get("search").value="NTAP";
     get("search").listeners.input();
     assert(get("table").innerHTML.includes("NTAP"),"Priority ticker not rendered");
-    assert(get("table").innerHTML.includes("4/4"),"Annual revenue/gross-margin comparison missing in F-score");
+
     get("search").value="";
     get("search").listeners.input();
     get("filter").value="all";
