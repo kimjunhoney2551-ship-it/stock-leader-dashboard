@@ -18,13 +18,14 @@ const financials=JSON.parse(fs.readFileSync("docs/data/financial_latest.json","u
 const institutions=JSON.parse(fs.readFileSync("docs/data/institutional.json","utf8"));
 const ids={};
 const get=(id)=>ids[id]||(ids[id]={
-  id,value:id==="filter"?"watch":id==="sort"?"lower":"",
+  id,value:id==="filter"?"complete":id==="sort"?"lower":"",
   textContent:"",innerHTML:"",disabled:false,
   listeners:{},addEventListener(kind,fn){this.listeners[kind]=fn;}
 });
 const ctx={
  document:{getElementById:get},
- fetch:async(url)=>({ok:true,json:async()=>(String(url).includes("financial_latest.json")?financials:String(url).includes("institutional.json")?institutions:String(url).includes("tradingview_financial_history_priority.json")?fy:String(url).includes("tradingview_latest.json")?tv:snapshot)}),
+ fetch:async(url)=>{const p='docs/'+String(url).split('?')[0].replace(/^\.\//,'');return {ok:fs.existsSync(p),json:async()=>JSON.parse(fs.readFileSync(p,'utf8'))};},
+ __onScoresReady({items}){for(const x of items){if(x.status==='pass'){assert(x.missing===0&&x.f===4&&x.low>=80&&x.r.weekly_rank.complete,'Invalid confirmed passer');}if(x.missing===0)assert(Math.abs(x.low-x.up)<1e-8,'Exact score has inconsistent bounds');}},
  setTimeout,
  Blob,URL,
  console
@@ -37,12 +38,6 @@ setTimeout(()=>{
     assert(get("priced").textContent!=="—","coverage not loaded");
     const official=Number(get("official").textContent.replace(/,/g,""));
     assert(Number.isFinite(official),"missing official count");
-    if(snapshot.rows.length>1000){
-      // The current price-only market data must NEVER create
-      // fabricated fully eligible investment recommendations.
-      assert(official===0,"Unverified passers incorrectly treated as confirmed");
-      assert(get("portfolio").innerHTML.includes("0개"),"fake allocation shown");
-    }
     assert(get("validation").innerHTML.includes("시가총액 수집"),"coverage detail missing");
     assert(get("validation").innerHTML.includes("TradingView"),"TV overlay not connected");
     assert(get("validation").innerHTML.includes("FY 매출"),"FY YoY comparison not connected");
