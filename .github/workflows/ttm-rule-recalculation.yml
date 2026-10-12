@@ -40,9 +40,12 @@ jobs:
           fi
       - run: python scripts/ttm_financials.py
       - run: node scripts/export_scores.cjs
+      - run: python scripts/verified_ownership.py
+      - run: python scripts/filing_event_scores.py
+      - run: node scripts/export_scores.cjs
       - name: Publish recalculated data
         run: |
-          git add docs/data/filter_inputs.json docs/data/financial_ttm.json docs/data/weekly_ranks.json cache/sec_tickers.json cache/weekly_rank_prices.json.gz docs/data/screen_results.json docs/data/screen_results.csv
+          git add docs/data/ownership_verified.json docs/data/filing_scores.json docs/data/filter_inputs.json docs/data/financial_ttm.json docs/data/weekly_ranks.json cache/sec_tickers.json cache/weekly_rank_prices.json.gz docs/data/screen_results.json docs/data/screen_results.csv
           if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
