@@ -1,0 +1,30 @@
+name: Complete Base Universe Financial Scores
+on:
+  push:
+    branches: [main]
+    paths: ['scripts/complete_financial_inputs.py', '.github/workflows/complete-financials.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: annual-financial-refresh
+  cancel-in-progress: false
+jobs:
+  financials:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python scripts/complete_financial_inputs.py
+      - run: node scripts/export_scores.cjs
+      - run: |
+          git add docs/data/financial_latest.json docs/data/screen_results.json docs/data/screen_results.csv
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'data: annual financial inputs across base universe'
+          git pull --rebase origin main
+          git push origin HEAD:main
