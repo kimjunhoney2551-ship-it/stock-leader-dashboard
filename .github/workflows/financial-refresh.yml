@@ -1,11 +1,5 @@
 name: Latest Annual Financial Score Inputs
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/financial_refresh.py'
-      - 'config/financial_targets.json'
-      - '.github/workflows/financial-refresh.yml'
   workflow_dispatch:
   schedule:
     - cron: '30 0 * * *'
@@ -17,7 +11,7 @@ concurrency:
 jobs:
   financials:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,7 +20,7 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - name: Fetch and calculate comparable annual financial inputs
-        run: python scripts/financial_refresh.py
+        run: python scripts/complete_financial_inputs.py
       - name: Recalculate dashboard score exports
         run: node scripts/export_scores.cjs
       - name: Publish financial data
