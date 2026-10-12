@@ -10,7 +10,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 import liquidity_screen
 
 
-def bars(start="2026-09-01", end="2026-10-09", daily_close=10, daily_volume=1_000_000):
+def bars(start="2026-08-20", end="2026-10-09", daily_close=10, daily_volume=1_000_000):
     ind=pd.bdate_range(start,end)
     return pd.DataFrame({"Close":[float(daily_close)]*len(ind),
                          "High":[daily_close*1.01]*len(ind),
@@ -23,11 +23,11 @@ def market_symbol_frame(data,sym):
 
 
 class TestLiquidityPrefilter(unittest.TestCase):
-    def test_10_day_average_usd_and_session(self):
+    def test_30_day_average_usd_and_session(self):
         frame=bars(daily_close=20,daily_volume=250000)
         self.assertEqual(liquidity_screen.average_traded_dollars(frame,date(2026,10,9)),5_000_000)
         self.assertIsNone(liquidity_screen.average_traded_dollars(frame,date(2026,10,12)))
-        self.assertIsNone(liquidity_screen.average_traded_dollars(frame.iloc[-7:],date(2026,10,9)))
+        self.assertIsNone(liquidity_screen.average_traded_dollars(frame.iloc[-29:],date(2026,10,9)))
 
     def test_fast_screen_only_backfills_passers(self):
         recent={
