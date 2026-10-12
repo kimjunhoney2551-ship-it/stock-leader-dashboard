@@ -1,0 +1,15 @@
+{
+  "rows": {
+    "RNG": {
+      "financial_period_current": "2025-12-31",
+      "roe_fallback_pct": -7.636444087027826,
+      "roe_fallback_inputs": {
+        "net_income": 43491000,
+        "equity_current": -588119000,
+        "equity_previous": -550919000
+      },
+      "roe_source": "https://www.sec.gov/Archives/edgar/data/1384905/000138490526000021/rng-20251231.htm",
+      "note": "Negative average equity: arithmetic ROE, not a conventional positive-equity profitability measure."
+    }
+  }
+}
