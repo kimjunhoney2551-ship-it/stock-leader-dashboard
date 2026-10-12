@@ -13,15 +13,15 @@ header{background:#fff;border-bottom:1px solid var(--line)}.wrap{max-width:1470p
 <div class="stats">
 <div class="card stat"><span>미국 전체 유니버스</span><strong id="total">—</strong><span>보통주·ADR</span></div>
 <div class="card stat"><span>종가 확보</span><strong id="priced">—</strong><span id="coverage">커버리지 대기</span></div>
-<div class="card stat"><span>기본필터 통과</span><strong id="first-pass">—</strong><span>10/9 거래대금·최신 TradingView 시총/β</span></div>
-<div class="card stat"><span>COMP ≥80 · F 통과</span><strong id="official" class="good">—</strong><span>모든 요건 검증된 정식통과</span></div>
+<div class="card stat"><span>기본필터 통과</span><strong id="first-pass">—</strong><span>30일 거래대금·최신 시총·1년 β</span></div>
+<div class="card stat"><span>COMP ≥80 · F 통과</span><strong id="official" class="good">—</strong><span>TTM F4 · COMP80 이상</span></div>
 <div class="card stat"><span>가격·수급 예비 후보</span><strong id="watch" class="warn">—</strong><span>정식통과 아님 · 부족자료 존재</span></div>
-<div class="card stat"><span>F-score 계산 완료</span><strong id="f-complete">—</strong><span>4개 재무항목 모두 확인</span></div>
+<div class="card stat"><span>F-score 계산 완료</span><strong id="f-complete">—</strong><span>동일 기간 TTM 4항목 확인</span></div>
 <div class="card stat"><span>F-score 4/4 후보</span><strong id="f-four">—</strong><span>확정·검증대기 별도 표시</span></div>
 </div>
 <div class="panes">
-<div class="card"><h2>적용 투자규칙</h2><p><a href="scoring-method.md">확정 산식·자료 처리 기준</a></p><p><strong>기본 필터:</strong> 시총 ≥ 100억 원 · 10일 평균 달러 거래대금 ≥ 500만 달러 · β ≤ 2</p><p><strong>COMP 100점:</strong> 순위 모멘텀 40 (4·12·25·52주: 8·12·12·8) + 가격 모멘텀 25 + 스마트머니 20 (CMF7·거래대금강도5·기관5·13D/G3) + 밸류에이션 15</p><p><strong>정식 편입:</strong> COMP ≥ 80점 → F-score 4/4 → 복합점수 산출 → 최대 10종목 · 에너지/원유·정유·탱커 섹터 합산 30% 상한</p><p class="mini">복합점수 = F 40 + 1M 상대수익 순위 30 + 3M 상대수익 순위 20 + GPM 개선 10.</p></div>
-<div class="card"><h2>검증 요약</h2><div id="validation">확인 중…</div><p class="mini" style="margin-top:12px">TradingView 데이터는 최신 조회일(10/9 이후 가능), Yahoo 수익률은 10/9 기준입니다. 수급/기관 정보가 없는 종목은 0점 처리하지 않습니다. F-score도 단일 재무비율 수준값으로 추정하지 않습니다. 영업이익 증감률은 (당기−전기)/전기 절대값으로 계산해 적자 축소도 반영합니다. 순위 모멘텀은 최근 12주간 각 기간 수익률 백분위의 평균−표준편차로 계산합니다. 13D/G는 최근 90일 신규·지분증가 공시만 가점하며, 확인된 적격 이벤트가 없으면 0점입니다.</p></div>
+<div class="card"><h2>적용 투자규칙</h2><p><a href="scoring-method.md">확정 산식·자료 처리 기준</a></p><p><strong>기본 필터:</strong> 시총 ≥ 5,000억 원 · 30일 평균 달러 거래대금 ≥ 500만 달러 · β ≤ 2</p><p><strong>COMP 100점:</strong> 순위 모멘텀 40 (4·12·25·52주: 8·12·12·8) + 가격 모멘텀 25 + 스마트머니 20 (CMF7·거래대금강도5·기관5·13D/G3) + 밸류에이션 15</p><p><strong>정식 편입:</strong> COMP ≥ 80점 → F-score 4/4 → 복합점수 산출 → 최대 10종목 · 에너지/원유·정유·탱커 섹터 합산 30% 상한</p><p class="mini">복합점수 = F 40 + 1M 상대수익 순위 30 + 3M 상대수익 순위 20 + GPM 개선 10.</p></div>
+<div class="card"><h2>검증 요약</h2><div id="validation">확인 중…</div><p class="mini" style="margin-top:12px">TradingView 데이터는 최신 조회일(10/9 이후 가능), Yahoo 수익률은 10/9 기준입니다. 수급/기관 정보가 없는 종목은 0점 처리하지 않습니다. F-score는 최근 TTM과 전년 동기 TTM 비교입니다. 과거 FY 점수는 폐기했습니다. TTM 원자료가 없으면 미확정입니다. 영업이익 증감률은 (당기−전기)/전기 절대값으로 계산해 적자 축소도 반영합니다. 순위 모멘텀은 최근 12주간 각 기간 수익률 백분위의 평균−표준편차로 계산합니다. 13D/G는 최근 90일 신규·지분증가 공시만 가점하며, 확인된 적격 이벤트가 없으면 0점입니다.</p></div>
 </div>
 <div class="card"><div class="top"><div><h2>전체 투자규칙 평가표</h2><p class="muted">확정 산식: 12주 주간 순위 평균−표준편차 · 최근 90일 13D/G. 모든 입력값이 있으면 단일 확정점수, 부족하면 범위를 표시합니다. <strong>확정값 또는 미확정 항목 반영 범위</strong>로 표시합니다.</p></div><div class="nav"><button class="btn" id="csv">현재 표 CSV 다운로드</button><a class="btn" href="data/screen_results.csv" download>저장된 계산 결과</a></div></div>
 <div class="filter"><label>종목 검색 <input type="search" id="search" placeholder="티커·기업명"></label><label>판정 <select id="filter"><option value="complete">COMP·F 확정 종목</option><option value="watch">예비 주도 후보</option><option value="f4">F-score 4/4 후보</option><option value="pass">정식통과</option><option value="shadow">그림자</option><option value="pending">기타 검증대기</option><option value="fail">기본/COMP 탈락</option><option value="all">미국 전체</option></select></label><label>정렬 <select id="sort"><option value="lower">계산된 부분점수 ↓</option><option value="f">F-score ↓</option><option value="composite">복합점수 ↓</option><option value="upper">최대 가능점수 ↓</option><option value="rs">3개월 S&P 상대수익 ↓</option><option value="value">거래대금 ↓</option><option value="ticker">티커 A→Z</option></select></label><span id="count" class="muted"></span></div>
@@ -73,6 +73,15 @@ function tvOverlay(market,overlay){
  market.tv_overlay_queried=overlay?.queried_at_utc||null;
  return market;
 }
+
+async function addCorrectedRuleInputs(payload){
+ const fields=['revenue_growth_pct','gpm_delta_pp','sga_ratio_delta_pp','asset_turnover_delta'];
+ // Discard FY/legacy F values even when the TTM endpoint is unavailable.
+ for(const row of payload.rows){for(const key of fields)delete row[key];delete row.op_income_growth_pct;row.fy_comparison_period='TTM 자료 미확인';row.financial_basis='TTM_YOY';row.beta=null;row.avg_value_usd=null;}
+ try{const r=await fetch('./data/filter_inputs.json?_='+Date.now(),{cache:'no-store'});if(r.ok){const d=await r.json();if(d.market_session===payload.market_session)for(const row of payload.rows){const v=d.rows?.[row.ticker];if(v)Object.assign(row,v);}}}catch(e){}
+ try{const r=await fetch('./data/financial_ttm.json?_='+Date.now(),{cache:'no-store'});if(r.ok){const d=await r.json();for(const row of payload.rows){const v=d.rows?.[row.ticker];if(!v||v.stale||v.error)continue;for(const k of [...fields,'op_income_growth_pct'])if(typeof v[k]==='number'&&Number.isFinite(v[k]))row[k]=v[k];row.fy_comparison_period=v.previous_ttm_start+'~'+v.previous_ttm_end+' → '+v.ttm_start+'~'+v.ttm_end;row.fy_comparison_source=v.source;row.fy_comparison_fetched_at_utc=v.fetched_at_utc;row.ttm_evidence=v;}payload.ttm_checked_at=d.queried_at_utc;}}catch(e){}
+}
+
 async function addLatestFinancialInputs(payload){
   try{
     const response=await fetch('./data/financial_latest.json?_='+Date.now(),{cache:'no-store'});
@@ -172,7 +181,7 @@ async function addFinalScoreInputs(payload){
 }
 function ranking(key,fun){
  var fx=data.fx_krw_usd||1350;
- var xs=data.rows.filter(function(r){return r.price_asof===data.market_session&&ok(r.market_cap_usd)&&r.market_cap_usd*fx>=1e10&&ok(r.avg_value_usd)&&r.avg_value_usd>=5e6&&ok(r.beta)&&r.beta<=2;}).map(function(r){return fun?fun(r[key]):r[key];}).filter(ok).sort(function(a,b){return a-b;});
+ var xs=data.rows.filter(function(r){return r.price_asof===data.market_session&&ok(r.market_cap_usd)&&r.market_cap_usd*fx>=5e11&&ok(r.avg_value_usd)&&r.avg_value_usd>=5e6&&ok(r.beta)&&r.beta<=2;}).map(function(r){return fun?fun(r[key]):r[key];}).filter(ok).sort(function(a,b){return a-b;});
  var ranks=new Map();for(var i=0;i<xs.length;){var j=i+1;while(j<xs.length&&xs[j]===xs[i])j++;ranks.set(xs[i],xs.length===1?.5:(i+(j-i-1)/2)/(xs.length-1));i=j;}
  return function(v){return ok(v)&&ranks.has(v)?ranks.get(v):null;};
 }
@@ -202,7 +211,7 @@ function evaluate(r){
  up=Math.min(100,low+100-knownMax);
  var confirmed=!fail&&baseReady&&parts.missing===0&&low>=80&&fFinal===4&&ok(comp)&&r.weekly_rank?.complete===true;
  var status='pending',why='미확정 데이터';
- if(fail){status='fail';why=ok(r.avg_value_usd)&&r.avg_value_usd<5000000?'거래대금 미달':ok(r.beta)&&r.beta>2?'β > 2':'시총 100억 미만';}
+ if(fail){status='fail';why=ok(r.avg_value_usd)&&r.avg_value_usd<5000000?'거래대금 미달':ok(r.beta)&&r.beta>2?'β > 2':'시총 5,000억 미만';}
  else if(up<80){status='fail';why='COMP 상한 80 미만';}
  else if(confirmed){status='pass';why='정식통과';}
  else if(baseReady&&parts.missing===0&&low>=80&&fFinal!==null&&fFinal<4){status='shadow';why='F-score 미달';}
@@ -235,12 +244,12 @@ function build(){
  $('watch').textContent=format(counts.watch||0,0);
  $('f-complete').textContent=format(items.filter(x=>x.f!==null).length,0);
  $('f-four').textContent=format(items.filter(x=>x.f===4&&x.status!=='fail'&&x.status!=='pending').length,0);
- $('validation').innerHTML='<p>2026-10-09 주가·거래대금, TradingView 최신 시가총액·베타를 함께 사용합니다.</p><p>TV 자료 연결: <strong>'+format(data.tv_overlay_count||0,0)+'종목</strong> · 조회 '+safe(data.tv_overlay_queried||'미연결')+' UTC</p><p>거래대금 ≥ $5M 및 β ≤ 2 관측 통과: <strong>'+format(liqBeta,0)+'종목</strong></p>'+
+ $('validation').innerHTML='<p>2026-10-09 주가·거래대금, 최신 시가총액·252거래일 베타를 함께 사용합니다.</p><p>TV 자료 연결: <strong>'+format(data.tv_overlay_count||0,0)+'종목</strong> · 조회 '+safe(data.tv_overlay_queried||'미연결')+' UTC</p><p>거래대금 ≥ $5M 및 β ≤ 2 관측 통과: <strong>'+format(liqBeta,0)+'종목</strong></p>'+
  '<p>시가총액 수집: <strong>'+format(data.rows.filter(function(r){return ok(r.market_cap_usd);}).length,0)+'종목</strong></p>'+
  '<p>최신 기관보유 보고서: <strong>'+format(data.institution_latest_disclosure_count||0,0)+'종목</strong></p>'+
  '<p>기관보유 변화: <strong>'+format(data.rows.filter(function(r){return ok(r.inst_change_pct);}).length,0)+'종목</strong></p>'+
  '<p>전 항목 F-score: <strong>'+format(data.rows.filter(function(r){return ['revenue_growth_pct','gpm_delta_pp','sga_ratio_delta_pp','asset_turnover_delta'].every(function(k){return ok(r[k]);});}).length,0)+'종목</strong></p>'+
- '<p>TradingView 2개 FY 매출·GPM 비교: <strong>'+format(data.tradingview_fy_comparison_count||0,0)+'종목</strong></p>'+
+ '<p>참고용 FY 매출·GPM (F 계산 제외): <strong>'+format(data.tradingview_fy_comparison_count||0,0)+'종목</strong></p>'+
  '<p>COMP 확정: <strong>'+format(items.filter(function(x){return x.missing===0;}).length,0)+'종목</strong></p>';
  $('notice').innerHTML='<strong>종가 기준 '+safe(report)+'</strong> · TradingView 최신 기본/재무자료 '+format(data.tv_overlay_count||0,0)+'종목 ('+safe(data.tv_overlay_queried||'미확인')+' UTC 조회). 미국 전체 '+format(data.universe_count,0)+'종목 중 종가 '+format(price,0)+'종목. <strong>현재 정식 통과 '+format(counts.pass||0,0)+'종목.</strong> TV 값은 10월 9일 시점 정보가 아니라 최신값입니다. FY 비교도 최신 2개 연간 결산만 사용하며, 10월 9일 당시 발표자료만 사용한 백테스트가 아닙니다. 선행 PER은 조회시점이 다른 EPS 예측치와 종가를 결합한 추정치입니다. '+(!data.weekly_rank_meta?'순위모멘텀의 체류·안정성과 일부 COMP 항목은 검증대기.':'');
  var port=allocate(items.filter(function(x){return x.status==='pass';}));
@@ -297,6 +306,7 @@ async function load(){
   try{var tvResp=await fetch('./data/tradingview_latest.json?_='+Date.now(),{cache:'no-store'});if(tvResp.ok){tradingview=await tvResp.json();tvOverlay(data,tradingview);}else data.tv_overlay_warning='TradingView overlay HTTP '+tvResp.status;}catch(tvError){data.tv_overlay_warning=String(tvError);}
  try{var fyResp=await fetch('./data/tradingview_financial_history_priority.json?_='+Date.now(),{cache:'no-store'});if(fyResp.ok)addTradingViewFinancialHistory(data,await fyResp.json());}catch(e){data.fy_overlay_warning=String(e);}
  await addLatestFinancialInputs(data);
+ await addCorrectedRuleInputs(data);
  await addLatestInstitutionalCache(data);
   await addVerifiedOwnership(data);
  await addFinalScoreInputs(data);
