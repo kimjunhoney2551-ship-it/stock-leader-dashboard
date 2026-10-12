@@ -1,10 +1,9 @@
 name: Finalize COMP and F Scores
 on:
-  push:
+  workflow_run:
+    workflows: ['US Equity Snapshot & Daily Refresh']
+    types: [completed]
     branches: [main]
-    paths:
-      - 'scripts/weekly_rank_refresh.py'
-      - '.github/workflows/score-finalization.yml'
   workflow_dispatch:
 permissions:
   contents: write
@@ -13,19 +12,23 @@ concurrency:
   cancel-in-progress: false
 jobs:
   finalize:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - run: pip install -r requirements.txt
       - run: python scripts/weekly_rank_refresh.py
+      - run: python scripts/filing_event_scores.py
       - run: node scripts/export_scores.cjs
       - name: Save weekly ranks and recalculated scores
         run: |
-          git add docs/data/weekly_ranks.json cache/weekly_rank_prices.json.gz docs/data/screen_results.json docs/data/screen_results.csv
+          git add docs/data/filing_scores.json docs/data/weekly_ranks.json cache/weekly_rank_prices.json.gz docs/data/screen_results.json docs/data/screen_results.csv
           if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
