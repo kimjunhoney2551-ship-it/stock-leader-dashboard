@@ -1,11 +1,11 @@
 {
   "price_asof": "2026-10-09",
-  "generated_at_utc": "2026-10-12T07:58:52.345Z",
+  "generated_at_utc": "2026-10-12T07:58:58.891Z",
   "method": "Approved 12 weekly rank mean minus population SD; 90-day verified positive 13D/G events. Price date and latest disclosures differ. Financial percentiles use available base-universe inputs. Missing inputs stay bounded.",
   "counts": {
-    "fail": 5905,
+    "fail": 5906,
     "pending": 402,
-    "watch": 14,
+    "watch": 13,
     "pass": 5,
     "shadow": 1
   },
@@ -1939,96 +1939,6 @@
         {
           "max": 5,
           "value": 0.8162821070962124
-        },
-        {
-          "max": 5,
-          "value": null
-        }
-      ]
-    },
-    {
-      "ticker": "AAMI",
-      "name": "Acadian Asset Management Inc. Common Stock",
-      "sector": "금융",
-      "market_cap_krw": 4466489009326.472,
-      "status": "watch",
-      "comp_score": null,
-      "comp_lower": 67.51205332176393,
-      "comp_upper": 80.51205332176391,
-      "f_score": null,
-      "f_known": 0,
-      "f_lower": 0,
-      "f_upper": 4,
-      "composite": null,
-      "rs1m": -1.0777999999999999,
-      "rs3m": 14.853141,
-      "beta": 1.5052075741902773,
-      "financial_period": "TTM 자료 미확인",
-      "financial_basis": "TTM_YOY",
-      "financial_source": "Yahoo Finance annual income statement and balance sheet via yfinance",
-      "institution_report": "2026-06-30",
-      "institution_comparison": null,
-      "institution_change_pct": null,
-      "institution_matched_holders": null,
-      "institution_source": null,
-      "filings_13dg": [],
-      "missing_comp": 3,
-      "components": [
-        {
-          "max": 8,
-          "value": 5.604688416440129
-        },
-        {
-          "max": 12,
-          "value": 9.922062554131514
-        },
-        {
-          "max": 12,
-          "value": 11.054922778093065
-        },
-        {
-          "max": 8,
-          "value": 7.313059140567407
-        },
-        {
-          "max": 6.25,
-          "value": 2.465717299578059
-        },
-        {
-          "max": 6.25,
-          "value": 4.593881856540085
-        },
-        {
-          "max": 6.25,
-          "value": 5.532700421940929
-        },
-        {
-          "max": 6.25,
-          "value": 5.712025316455696
-        },
-        {
-          "max": 7,
-          "value": 4.282700421940928
-        },
-        {
-          "max": 5,
-          "value": 3.6540084388185656
-        },
-        {
-          "max": 5,
-          "value": null
-        },
-        {
-          "max": 3,
-          "value": null
-        },
-        {
-          "max": 5,
-          "value": 4.938324117396852
-        },
-        {
-          "max": 5,
-          "value": 2.4379625598606878
         },
         {
           "max": 5,
