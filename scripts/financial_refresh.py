@@ -38,8 +38,15 @@ def normalize(income,balance):
             assets=[read(balance,'Total Assets',d) for d in (current,previous,earlier[0])]
             if all(v is not None and v>0 for v in assets):
                 out['asset_turnover_delta']=rev[0]/((assets[0]+assets[1])/2)-rev[1]/((assets[1]+assets[2])/2)
-    if all(v is not None for v in op) and op[1]>0:
-        out['op_income_growth_pct']=100*(op[0]/op[1]-1)
+    if all(v is not None for v in op) and op[1]!=0:
+        out['op_income_growth_pct']=100*(op[0]-op[1])/abs(op[1])
+    ni=read(income,'Net Income Common Stockholders',current)
+    if ni is None:ni=read(income,'Net Income',current)
+    eq=[read(balance,'Common Stock Equity',d) for d in (current,previous)]
+    if any(v is None for v in eq):eq=[read(balance,'Stockholders Equity',d) for d in (current,previous)]
+    if ni is not None and all(v is not None for v in eq) and sum(eq)!=0:
+        out['roe_fallback_pct']=ni/(sum(eq)/2)*100
+        out['roe_fallback_inputs']={'net_income':ni,'equity_current':eq[0],'equity_previous':eq[1]}
     out['raw_annual']={'revenue':rev,'gross_profit':gp,'sga':sga,'operating_income':op}
     return out
 
