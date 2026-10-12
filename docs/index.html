@@ -441,7 +441,7 @@ async function addVerifiedOwnership(payload){
 async function addFinalScoreInputs(payload){
  try{
   const res=await fetch('./data/weekly_ranks.json?_='+Date.now(),{cache:'no-store'});
-  if(res.ok){const d=await res.json();if(d.market_session===payload.market_session){payload.weekly_rank_meta=d;for(const r of payload.rows){r.weekly_rank=d.rows[r.ticker]||null;}}}
+  if(res.ok){const d=await res.json();const expected=payload.rows.filter(r=>r.price_asof===payload.market_session&&typeof r.market_cap_usd==='number'&&r.market_cap_usd*payload.fx_krw_usd>=5e11&&typeof r.avg_value_usd==='number'&&r.avg_value_usd>=5e6&&typeof r.beta==='number'&&r.beta<=2).map(r=>r.ticker).sort();const actual=Object.keys(d.rows||{}).sort();if(d.market_session===payload.market_session&&JSON.stringify(expected)===JSON.stringify(actual)){payload.weekly_rank_meta=d;for(const r of payload.rows){r.weekly_rank=d.rows[r.ticker]||null;}}else{for(const r of payload.rows)r.weekly_rank=null;payload.weekly_rank_warning='필터 변경 후 순위 모집단 재계산 필요';}}
  }catch(e){payload.weekly_rank_warning=String(e);}
  try{
   const res=await fetch('./data/filing_scores.json?_='+Date.now(),{cache:'no-store'});
