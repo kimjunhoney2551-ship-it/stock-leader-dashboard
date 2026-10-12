@@ -33,21 +33,21 @@ def intervals(tax,tag):
         for a in group:
             for b in group:
                 delta=(day(b['end'])-day(a['end'])).days
-                if 60<=delta<=110:
+                if 50<=delta<=300:
                     key=((day(a['end'])+timedelta(days=1)).isoformat(),(day(b['end'])+timedelta(days=1)).isoformat())
                     if key not in edges:edges[key]=(b['val']-a['val'],[dict(evidence(b,tag),coefficient=1),dict(evidence(a,tag),coefficient=-1)])
     return edges
 def total(edges,start,end):
     stop=(day(end)+timedelta(days=1)).isoformat();memo={}
     def visit(s):
-        if s==stop:return (0,[])
+        if s==stop:return (0,[],0)
         if s in memo:return memo[s]
         choices=[]
         for (a,b),(v,e) in edges.items():
             if a==s and s<b<=stop:
                 tail=visit(b)
-                if tail:choices.append((v+tail[0],e+tail[1]))
-        memo[s]=min(choices,key=lambda x:len(x[1])) if choices else None
+                if tail:choices.append((v+tail[0],e+tail[1],tail[2]+1))
+        memo[s]=min(choices,key=lambda x:(x[2],len(x[1]))) if choices else None
         return memo[s]
     return visit(start)
 TAGS={'revenue':['RevenueFromContractWithCustomerExcludingAssessedTax','Revenues','SalesRevenueNet','RevenueFromContractWithCustomerIncludingAssessedTax'],
@@ -103,7 +103,10 @@ def normalize(doc):
     return out
 def fetch(t,cik):
     url=f'https://data.sec.gov/api/xbrl/companyfacts/CIK{int(cik):010d}.json'
-    row=normalize(get(url));row.update(source=url,fetched_at_utc=datetime.now(timezone.utc).isoformat());return t,row
+    cache=ROOT/'cache/ttm_source_work'/TODAY;cache.mkdir(parents=True,exist_ok=True);fp=cache/(str(cik)+'.json')
+    doc=json.loads(fp.read_text()) if fp.exists() else get(url)
+    if not fp.exists():fp.write_text(json.dumps(doc,separators=(',',':')))
+    row=normalize(doc);row.update(source=url,fetched_at_utc=datetime.now(timezone.utc).isoformat());return t,row
 def main():
     subprocess.run(['node','scripts/export_scores.cjs'],cwd=ROOT,env=dict(os.environ,EXPORT_INPUTS='/tmp/ttm-inputs.json'),check=True)
     inp=json.loads(Path('/tmp/ttm-inputs.json').read_text());fx=inp['fx_krw_usd']
@@ -116,19 +119,21 @@ def main():
     mapping_path.write_text(json.dumps(mapping,separators=(',',':'))+'\n')
     by={v['ticker'].replace('-','.'):v['cik_str'] for v in mapping.values()}
     dest=ROOT/'docs/data/financial_ttm.json';doc=json.loads(dest.read_text()) if dest.exists() else {'rows':{}};errors=[]
+    original_target_count=len(target)
+    target=[t for t in target if doc['rows'].get(t,{}).get('fetched_at_utc','')[:10]!=TODAY] if os.getenv('TTM_REUSE_TODAY') else target
     # Avoid thousands of denied requests on hosted runners; retain sourced cache with a visible refresh error.
     first=next((t for t in target if t.replace('-','.') in by),None)
     if first:
         try:
             t,r=fetch(first,by[first.replace('-','.')]);doc['rows'][t]=r
-        except urllib.error.HTTPError as e:
-            if e.code in [403,429]:
-                doc['refresh_error']='SEC API access unavailable from this runner: HTTP '+str(e.code)
+        except (urllib.error.HTTPError,urllib.error.URLError) as e:
+            if getattr(e,'code',None) in [403,429] or '403' in str(e) or '429' in str(e):
+                doc['refresh_error']='SEC API access unavailable from this runner: HTTP '+str(e)
                 doc['refresh_attempted_at_utc']=datetime.now(timezone.utc).isoformat()
                 dest.write_text(json.dumps(doc,separators=(',',':'))+'\n')
                 print(doc['refresh_error'],flush=True)
                 return
-            raise
+            errors.append({'ticker':first,'error':str(e)})
     doc.pop('refresh_error',None)
     with ThreadPoolExecutor(max_workers=int(os.getenv('TTM_WORKERS','4'))) as pool:
         jobs={pool.submit(fetch,t,by[t.replace('-','.')]):t for t in target if t.replace('-','.') in by}
@@ -137,8 +142,9 @@ def main():
             try:t,r=f.result();doc['rows'][t]=r
             except Exception as e:errors.append({'ticker':t,'error':str(e)[:200]})
             if n%50==0:
-                dest.write_text(json.dumps(doc,separators=(',',':'))+'\n')
+                doc.update(refresh_status='in_progress',processed_count=n,requested_count=original_target_count,errors=errors,queried_at_utc=datetime.now(timezone.utc).isoformat())
+                tmp=dest.with_suffix('.tmp');tmp.write_text(json.dumps(doc,separators=(',',':'))+'\n');tmp.replace(dest)
                 print('SEC TTM',n,'/',len(jobs),'errors',len(errors),flush=True)
-    doc.update(queried_at_utc=datetime.now(timezone.utc).isoformat(),requested_count=len(target),errors=errors,unmapped=[t for t in target if t.replace('-','.') not in by],method='All four F tests: latest contiguous TTM vs matching year-ago TTM; assets average period opening and closing. No FY fallback, missing not zero. SEC standard concepts only; facts with accession numbers retained. Latest filings may be newer than price date.')
+    doc.update(refresh_status='partial' if errors else 'complete',queried_at_utc=datetime.now(timezone.utc).isoformat(),requested_count=original_target_count,errors=errors,unmapped=[t for t in target if t.replace('-','.') not in by],method='All four F tests: latest contiguous TTM vs matching year-ago TTM; assets average period opening and closing. No FY fallback, missing not zero. SEC standard concepts only; facts with accession numbers retained. Latest filings may be newer than price date.')
     dest.write_text(json.dumps(doc,separators=(',',':'))+'\n');print('TTM complete',sum(r.get('f_inputs_complete',False) and not r.get('stale',False) for r in doc['rows'].values()),'requested',len(target),'errors',len(errors),flush=True)
 if __name__=='__main__':main()
