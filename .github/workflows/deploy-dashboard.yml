@@ -6,7 +6,7 @@ on:
       - 'docs/**'
       - '.github/workflows/deploy-dashboard.yml'
   workflow_run:
-    workflows: ['Complete Base Universe Financial Scores', 'Finalize COMP and F Scores', 'Verified SEC Ownership Data', 'Latest Annual Financial Score Inputs', 'Latest Institutional Ownership Refresh', 'US Equity Snapshot & Daily Refresh']
+    workflows: ['Recalculate TTM Investment Rules', 'Complete Base Universe Financial Scores', 'Finalize COMP and F Scores', 'Verified SEC Ownership Data', 'Latest Annual Financial Score Inputs', 'Latest Institutional Ownership Refresh', 'US Equity Snapshot & Daily Refresh']
     types: [completed]
     branches: [main]
   workflow_dispatch:
