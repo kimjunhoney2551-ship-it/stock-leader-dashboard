@@ -17,7 +17,7 @@ from price_cache import load,to_frame,from_frame,update_frame,persist
 
 LIQUIDITY_MIN_USD=5_000_000
 HISTORY_BARS_REQUIRED=270
-SAFE_MIN_DAYS=10
+SAFE_MIN_DAYS=30
 
 def as_of_frame(frame, market_date):
     if frame is None or frame.empty:
@@ -88,11 +88,11 @@ def daily_refresh(tickers, market_date, warnings, extract_symbol):
 
     # Fetch <=35 calendar-day light history for the entire universe. On later
     # days, cached stocks request <=12 calendar days and missing stocks retry.
-    has_cache=[t for t in tickers if frames.get(t) is not None and len(frames[t])>=10]
+    has_cache=[t for t in tickers if frames.get(t) is not None and len(frames[t])>=30]
     have=set(has_cache)
     no_cache=[t for t in tickers if t not in have]
     update_chunks(has_cache,(market_date-timedelta(days=12)).isoformat(),"recent")
-    update_chunks(no_cache,(market_date-timedelta(days=35)).isoformat(),"liquidity_probe")
+    update_chunks(no_cache,(market_date-timedelta(days=55)).isoformat(),"liquidity_probe")
 
     ref=as_of_frame(frames.get("SPY"),market_date)
     if ref is None:
@@ -130,7 +130,7 @@ def daily_refresh(tickers, market_date, warnings, extract_symbol):
     full={t:as_of_frame(frames.get(t),market_date) for t in shortlist
           if frames.get(t) is not None and len(as_of_frame(frames.get(t),market_date))>=61}
     meta={
-        "screen_method":"10-session close × volume daily mean; latest SPY market session verified",
+        "screen_method":"30-session close × volume daily mean; latest SPY market session verified",
         "screen_reference_session":session.isoformat(),
         "screen_min_avg_value_usd":LIQUIDITY_MIN_USD,
         "screen_total":sum(1 for t in tickers if t not in ("SPY","KRW=X")),
