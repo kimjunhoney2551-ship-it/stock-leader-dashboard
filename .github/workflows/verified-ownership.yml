@@ -23,10 +23,11 @@ jobs:
         with:
           python-version: '3.11'
       - run: python scripts/verified_ownership.py
+      - run: python scripts/filing_event_scores.py
       - run: node scripts/export_scores.cjs
       - name: Publish data and calculated scores
         run: |
-          git add docs/data/ownership_verified.json docs/data/screen_results.json docs/data/screen_results.csv
+          git add docs/data/filing_scores.json docs/data/ownership_verified.json docs/data/screen_results.json docs/data/screen_results.csv
           if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
