@@ -18,7 +18,7 @@ const context={
      institution_report:x.r.inst_holder_report_asof||null,institution_comparison:x.r.inst_change_prev_asof||null,institution_change_pct:x.r.inst_change_pct??null,institution_matched_holders:x.r.inst_change_sample_holders??null,institution_source:x.r.inst_change_source||null,filings_13dg:x.r.ownership_evidence?.filings_13dg||[],
      missing_comp:x.missing,components:x.components}));
    const out={price_asof:data.market_session,generated_at_utc:new Date().toISOString(),method:'Approved 12 weekly rank mean minus population SD; 90-day verified positive 13D/G events. Price date and latest disclosures differ. Financial percentiles use available base-universe inputs. Missing inputs stay bounded.',
-     counts,comp_complete:items.filter(x=>x.baseReady&&x.missing===0).length,both_complete:items.filter(x=>x.baseReady&&x.missing===0&&x.f!==null).length,f_complete:items.filter(x=>x.f!==null).length,f4_candidates:chosen.filter(x=>x.f===4).length,rows};
+     counts,comp_complete:items.filter(x=>x.baseReady&&x.missing===0).length,both_complete:items.filter(x=>x.baseReady&&x.missing===0&&x.f!==null).length,f_complete:items.filter(x=>x.f!==null).length,f4_candidates:items.filter(x=>x.f===4&&['watch','pass','shadow'].includes(x.status)).length,rows};
    fs.writeFileSync(path.join(root,'docs/data/screen_results.json'),JSON.stringify(out,null,2)+'\n');
    const columns=['ticker','name','sector','market_cap_krw','status','comp_score','comp_lower','comp_upper','f_score','f_lower','f_upper','composite','rs1m','rs3m','beta','financial_period','institution_report','institution_comparison','institution_change_pct','institution_matched_holders','institution_source','missing_comp'];
    const esc=v=>v==null?'':'"'+String(v).replace(/"/g,'""')+'"';
