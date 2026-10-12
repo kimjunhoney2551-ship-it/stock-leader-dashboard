@@ -79,7 +79,7 @@ async function addCorrectedRuleInputs(payload){
  // Discard FY/legacy F values even when the TTM endpoint is unavailable.
  for(const row of payload.rows){for(const key of fields)delete row[key];delete row.op_income_growth_pct;row.fy_comparison_period='TTM 자료 미확인';row.financial_basis='TTM_YOY';row.beta=null;row.avg_value_usd=null;}
  try{const r=await fetch('./data/filter_inputs.json?_='+Date.now(),{cache:'no-store'});if(r.ok){const d=await r.json();if(d.market_session===payload.market_session)for(const row of payload.rows){const v=d.rows?.[row.ticker];if(v)Object.assign(row,v);}}}catch(e){}
- try{const r=await fetch('./data/financial_ttm.json?_='+Date.now(),{cache:'no-store'});if(r.ok){const d=await r.json();for(const row of payload.rows){const v=d.rows?.[row.ticker];if(!v||v.stale||v.error)continue;for(const k of [...fields,'op_income_growth_pct'])if(typeof v[k]==='number'&&Number.isFinite(v[k]))row[k]=v[k];row.fy_comparison_period=v.previous_ttm_start+'~'+v.previous_ttm_end+' → '+v.ttm_start+'~'+v.ttm_end;row.fy_comparison_source=v.source;row.fy_comparison_fetched_at_utc=v.fetched_at_utc;row.ttm_evidence=v;}payload.ttm_checked_at=d.queried_at_utc;}}catch(e){}
+ try{const r=await fetch('./data/financial_ttm.json?_='+Date.now(),{cache:'no-store'});if(r.ok){const d=await r.json();try{const o=await fetch('./data/ttm_overrides.json',{cache:'no-store'});if(o.ok){const a=await o.json();for(const [t,v] of Object.entries(a.rows||{})){if(!d.rows[t]?.ttm_end||v.ttm_end>=d.rows[t].ttm_end)d.rows[t]=v;}}}catch(e){}for(const row of payload.rows){const v=d.rows?.[row.ticker];if(!v||v.stale||v.error||Date.now()-Date.parse(v.ttm_end)>220*86400000)continue;for(const k of [...fields,'op_income_growth_pct'])if(typeof v[k]==='number'&&Number.isFinite(v[k]))row[k]=v[k];row.fy_comparison_period=v.previous_ttm_start+'~'+v.previous_ttm_end+' → '+v.ttm_start+'~'+v.ttm_end;row.fy_comparison_source=v.source;row.fy_comparison_fetched_at_utc=v.fetched_at_utc;row.ttm_evidence=v;}payload.ttm_checked_at=d.queried_at_utc;}}catch(e){}
 }
 
 async function addLatestFinancialInputs(payload){
@@ -204,7 +204,7 @@ function evaluate(r){
  var rs3=ok(r.ret_3m)&&ok(data.sp500_returns&&data.sp500_returns.spy3m)?r.ret_3m-data.sp500_returns.spy3m:null;
  var comp=ok(fFinal)&&ok(rs1)&&ok(rs3)&&ok(r.gpm_delta_pp)?fFinal/4*40+scores.ret_1m(r.ret_1m)*30+scores.ret_3m(r.ret_3m)*20+scores.gpm_delta_pp(r.gpm_delta_pp)*10:null;
  var fx=data.fx_krw_usd||1350,capKnown=ok(r.market_cap_usd);
- var fail=ok(r.avg_value_usd)&&r.avg_value_usd<5000000||ok(r.beta)&&r.beta>2||(capKnown&&r.market_cap_usd*fx<10000000000);
+ var fail=ok(r.avg_value_usd)&&r.avg_value_usd<5000000||ok(r.beta)&&r.beta>2||(capKnown&&r.market_cap_usd*fx<500000000000);
  var priceOK=r.price_asof===data.market_session,baseReady=capKnown&&ok(r.avg_value_usd)&&ok(r.beta)&&priceOK;
  var low=parts.low,up=0;
  var knownMax=parts.components.reduce((sum,c)=>sum+(ok(c.value)?c.max:0),0);
@@ -214,7 +214,8 @@ function evaluate(r){
  if(fail){status='fail';why=ok(r.avg_value_usd)&&r.avg_value_usd<5000000?'거래대금 미달':ok(r.beta)&&r.beta>2?'β > 2':'시총 5,000억 미만';}
  else if(up<80){status='fail';why='COMP 상한 80 미만';}
  else if(confirmed){status='pass';why='정식통과';}
- else if(baseReady&&parts.missing===0&&low>=80&&fFinal!==null&&fFinal<4){status='shadow';why='F-score 미달';}
+ else if(baseReady&&parts.missing===0&&low>=80&&fFinal===3){status='shadow';why='F-score 3/4';}
+ else if(baseReady&&parts.missing===0&&low>=80&&fFinal!==null&&fFinal<3){status='fail';why='F-score 2점 이하';}
  else if(ok(r.avg_value_usd)&&r.avg_value_usd>=5000000&&ok(r.beta)&&r.beta<=2&&priceOK){status='watch';why=capKnown?'COMP/F 검증대기':'시총·COMP/F 검증대기';}
  return {baseReady:baseReady&&!fail,components:parts.components,r:r,status:status,why:why,low:low,up:up,knownMax:knownMax,missing:parts.missing,f:fFinal,fKnown:fKnown,fKnownScore:fScore,composite:comp,rs1:rs1,rs3:rs3};
 }
@@ -234,7 +235,7 @@ function build(){
  var counts={};items.forEach(function(x){counts[x.status]=(counts[x.status]||0)+1;});
  var price=data.rows.filter(function(r){return r.price_asof===data.market_session;}).length;
  var liqBeta=data.rows.filter(function(r){return r.price_asof===data.market_session&&ok(r.avg_value_usd)&&r.avg_value_usd>=5000000&&ok(r.beta)&&r.beta<=2;}).length;
- var basic=items.filter(function(x){return !((x.status==='fail')&&x.why!=='COMP 상한 80 미만')&&ok(x.r.market_cap_usd)&&ok(x.r.avg_value_usd)&&ok(x.r.beta)&&x.r.avg_value_usd>=5000000&&x.r.beta<=2&&x.r.market_cap_usd*(data.fx_krw_usd||1350)>=10000000000;}).length;
+ var basic=items.filter(function(x){return x.baseReady;}).length;
  var report=data.market_session||'미확인';
  $('total').textContent=format(data.universe_count||data.rows.length,0);
  $('priced').textContent=format(price,0);
