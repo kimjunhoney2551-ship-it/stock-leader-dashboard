@@ -147,7 +147,7 @@ def stats(frame):
     if len(dollars)>=60 and dollars.iloc[-60:].notna().all():
         d10=num(dollars.iloc[-10:].mean())
         d60=num(dollars.iloc[-60:].mean())
-        out["avg_value_usd"]=round(d10,2) if d10 is not None else None
+        out["avg_value_usd"]=round(float(dollars.iloc[-30:].mean()),2)
         if d10 is not None and d60 and d60>0:
             out["rvol10_60"]=round(d10/d60,7)
     if len(data)>=20:
@@ -164,7 +164,7 @@ def beta_asof(equity, benchmark):
     a=pd.to_numeric(equity["Close"],errors="coerce").pct_change(fill_method=None)
     b=pd.to_numeric(benchmark["Close"],errors="coerce").pct_change(fill_method=None)
     d=pd.concat([a,b],axis=1,join="inner").dropna().tail(252)
-    if len(d)<126:
+    if len(d)<252:
         return None
     variation=float(d.iloc[:,1].var())
     if not variation>0:
