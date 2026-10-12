@@ -1,6 +1,6 @@
 {
   "price_asof": "2026-10-09",
-  "generated_at_utc": "2026-10-12T13:21:41.145Z",
+  "generated_at_utc": "2026-10-12T13:21:51.952Z",
   "method": "Approved 12 weekly rank mean minus population SD; 90-day verified positive 13D/G events. Price date and latest disclosures differ. Financial percentiles use available base-universe inputs. Missing inputs stay bounded.",
   "base_count": 2370,
   "base_f_complete": 574,
@@ -2417,8 +2417,8 @@
       "asset_turnover_delta": 0.1892931053328316,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
-      "institution_change_pct": -4.025771930632915,
-      "institution_matched_holders": 80,
+      "institution_change_pct": -4.164282209172853,
+      "institution_matched_holders": 78,
       "institution_source": "https://tradefilings.com/stock/CDNA",
       "filings_13dg": [
         {
@@ -4865,8 +4865,8 @@
       "asset_turnover_delta": -0.013785449548551876,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
-      "institution_change_pct": 3.4878094660146575,
-      "institution_matched_holders": 101,
+      "institution_change_pct": 3.5393239525723486,
+      "institution_matched_holders": 98,
       "institution_source": "https://tradefilings.com/stock/CAKE",
       "filings_13dg": [
         {
@@ -6861,8 +6861,8 @@
       "asset_turnover_delta": 0.024561186264735635,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
-      "institution_change_pct": -0.05253325664424935,
-      "institution_matched_holders": 166,
+      "institution_change_pct": -0.19467474566916554,
+      "institution_matched_holders": 164,
       "institution_source": "https://tradefilings.com/stock/AMGN",
       "filings_13dg": [],
       "missing_comp": 0,
@@ -6955,8 +6955,8 @@
       "asset_turnover_delta": 0.03271766559478739,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
-      "institution_change_pct": -0.5294965825962006,
-      "institution_matched_holders": 142,
+      "institution_change_pct": -0.31254109878916525,
+      "institution_matched_holders": 140,
       "institution_source": "https://tradefilings.com/stock/ZBRA",
       "filings_13dg": [
         {
@@ -7952,8 +7952,8 @@
       "asset_turnover_delta": -0.013364768488352996,
       "institution_report": "2026-06-30",
       "institution_comparison": "2026-03-31",
-      "institution_change_pct": -3.7152684019591042,
-      "institution_matched_holders": 150,
+      "institution_change_pct": -4.383342943712131,
+      "institution_matched_holders": 148,
       "institution_source": "https://tradefilings.com/stock/FFIV",
       "filings_13dg": [
         {
@@ -8441,6 +8441,135 @@
       ]
     },
     {
+      "ticker": "PTC",
+      "name": "PTC Inc. - Common Stock",
+      "sector": "정보기술",
+      "market_cap_krw": 28368697174018.2,
+      "status": "fail",
+      "comp_score": 53.28133007650164,
+      "comp_lower": 53.28133007650164,
+      "comp_upper": 53.28133007650163,
+      "f_score": 4,
+      "f_known": 4,
+      "f_lower": 4,
+      "f_upper": 4,
+      "composite": 98.09316480522617,
+      "rs1m": 48.072444,
+      "rs3m": 50.85666,
+      "beta": 0.6106968979104558,
+      "financial_period": "2024-07-01~2025-06-30 → 2025-07-01~2026-06-30",
+      "financial_basis": "TTM_YOY",
+      "financial_source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000857005.json",
+      "revenue_growth_pct": 19.49831268724884,
+      "gpm_delta_pp": 2.3369150244559433,
+      "sga_ratio_delta_pp": -3.165621526365614,
+      "asset_turnover_delta": 0.06354901724761336,
+      "institution_report": "2026-06-30",
+      "institution_comparison": "2026-03-31",
+      "institution_change_pct": 2.9897380776801707,
+      "institution_matched_holders": 149,
+      "institution_source": "https://tradefilings.com/stock/PTC",
+      "filings_13dg": [
+        {
+          "accession": "0001897612-26-000581",
+          "form": "SC 13G/A",
+          "filed": "2026-08-14",
+          "filer": "T. Rowe Price Investment Management, Inc.",
+          "filer_cik": 1897612,
+          "subject": "PTC INC.",
+          "subject_cik": 857005,
+          "ticker": "PTC",
+          "pct_owned": null,
+          "shares": 13063201,
+          "event_date": null,
+          "source_url": "https://www.sec.gov/Archives/edgar/data/857005/000189761226000581/0001897612-26-000581-index.htm",
+          "superseded_by": null,
+          "source_ingested_at": "2026-08-26T23:44:08.049060+00:00",
+          "revised_at": null
+        },
+        {
+          "accession": "0000093751-26-000528",
+          "form": "SC 13G",
+          "filed": "2026-08-07",
+          "filer": "STATE STREET CORP",
+          "filer_cik": 93751,
+          "subject": "PTC INC.",
+          "subject_cik": 857005,
+          "ticker": "PTC",
+          "pct_owned": null,
+          "shares": 6458451,
+          "event_date": null,
+          "source_url": "https://www.sec.gov/Archives/edgar/data/857005/000009375126000528/0000093751-26-000528-index.htm",
+          "superseded_by": null,
+          "source_ingested_at": "2026-08-26T23:44:08.049060+00:00",
+          "revised_at": null
+        }
+      ],
+      "missing_comp": 0,
+      "components": [
+        {
+          "max": 8,
+          "value": 2.4007630923346133
+        },
+        {
+          "max": 12,
+          "value": 3.9269558116189223
+        },
+        {
+          "max": 12,
+          "value": 1.1778152018959545
+        },
+        {
+          "max": 8,
+          "value": 0.28203993836538066
+        },
+        {
+          "max": 6.25,
+          "value": 6.2394470240607856
+        },
+        {
+          "max": 6.25,
+          "value": 6.2394470240607856
+        },
+        {
+          "max": 6.25,
+          "value": 6.133917264668637
+        },
+        {
+          "max": 6.25,
+          "value": 5.537674124102997
+        },
+        {
+          "max": 7,
+          "value": 0.848037146475306
+        },
+        {
+          "max": 5,
+          "value": 4.9894470240607856
+        },
+        {
+          "max": 5,
+          "value": 4
+        },
+        {
+          "max": 3,
+          "value": 2
+        },
+        {
+          "max": 5,
+          "value": 3.9600170140365805
+        },
+        {
+          "max": 5,
+          "value": 1.719634305616021
+        },
+        {
+          "max": 5,
+          "value": 3.8261351052048727
+        }
+      ]
+    },
+    {
       "ticker": "GME",
       "name": "GameStop Corporation Common Stock",
       "sector": "경기소비재",
@@ -8634,135 +8763,6 @@
         {
           "max": 5,
           "value": 4.806201550387597
-        }
-      ]
-    },
-    {
-      "ticker": "PTC",
-      "name": "PTC Inc. - Common Stock",
-      "sector": "정보기술",
-      "market_cap_krw": 28368697174018.2,
-      "status": "fail",
-      "comp_score": 52.28133007650164,
-      "comp_lower": 52.28133007650164,
-      "comp_upper": 52.28133007650163,
-      "f_score": 4,
-      "f_known": 4,
-      "f_lower": 4,
-      "f_upper": 4,
-      "composite": 98.09316480522617,
-      "rs1m": 48.072444,
-      "rs3m": 50.85666,
-      "beta": 0.6106968979104558,
-      "financial_period": "2024-07-01~2025-06-30 → 2025-07-01~2026-06-30",
-      "financial_basis": "TTM_YOY",
-      "financial_source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000857005.json",
-      "revenue_growth_pct": 19.49831268724884,
-      "gpm_delta_pp": 2.3369150244559433,
-      "sga_ratio_delta_pp": -3.165621526365614,
-      "asset_turnover_delta": 0.06354901724761336,
-      "institution_report": "2026-06-30",
-      "institution_comparison": "2026-03-31",
-      "institution_change_pct": 1.7629906640435289,
-      "institution_matched_holders": 151,
-      "institution_source": "https://tradefilings.com/stock/PTC",
-      "filings_13dg": [
-        {
-          "accession": "0001897612-26-000581",
-          "form": "SC 13G/A",
-          "filed": "2026-08-14",
-          "filer": "T. Rowe Price Investment Management, Inc.",
-          "filer_cik": 1897612,
-          "subject": "PTC INC.",
-          "subject_cik": 857005,
-          "ticker": "PTC",
-          "pct_owned": null,
-          "shares": 13063201,
-          "event_date": null,
-          "source_url": "https://www.sec.gov/Archives/edgar/data/857005/000189761226000581/0001897612-26-000581-index.htm",
-          "superseded_by": null,
-          "source_ingested_at": "2026-08-26T23:44:08.049060+00:00",
-          "revised_at": null
-        },
-        {
-          "accession": "0000093751-26-000528",
-          "form": "SC 13G",
-          "filed": "2026-08-07",
-          "filer": "STATE STREET CORP",
-          "filer_cik": 93751,
-          "subject": "PTC INC.",
-          "subject_cik": 857005,
-          "ticker": "PTC",
-          "pct_owned": null,
-          "shares": 6458451,
-          "event_date": null,
-          "source_url": "https://www.sec.gov/Archives/edgar/data/857005/000009375126000528/0000093751-26-000528-index.htm",
-          "superseded_by": null,
-          "source_ingested_at": "2026-08-26T23:44:08.049060+00:00",
-          "revised_at": null
-        }
-      ],
-      "missing_comp": 0,
-      "components": [
-        {
-          "max": 8,
-          "value": 2.4007630923346133
-        },
-        {
-          "max": 12,
-          "value": 3.9269558116189223
-        },
-        {
-          "max": 12,
-          "value": 1.1778152018959545
-        },
-        {
-          "max": 8,
-          "value": 0.28203993836538066
-        },
-        {
-          "max": 6.25,
-          "value": 6.2394470240607856
-        },
-        {
-          "max": 6.25,
-          "value": 6.2394470240607856
-        },
-        {
-          "max": 6.25,
-          "value": 6.133917264668637
-        },
-        {
-          "max": 6.25,
-          "value": 5.537674124102997
-        },
-        {
-          "max": 7,
-          "value": 0.848037146475306
-        },
-        {
-          "max": 5,
-          "value": 4.9894470240607856
-        },
-        {
-          "max": 5,
-          "value": 3
-        },
-        {
-          "max": 3,
-          "value": 2
-        },
-        {
-          "max": 5,
-          "value": 3.9600170140365805
-        },
-        {
-          "max": 5,
-          "value": 1.719634305616021
-        },
-        {
-          "max": 5,
-          "value": 3.8261351052048727
         }
       ]
     }
