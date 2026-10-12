@@ -110,7 +110,8 @@ def main():
     target=[r['ticker'] for r in inp['rows'] if r.get('price_asof')==inp['market_session'] and (r.get('market_cap_usd') or 0)*fx>=5e11 and (r.get('avg_value_usd') or 0)>=5e6 and r.get('beta') is not None and r['beta']<=2]
     if os.getenv('TTM_TICKERS'):target=os.environ['TTM_TICKERS'].split(',')
     mapping_path=ROOT/'cache/sec_tickers.json'
-    mapping=get('https://www.sec.gov/files/company_tickers.json');mapping_path.write_text(json.dumps(mapping,separators=(',',':'))+'\n')
+    mapping=json.loads(mapping_path.read_text()) if mapping_path.exists() else get('https://www.sec.gov/files/company_tickers.json')
+    mapping_path.write_text(json.dumps(mapping,separators=(',',':'))+'\n')
     by={v['ticker'].replace('-','.'):v['cik_str'] for v in mapping.values()}
     dest=ROOT/'docs/data/financial_ttm.json';doc=json.loads(dest.read_text()) if dest.exists() else {'rows':{}};errors=[]
     with ThreadPoolExecutor(max_workers=4) as pool:
