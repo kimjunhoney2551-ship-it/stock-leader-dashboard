@@ -392,14 +392,17 @@ async function addLatestFinancialInputs(payload){
     const response=await fetch('./data/financial_latest.json?_='+Date.now(),{cache:'no-store'});
     if(!response.ok)return;
     const doc=await response.json();if(!doc.rows||Array.isArray(doc.rows))return;
+    try{const o=await fetch('./data/financial_overrides.json',{cache:'no-store'});if(o.ok){const v=await o.json();for(const [t,e] of Object.entries(v.rows||{})){if(doc.rows[t]&&e.financial_period_current===doc.rows[t].financial_period_current)Object.assign(doc.rows[t],e);}}}catch(e){}
     for(const row of payload.rows){
       const incoming=doc.rows[row.ticker];if(!incoming||!incoming.financial_period_current)continue;
+      const op=incoming.raw_annual?.operating_income;
+      if(!Number.isFinite(incoming.op_income_growth_pct)&&Array.isArray(op)&&op.length===2&&op.every(v=>typeof v==='number'&&Number.isFinite(v))&&op[1]!==0)incoming.op_income_growth_pct=100*(op[0]-op[1])/Math.abs(op[1]);
       // Keep all four F tests on the same pair of fiscal years and provider.
       for(const key of ['revenue_growth_pct','gpm_delta_pp','sga_ratio_delta_pp','asset_turnover_delta'])delete row[key];
       for(const key of ['revenue_growth_pct','gpm_delta_pp','sga_ratio_delta_pp','asset_turnover_delta','op_income_growth_pct']){
         if(typeof incoming[key]==='number'&&Number.isFinite(incoming[key]))row[key]=incoming[key];
       }
-      if(!Number.isFinite(row.roe_pct)&&Number.isFinite(incoming.roe_fallback_pct)){row.roe_pct=incoming.roe_fallback_pct;row.roe_source='Annual net income / average common equity';}
+      if(!Number.isFinite(row.roe_pct)&&Number.isFinite(incoming.roe_fallback_pct)){row.roe_pct=incoming.roe_fallback_pct;row.roe_source=incoming.roe_source||'Annual net income / average common equity';}
       row.fy_comparison_period=incoming.financial_period_previous+' → '+incoming.financial_period_current;
       row.fy_comparison_source=incoming.source;
       row.fy_comparison_fetched_at_utc=incoming.fetched_at_utc;
