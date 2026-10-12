@@ -212,14 +212,14 @@ function percentileTrans(v,field,transform=x=>x){
 function addComponent(components,key,label,points){components.push({key,label,points,max:points===null?null:undefined});}
 function institutionTooltip(r){const recent=r.inst_holder_report_asof||'미확인',old=r.inst_change_prev_asof||'비교자료 없음',newer=r.inst_change_asof||recent;const sample=r.inst_change_sample_holders||r.inst_holder_sample_count||0;return '기관 최신 보고일: '+recent+' / 변화 비교: '+old+' → '+newer+' / 표본 기관: '+sample+' / 원천: '+(r.inst_change_source||r.inst_holder_source||'미확인')+' / 주가 기준일과 다를 수 있음';}
 function calculateRow(r){const c=[],part=(group,label,max,score)=>{c.push({group,label,max,value:valid(score)?score:null})};
-for(const [p,w] of [['4w',8],['12w',12],['25w',12],['52w',8]]){part('순위모멘텀',`${p} 수익률 순위`,w,valid(r['ret_'+p])?percentRank(r['ret_'+p],'ret_'+p)*w:null);}
+for(const [p,w] of [[4,8],[12,12],[25,12],[52,8]]){part('순위모멘텀',`${p}주 순위 평균−표준편차`,w,r.weekly_rank?.components?.[String(p)]?.score??null);}
 for(const [p,w] of [['1w',6.25],['1m',6.25],['3m',6.25]]){part('가격모멘텀',`${p} 상대강도`,w,valid(r['ret_'+p])?percentRank(r['ret_'+p],'ret_'+p)*w:null);}
 part('가격모멘텀','52주 고점 근접도',6.25,valid(r.high52_gap_pct)?percentRank(r.high52_gap_pct,'high52_gap_pct')*6.25:null);
 part('스마트머니','20일 CMF',7,valid(r.cmf20)?percentRank(r.cmf20,'cmf20')*7:null);
 part('스마트머니','거래대금 상대강도',5,valid(r.rvol10_60)?percentRank(r.rvol10_60,'rvol10_60')*5:null);
 let inst=null;if(valid(r.inst_change_pct)){const x=r.inst_change_pct;inst=x>=5?5:x>=2?4:x>=0?3:x>=-2?2:x>-5?1:0;}
 part('스마트머니',r.inst_change_method==='matched_top_institutions_proxy'?'기관보유 변화(동일 기관 표본)':'기관보유 지분 변화',5,inst);
-let evt=null; if(r.filing_13dg!=null){const x=String(r.filing_13dg).trim().toLowerCase();evt=x==='13d'?3:x==='13g'?2:['none','없음','0','no'].includes(x)?0:null;}
+let evt=r.filing_event_score?.score??null;
 part('스마트머니','13D / 13G 공시',3,evt);
 part('밸류에이션','ROE 백분위',5,valid(r.roe_pct)?percentRank(r.roe_pct,'roe_pct')*5:null);
 part('밸류에이션','선행 PER 역수',5,valid(r.forward_pe)?(r.forward_pe<=0?0:percentileTrans(r.forward_pe,'forward_pe',x=>x<=0?-1:1/x)*5):null);
@@ -231,7 +231,7 @@ const compParts=[f===null?null:f/4*40,rs1===null?null:percentRank(r.ret_1m,'ret_
 const composite=compParts.every(valid)?compParts.reduce((a,b)=>a+b,0):null;
 const req=['market_cap_usd','avg_value_usd','beta'];const basicMissing=req.filter(k=>!valid(r[k]));const basicFail=valid(r.market_cap_usd)&&r.market_cap_usd*state.settings.fx<1e10||valid(r.avg_value_usd)&&r.avg_value_usd<5e6||valid(r.beta)&&r.beta>2;
 let status='pending',why='데이터 검증대기';if(basicFail){status='fail';why='기본필터 탈락';}else if(basicMissing.length){status='pending';why='기본필터 미확인';}else if(upper<80){status='fail';why='COMP 상한 80 미만';}else if(comp===null){status='pending';why='COMP 구성항목 미확인';}else if(comp<80){status='fail';why='COMP 80점 미만';}else if(f===null){status='pending';why='F-score 확인 필요';}else if(f<4){status='shadow';why='F-score 4점 미달';}else if(composite===null){status='pending';why='복합점수 미확인';}else{status='pass';why='정식통과';}
-if(state.remoteIncomplete&&status==='pass'){status='pending';why='미국 전체 유니버스 커버리지 미완료 · 순위 잠정';}
+if(!r.weekly_rank?.complete&&status==='pass'){status='pending';why='미국 전체 유니버스 커버리지 미완료 · 순위 잠정';}
 if(state.mode==='auto'&&r.price_asof!==state.settings.asof&&status==='pass'){status='pending';why='미국장 기준일과 주가 날짜 불일치';}
 let check=['ret_4w','ret_12w','ret_25w','ret_52w','ret_1w','ret_1m','ret_3m','high52_gap_pct','cmf20','rvol10_60','inst_change_pct','filing_13dg','roe_pct','forward_pe','op_income_growth_pct','revenue_growth_pct','gpm_delta_pp','sga_ratio_delta_pp','asset_turnover_delta'];
 return {...r,score:comp,lo:lower,hi:upper,missing:missing.length,components:c,f,fparts,fKnown,fMissing,rs1,rs3,composite,status,why,basicMissing:basicMissing.map(k=>labelMap[k]),missingFields:check.filter(k=>r[k]===null||r[k]===undefined)};
@@ -399,6 +399,7 @@ async function addLatestFinancialInputs(payload){
       for(const key of ['revenue_growth_pct','gpm_delta_pp','sga_ratio_delta_pp','asset_turnover_delta','op_income_growth_pct']){
         if(typeof incoming[key]==='number'&&Number.isFinite(incoming[key]))row[key]=incoming[key];
       }
+      if(!Number.isFinite(row.roe_pct)&&Number.isFinite(incoming.roe_fallback_pct)){row.roe_pct=incoming.roe_fallback_pct;row.roe_source='Annual net income / average common equity';}
       row.fy_comparison_period=incoming.financial_period_previous+' → '+incoming.financial_period_current;
       row.fy_comparison_source=incoming.source;
       row.fy_comparison_fetched_at_utc=incoming.fetched_at_utc;
@@ -425,6 +426,16 @@ async function addVerifiedOwnership(payload){
  }catch(e){payload.ownership_warning=String(e);}
 }
 
+async function addFinalScoreInputs(payload){
+ try{
+  const res=await fetch('./data/weekly_ranks.json?_='+Date.now(),{cache:'no-store'});
+  if(res.ok){const d=await res.json();if(d.market_session===payload.market_session){payload.weekly_rank_meta=d;for(const r of payload.rows){r.weekly_rank=d.rows[r.ticker]||null;}}}
+ }catch(e){payload.weekly_rank_warning=String(e);}
+ try{
+  const res=await fetch('./data/filing_scores.json?_='+Date.now(),{cache:'no-store'});
+  if(res.ok){const d=await res.json();payload.filing_score_meta=d;for(const r of payload.rows){r.filing_event_score=d.rows[r.ticker]||null;}}
+ }catch(e){payload.filing_score_warning=String(e);}
+}
 async function addLatestInstitutionalCache(payload){
   try{
     const response=await fetch('./data/institutional.json?_='+Date.now(),{cache:'no-store'});
@@ -500,7 +511,8 @@ async function syncRemote(force=false){
   await addLatestFinancialInputs(payload);
   await addLatestInstitutionalCache(payload);
   await addVerifiedOwnership(payload);
-  const marketStamp=(payload.generated_at_utc||'baseline')+'|'+(tvDoc?.queried_at_utc||'unavailable')+'|'+(payload.institution_cache_checked_at||'')+'|'+(payload.financial_checked_at||'')+'|'+(payload.ownership_verified_at||'');
+  await addFinalScoreInputs(payload);
+  const marketStamp=(payload.generated_at_utc||'baseline')+'|'+(tvDoc?.queried_at_utc||'unavailable')+'|'+(payload.institution_cache_checked_at||'')+'|'+(payload.financial_checked_at||'')+'|'+(payload.ownership_verified_at||'')+'|'+(payload.weekly_rank_meta?.generated_at_utc||'')+'|'+(payload.filing_score_meta?.asof||'');
   const isNew=force||marketStamp!==autoSyncState.stamp;
   if(isNew){
    const remote=new Map(payload.rows.filter(x=>x&&x.ticker).map(r=>[r.ticker,r]));
