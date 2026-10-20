@@ -1,17 +1,17 @@
 {
   "price_asof": "2026-10-16",
-  "generated_at_utc": "2026-10-19T01:20:26.697Z",
+  "generated_at_utc": "2026-10-20T00:17:15.564Z",
   "method": "Approved 12 weekly rank mean minus population SD; 90-day verified positive 13D/G events. Price date and latest disclosures differ. Financial percentiles use available base-universe inputs. Missing inputs stay bounded.",
   "base_count": 0,
   "base_f_complete": 0,
   "base_operating_income_complete": 0,
   "counts": {
-    "pending": 6130,
-    "fail": 195
+    "pending": 6119,
+    "fail": 202
   },
   "comp_complete": 0,
   "both_complete": 0,
-  "f_complete": 575,
+  "f_complete": 573,
   "f4_candidates": 0,
   "rows": []
 }
