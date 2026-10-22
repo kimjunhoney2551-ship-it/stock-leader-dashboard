@@ -655,7 +655,6 @@ BBY,"Best Buy Co., Inc. Common Stock",NYSE
 BC,Brunswick Corporation Common Stock,NYSE
 BCAL,California BanCorp - Common Stock,NASDAQ
 BCAT,BlackRock Capital Allocation Term Trust Common Shares of Beneficial Interest,NYSE
-BCAT.R,"BlackRock Capital Allocation Term Trust Rights (expiring October 21, 2026) Rights",NYSE
 BCAX,Bicara Therapeutics Inc. - Common Stock,NASDAQ
 BCBP,"BCB Bancorp, Inc. (NJ) - Common Stock",NASDAQ
 BCC,"Boise Cascade, L.L.C. Common Stock",NYSE
@@ -3745,7 +3744,9 @@ MSDL,Morgan Stanley Direct Lending Fund Common Stock,NYSE
 MSEX,Middlesex Water Company - Common Stock,NASDAQ
 MSFT,Microsoft Corporation - Common Stock,NASDAQ
 MSGE,Madison Square Garden Entertainment Corp. Class A Common Stock,NYSE
+MSGK.V,Madison Square Garden Sports Corp. Class A Common Stock When-Issued,NYSE
 MSGM,Motorsport Games Inc. - Class A Common Stock,NASDAQ
+MSGR.V,MSG Rangers Corp. Class A Common Stock When-Issued,NYSE
 MSGS,Madison Square Garden Sports Corp. Class A Common Stock (New),NYSE
 MSGY,Masonglory Limited - Class A Ordinary Shares,NASDAQ
 MSI,"Motorola Solutions, Inc. Common Stock",NYSE
@@ -4544,7 +4545,7 @@ POET,POET Technologies Inc. - Common Shares,NASDAQ
 POLA,"Polar Power, Inc. - Common Stock",NASDAQ
 POLE,Andretti Acquisition Corp. II - Class A Ordinary Shares,NASDAQ
 POLEU,Andretti Acquisition Corp. II - Unit,NASDAQ
-POM,POMDOCTOR LIMITED - American Depositary Shares,NASDAQ
+POM,POMDOCTOR LIMITED - Class A Ordinary Shares,NASDAQ
 PONO,"Pono Capital Four, Inc. - Class A Ordinary Shares",NASDAQ
 PONOR,"Pono Capital Four, Inc. - Rights",NASDAQ
 PONOU,"Pono Capital Four, Inc. - Units",NASDAQ
@@ -5590,7 +5591,7 @@ TM,Toyota Motor Corporation Common Stock,NYSE
 TMC,TMC the metals company Inc. - Common Stock,NASDAQ
 TMCI,"Treace Medical Concepts, Inc. - Common Stock",NASDAQ
 TMCR,The Metals Royalty Company Inc. - Common Stock,NASDAQ
-TMDE,TMD Energy Limited Ordinary Shares,AMEX
+TMDE,TMD Energy Limited Class A Ordinary Shares,AMEX
 TMDX,"TransMedics Group, Inc. - Common Stock",NASDAQ
 TME,"Tencent Music Entertainment Group American Depositary Shares, each representing two Class A Ordinary Shares",NYSE
 TMO,Thermo Fisher Scientific Inc Common Stock,NYSE
