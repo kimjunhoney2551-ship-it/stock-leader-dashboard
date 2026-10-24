@@ -399,6 +399,7 @@ APURR,Aperture AC - Rights,NASDAQ
 APUS,"Apimeds Pharmaceuticals US, Inc. Common Stock",AMEX
 APVO,Aptevo Therapeutics Inc. - Common Stock,NASDAQ
 APWC,"Asia Pacific Wire & Cable Corporation Limited  - Common shares, Par value .01 per share",NASDAQ
+APXC,Apex Critical Metals Corp. - American Depositary Shares,NASDAQ
 APXT,Apex Treasury Corporation - Class A Ordinary Share,NASDAQ
 APXTU,Apex Treasury Corporation - Units,NASDAQ
 APYX,Apyx Medical Corporation - Common Stock,NASDAQ
@@ -3065,7 +3066,7 @@ JHX,James Hardie Industries plc. Ordinary Shares,NYSE
 JILL,"J. Jill, Inc. Common Stock",NYSE
 JJSF,J & J Snack Foods Corp. - Common Stock,NASDAQ
 JKHY,"Jack Henry & Associates, Inc. - Common Stock",NASDAQ
-JKS,JinkoSolar Holding Company Limited American Depositary Shares (each representing 4 Common Shares),NYSE
+JKS,Jinko Holdings Limited American Depositary Shares (each representing 4 Ordinary Shares),NYSE
 JL,J-Long Group Limited - Class A Ordinary Shares,NASDAQ
 JLHL,Julong Holding Limited - Class A Ordinary Shares,NASDAQ
 JLL,Jones Lang LaSalle Incorporated Common Stock,NYSE
@@ -3427,7 +3428,7 @@ LTH,"Life Time Group Holdings, Inc. Common Stock",NYSE
 LTM,"LATAM Airlines Group S.A. American Depositary Shares (each representing two thousand (2,000) shares of Common Stock)",NYSE
 LTRN,Lantern Pharma Inc. - Common Stock,NASDAQ
 LTRX,"Lantronix, Inc. - Common Stock",NASDAQ
-LU,"Lufax Holding Ltd American Depositary Shares, each representing two (2) Ordinary Shares",NYSE
+LU,Lufax Holding Ltd American Depositary Shares (each representing twenty (20) Ordinary Shares),NYSE
 LUCD,Lucid Diagnostics Inc. - Common Stock,NASDAQ
 LUCK,Lucky Strike Entertainment Corporation Class A Common Stock,NYSE
 LUCY,"Innovative Eyewear, Inc. - Common Stock",NASDAQ
@@ -3455,6 +3456,7 @@ LXP,LXP Industrial Trust Common Stock (Maryland REIT),NYSE
 LXRX,"Lexicon Pharmaceuticals, Inc. - Common Stock",NASDAQ
 LXU,"LSB Industries, Inc. Common Stock",NYSE
 LYB,LyondellBasell Industries NV Ordinary Shares Class A (Netherlands),NYSE
+LYCA,"Lycia Therapeutics, Inc. - Common Stock",NASDAQ
 LYEL,"Lyell Immunopharma, Inc. - Common Stock",NASDAQ
 LYFT,"Lyft, Inc. - Class A Common Stock",NASDAQ
 LYG,Lloyds Banking Group Plc American Depositary Shares,NYSE
@@ -4343,6 +4345,8 @@ PATK,"Patrick Industries, Inc. - Common Stock",NASDAQ
 PAVM,PAVmed Inc. - Common Stock,NASDAQ
 PAVS,Paranovus Entertainment Technology Ltd. - Class A Ordinary Shares,NASDAQ
 PAX,Patria Investments Limited - Class A Common Shares,NASDAQ
+PAXG,Pine Tree Acquisition Corp. - Class A Ordinary Shares,NASDAQ
+PAXGR,Pine Tree Acquisition Corp. - Rights,NASDAQ
 PAXGU,Pine Tree Acquisition Corp. - Units,NASDAQ
 PAXS,PIMCO Access Income Fund Common Shares of Beneficial Interest,NYSE
 PAY,"Paymentus Holdings, Inc. Class A Common Stock",NYSE
@@ -4415,7 +4419,6 @@ PENN,"PENN Entertainment, Inc. - Common Stock",NASDAQ
 PEO,"Adams Natural Resources Fund, Inc. Common Stock",NYSE
 PEP,"PepsiCo, Inc. - Common Stock",NASDAQ
 PEPG,PepGen Inc. - Common Stock,NASDAQ
-PERF,Perfect Corp. Class A Ordinary Share,NYSE
 PERI,Perion Network Ltd - Ordinary Shares,NASDAQ
 PESI,"Perma-Fix Environmental Services, Inc. - Common Stock",NASDAQ
 PETS,"PetMed Express, Inc. - Common Stock",NASDAQ
@@ -5052,7 +5055,6 @@ SDHIU,Siddhi Acquisition Corp - Unit,NASDAQ
 SDHY,PGIM Short Duration High Yield Opportunities Fund Common Shares,NYSE
 SDOT,Sadot Group Inc. - Common Stock,NASDAQ
 SDRL,Seadrill Limited Common Shares,NYSE
-SDST,Stardust Power Inc. - Common Stock,NASDAQ
 SE,"Sea Limited American Depositary Shares, each representing one Class A Ordinary Share",NYSE
 SEAT,Vivid Seats Inc. - Class A common stock,NASDAQ
 SEB,Seaboard Corporation Common Stock,AMEX
