@@ -43,7 +43,6 @@ ABUS,Arbutus Biopharma Corporation - Common Stock,NASDAQ
 ABVC,"ABVC BioPharma, Inc. - Common Stock",NASDAQ
 ABVX,Abivax SA - American Depositary Shares,NASDAQ
 ABX,"Abacus Global Management, Inc. Class A Common Stock",NYSE
-ACA,"Arcosa, Inc. Common Stock",NYSE
 ACAA,Averin Capital Acquisition Corp. - Class A Ordinary Shares,NASDAQ
 ACAAU,Averin Capital Acquisition Corp. - Units,NASDAQ
 ACAD,ACADIA Pharmaceuticals Inc. - Common Stock,NASDAQ
@@ -141,6 +140,7 @@ AESI,Atlas Energy Solutions Inc. Common Stock,NYSE
 AESP,Aeon Acquisition I Corp. - Class A Ordinary Shares,NASDAQ
 AESPR,Aeon Acquisition I Corp. - Rights,NASDAQ
 AESPU,Aeon Acquisition I Corp. - Units,NASDAQ
+AETR,Aetherion Technologies Inc. - Common Shares,NASDAQ
 AEVA,"Aeva Technologies, Inc. - Common Stock",NASDAQ
 AEXA,American Exceptionalism Acquisition Corp. A Class A Ordinary Shares,NYSE
 AEYE,"AudioEye, Inc. - Common Stock",NASDAQ
@@ -1830,7 +1830,6 @@ ELE,Elemental Royalty Corporation - Common Stock,NASDAQ
 ELF,"e.l.f. Beauty, Inc. Common Stock",NYSE
 ELLO,Ellomay Capital Ltd Ordinary Shares (Israel),AMEX
 ELMD,"Electromed, Inc. Common Stock",AMEX
-ELME,Elme Communities Common Stock,NYSE
 ELMT,The Elmet Group Co. - Common Stock,NASDAQ
 ELOG,Eastern International Ltd. - Ordinary Shares,NASDAQ
 ELOX,"Eloxx Pharmaceuticals, Inc. - Common Stock",NASDAQ
@@ -2045,6 +2044,7 @@ FCAP,"First Capital, Inc. - Common Stock",NASDAQ
 FCBC,"First Community Bankshares, Inc. - Common Stock",NASDAQ
 FCBM,"First Carolina Financial Services, Inc. Common Stock",NYSE
 FCCO,First Community Corporation - Common Stock,NASDAQ
+FCDH,Forcendra Holding Limited - Class A Ordinary Shares,NASDAQ
 FCEL,"FuelCell Energy, Inc. - Common Stock",NASDAQ
 FCF,First Commonwealth Financial Corporation Common Stock,NYSE
 FCFS,"FirstCash Holdings, Inc. - Common Stock",NASDAQ
@@ -2549,6 +2549,7 @@ GTY,Getty Realty Corporation Common Stock,NYSE
 GUAC,Berto Acquisition Corp. II - Ordinary Shares,NASDAQ
 GUACU,Berto Acquisition Corp. II - Units,NASDAQ
 GUG,Guggenheim Active Allocation Fund Common Shares of Beneficial Interest,NYSE
+GUNN,Gunnison Copper Corp. American Depositary Shares (each representing thirty (30) Common Shares),AMEX
 GURE,"Gulf Resources, Inc. - Common Stock",NASDAQ
 GUT,Gabelli Utility Trust (The) Common Stock,NYSE
 GUTS,"Fractyl Health, Inc. - Common Stock",NASDAQ
@@ -4333,7 +4334,6 @@ PAM,Pampa Energia S.A.,NYSE
 PAMT,PAMT CORP - Common Stock,NASDAQ
 PANL,Pangaea Logistics Solutions Ltd. - Common Stock,NASDAQ
 PANW,"Palo Alto Networks, Inc. - Common Stock",NASDAQ
-PAPL,Pineapple Financial Inc. Common Stock,AMEX
 PAR,PAR Technology Corporation Common Stock,NYSE
 PARA,"Banzai International, Inc. - Class A Common Stock",NASDAQ
 PARK,"Park Dental Partners, Inc. - Common Stock",NASDAQ
@@ -4633,6 +4633,7 @@ PTCT,"PTC Therapeutics, Inc. - Common Stock",NASDAQ
 PTEN,"Patterson-UTI Energy, Inc. - Common Stock",NASDAQ
 PTGX,"Protagonist Therapeutics, Inc. - Common Stock",NASDAQ
 PTHS,Pelthos Therapeutics Inc. Common Stock,AMEX
+PTIV,Pineapple Financial Inc. Common Stock,AMEX
 PTLE,PTL LTD - Class A Ordinary Shares,NASDAQ
 PTLO,Portillo's Inc. - Class A Common Stock,NASDAQ
 PTN,"Palatin Technologies, Inc. - Common Stock",NASDAQ
@@ -5992,7 +5993,6 @@ VSAT,"ViaSat, Inc. - Common Stock",NASDAQ
 VSEC,VSE Corporation - Common Stock,NASDAQ
 VSECU,VSE Corporation - Tangible Equity Units,NASDAQ
 VSH,"Vishay Intertechnology, Inc. Common Stock",NYSE
-VSME,VS Media Holdings Limited - Class A Ordinary Shares,NASDAQ
 VSNT,"Versant Media Group, Inc. - Class A Common Stock",NASDAQ
 VST,Vistra Corp. Common Stock,NYSE
 VSTM,"Verastem, Inc. - Common Stock",NASDAQ
@@ -6050,7 +6050,6 @@ WDH,Waterdrop Inc. American Depositary Shares (each representing the right to re
 WDI,Western Asset Diversified Income Fund Common Shares of Beneficial Interest,NYSE
 WDS,"Woodside Energy Group Limited American Depositary Shares, each representing one Ordinary Share",NYSE
 WEA,Western Asset Bond Fund Share of Beneficial Interest,NYSE
-WEAV,"Weave Communications, Inc. Common Stock",NYSE
 WEC,"WEC Energy Group, Inc. Common Stock",NYSE
 WELL,Welltower Inc. Common Stock,NYSE
 WEN,Wendy's Company (The) - Common Stock,NASDAQ
@@ -6124,7 +6123,6 @@ WPAC.U,"White Pearl Acquisition Corp. Units, each consisting of one Class A ordi
 WPC,W. P. Carey Inc. REIT,NYSE
 WPM,Wheaton Precious Metals Corp Common Shares (Canada),NYSE
 WPP,WPP plc American Depositary Shares,NYSE
-WPRT,Westport Fuel Systems Inc - Common Shares,NASDAQ
 WQEY,WISeQey Corp - Ordinary Shares,NASDAQ
 WRAP,"Wrap Technologies, Inc. - Common Stock",NASDAQ
 WRB,W.R. Berkley Corporation Common Stock,NYSE
