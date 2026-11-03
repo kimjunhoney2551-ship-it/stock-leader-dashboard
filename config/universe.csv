@@ -1046,6 +1046,7 @@ CARR,Carrier Global Corporation Common Stock,NYSE
 CARS,Cars.com Inc. Common Stock,NYSE
 CART,Maplebear Inc. - Common Stock,NASDAQ
 CASH,"Pathward Financial, Inc. - Common Stock",NASDAQ
+CASK,"Sempreon, Inc. - Common Stock",NASDAQ
 CASS,"Cass Information Systems, Inc - Common Stock",NASDAQ
 CAST,"FreeCast, Inc. - Class A common stock",NASDAQ
 CASY,"Caseys General Stores, Inc. - Common Stock",NASDAQ
@@ -1076,7 +1077,6 @@ CBSH,"Commerce Bancshares, Inc. - Common Stock",NASDAQ
 CBT,Cabot Corporation Common Stock,NYSE
 CBU,"Community Financial System, Inc. Common Stock",NYSE
 CBUS,"Cibus, Inc. - Class A Common Stock",NASDAQ
-CBZ,"CBIZ, Inc. Common Stock",NYSE
 CC,Chemours Company (The) Common Stock,NYSE
 CCAP,"Crescent Capital BDC, Inc. - Common Stock",NASDAQ
 CCAQ,Collective Acquisition Corp. - Class A ordinary shares,NASDAQ
@@ -3033,7 +3033,7 @@ JAN,"Janus Living, Inc. Class A-1 Common Stock",NYSE
 JANX,"Janux Therapeutics, Inc. - Common Stock",NASDAQ
 JATT,JATT II Acquisition Corp - Ordinary Shares,NASDAQ
 JAZZ,Jazz Pharmaceuticals plc - Ordinary Shares,NASDAQ
-JBDI,JBDI Holdings Limited - Ordinary Shares,NASDAQ
+JBDI,JBDI Holdings Limited - Class A Ordinary Shares,NASDAQ
 JBGS,JBG SMITH Properties Common Shares,NYSE
 JBHT,"J.B. Hunt Transport Services, Inc. - Common Stock",NASDAQ
 JBI,"Janus International Group, Inc. Common Stock",NYSE
@@ -3234,7 +3234,6 @@ KULR,"KULR Technology Group, Inc. Common Stock",AMEX
 KURA,"Kura Oncology, Inc. - Common Stock",NASDAQ
 KUST,"Kustom Entertainment, Inc. - Common Stock",NASDAQ
 KVHI,"KVH Industries, Inc. - Common Stock",NASDAQ
-KVUE,Kenvue Inc. Common Stock,NYSE
 KVYO,"Klaviyo, Inc. Series A Common Stock",NYSE
 KWR,Quaker Houghton Common Stock,NYSE
 KWY,Kingsway Corporation Common Stock,NYSE
@@ -3454,7 +3453,6 @@ LX,LexinFintech Holdings Ltd. - American Depositary Shares,NASDAQ
 LXEH,"Lixiang Education Holding Co., Ltd. - American Depositary Shares",NASDAQ
 LXEO,"Lexeo Therapeutics, Inc. - Common Stock",NASDAQ
 LXFR,Luxfer Holdings PLC Ordinary Shares,NYSE
-LXP,LXP Industrial Trust Common Stock (Maryland REIT),NYSE
 LXRX,"Lexicon Pharmaceuticals, Inc. - Common Stock",NASDAQ
 LXU,"LSB Industries, Inc. Common Stock",NYSE
 LYB,LyondellBasell Industries NV Ordinary Shares Class A (Netherlands),NYSE
@@ -3597,7 +3595,6 @@ MGM,MGM Resorts International Common Stock,NYSE
 MGN,Megan Holdings Limited - Class A Ordinary Shares,NASDAQ
 MGNI,"Magnite, Inc. - Common Stock",NASDAQ
 MGNX,"MacroGenics, Inc. - Common Stock",NASDAQ
-MGPI,"MGP Ingredients, Inc. - Common Stock",NASDAQ
 MGRC,McGrath RentCorp - Common Stock,NASDAQ
 MGRT,Mega Fortune Company Limited - Ordinary Shares,NASDAQ
 MGRX,"Mangoceuticals, Inc. - Common Stock",NASDAQ
@@ -3839,6 +3836,7 @@ NAMM,Namib Minerals - Ordinary Shares,NASDAQ
 NAMS,NewAmsterdam Pharma Company N.V. - Ordinary Shares,NASDAQ
 NAN,Nuveen New York Quality Municipal Income Fund Common Stock,NYSE
 NANO,Forge Nano Holdings Inc. - Common stock,NASDAQ
+NARA,"Narragansett Bancorp, Inc. - Common Stock",NASDAQ
 NAT,Nordic American Tankers Limited Common Stock,NYSE
 NATL,NCR Atleos Corporation Common Stock,NYSE
 NATR,"Nature's Sunshine Products, Inc. - Common Stock",NASDAQ
@@ -3978,6 +3976,7 @@ NMS,Nuveen Minnesota Quality Municipal Income Fund,NYSE
 NMT,Nuveen Massachusetts Quality Municipal Income Fund Common Stock,NYSE
 NMTC,NeuroOne Medical Technologies Corporation - Common Stock,NASDAQ
 NMZ,"Nuveen Municipal High Income Opportunity Fund Common Stock, $0.01 par value, per share",NYSE
+NMZ.V,"Nuveen Municipal High Income Opportunity Fund Rights (expiring December 2, 2026) Rights when issued",NYSE
 NN,NextNav Inc. - Common stock,NASDAQ
 NNBR,"NN, Inc. - Common Stock",NASDAQ
 NNDM,Nano Dimension Ltd. - American Depositary Shares,NASDAQ
@@ -4230,6 +4229,7 @@ ONTO,Onto Innovation Inc. Common Stock,NYSE
 OOMA,"Ooma, Inc. Common Stock",NYSE
 OPAD,Offerpad Solutions Inc.  - Class A Common Stock,NASDAQ
 OPAL,OPAL Fuels Inc. - Class A Common Stock,NASDAQ
+OPAY,"OPay Limited American Depositary Shares, each representing ten Ordinary Shares",NYSE
 OPBK,OP Bancorp - Common Stock,NASDAQ
 OPCH,"Option Care Health, Inc. - Common Stock",NASDAQ
 OPEN,Opendoor Technologies Inc  - Common Stock,NASDAQ
@@ -4721,7 +4721,6 @@ RADX,Radiopharm Theranostics Limited - American Depositary Shares,NASDAQ
 RAIL,"Freightcar America, Inc. - Common Stock",NASDAQ
 RAIN,"Rain Enhancement Technologies Holdco, Inc. - Class A Common Stock",NASDAQ
 RAL,Ralliant Corporation Common Stock,NYSE
-RAMP,"LiveRamp Holdings, Inc. Common Stock",NYSE
 RANG,Range Capital Acquisition Corp. - Ordinary Shares,NASDAQ
 RANGR,Range Capital Acquisition Corp. - Rights,NASDAQ
 RANGU,Range Capital Acquisition Corp. - Units,NASDAQ
