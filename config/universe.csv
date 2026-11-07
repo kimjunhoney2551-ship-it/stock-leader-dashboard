@@ -163,6 +163,7 @@ AGI,Alamos Gold Inc. Class A Common Shares,NYSE
 AGIG,Abundia Global Impact Group Inc. Common stock,AMEX
 AGIO,"Agios Pharmaceuticals, Inc. - Common Stock",NASDAQ
 AGL,"agilon health, inc. Common Stock",NYSE
+AGLT,"Agility Robotics, Inc. - Ordinary Shares",NASDAQ
 AGM,Federal Agricultural Mortgage Corporation Common Stock,NYSE
 AGM.A,Federal Agricultural Mortgage Corporation Common Stock,NYSE
 AGMB,AgomAb Therapeutics NV - ADRs representing one common share.,NASDAQ
@@ -233,8 +234,6 @@ ALAR,Alarum Technologies Ltd. - American Depositary Shares,NASDAQ
 ALB,Albemarle Corporation Common Stock,NYSE
 ALC,Alcon Inc. Ordinary Shares,NYSE
 ALCO,"Alico, Inc. - Common Stock",NASDAQ
-ALDF,Aldel Financial II Inc. - Class A Ordinary Shares,NASDAQ
-ALDFU,Aldel Financial II Inc. - Units,NASDAQ
 ALDX,"Aldeyra Therapeutics, Inc. - Common Stock",NASDAQ
 ALEC,"Alector, Inc. - Common Stock",NASDAQ
 ALF,Centurion Acquisition Corp. - Class A Ordinary Shares,NASDAQ
@@ -1107,13 +1106,11 @@ CCS,"Century Communities, Inc. Common Stock",NYSE
 CCSI,"Consensus Cloud Solutions, Inc. - Common Stock",NASDAQ
 CCTG,CCSC Technology International Holdings Limited - Class A Ordinary Shares,NASDAQ
 CCU,"Compania Cervecerias Unidas, S.A. Common Stock",NYSE
-CCXI,Churchill Capital Corp XI - Class A Ordinary Shares,NASDAQ
-CCXIU,Churchill Capital Corp XI - Units,NASDAQ
 CCZ,Comcast Holdings ZONES,NYSE
 CD,Chaince Digital Holdings Inc. - American Ordinary Shares,NASDAQ
 CDE,"Coeur Mining, Inc. Common Stock",NYSE
 CDIO,Cardio Diagnostics Holdings Inc. - Common stock,NASDAQ
-CDLR,Cadeler A/S American Depositary Share (each representing four (4) Ordinary Shares),NYSE
+CDLR,Cadeler plc Ordinary Shares,NYSE
 CDLX,"Cardlytics, Inc. - Common Stock",NASDAQ
 CDNA,"CareDx, Inc. - Common Stock",NASDAQ
 CDNL,Cardinal Infrastructure Group Inc. - Class A Common Stock,NASDAQ
@@ -1960,7 +1957,7 @@ ETW,Eaton Vance Corporation Eaton Vance Tax-Managed Global Buy-Write Opportunite
 ETX,Eaton Vance Municipal Income 2028 Term Trust Common Shares of Beneficial Interest,NYSE
 ETY,"Eaton Vance Tax-Managed Diversified Equity Income Fund Common Shares of Beneficial Interest,",NYSE
 EU,enCore Energy Corp. - Common Stock,NASDAQ
-EUDA,Euda Health Holdings Limited - Ordinary Shares,NASDAQ
+EUDA,Euda Health Holdings Limited - Class A Ordinary Shares,NASDAQ
 EURK,Eureka Acquisition Corp - Class A Ordinary Share,NASDAQ
 EURKR,Eureka Acquisition Corp - Right,NASDAQ
 EURKU,Eureka Acquisition Corp - Unit,NASDAQ
@@ -2310,7 +2307,6 @@ GBLI,"Global Indemnity Group, LLC - Class A Common Shares",NASDAQ
 GBR,"New Concept Energy, Inc Common Stock",AMEX
 GBX,"Greenbrier Companies, Inc. (The) Common Stock",NYSE
 GCBC,"Greene County Bancorp, Inc. - Common Stock",NASDAQ
-GCDT,Green Circle Decarbonize Technology Limited Class A Ordinary Shares,AMEX
 GCGR,General Catalyst Global Resilience Merger Corp. - Class A Ordinary Shares,NASDAQ
 GCGRU,General Catalyst Global Resilience Merger Corp. - Units,NASDAQ
 GCL,GCL Global Holdings Ltd - Ordinary Shares,NASDAQ
@@ -2450,7 +2446,6 @@ GNRC,Generac Holdlings Inc. Common Stock,NYSE
 GNS,Genius Group Limited Ordinary Shares,AMEX
 GNSS,Genasys Inc. - Common Stock,NASDAQ
 GNT,"GAMCO Natural Resources, Gold & Income Trust",NYSE
-GNTA,Genenta Science S.p.A. - American Depositary Shares,NASDAQ
 GNTX,Gentex Corporation - Common Stock,NASDAQ
 GNW,Genworth Financial Inc Common Stock,NYSE
 GO,Grocery Outlet Holding Corp. - Common Stock,NASDAQ
@@ -2663,7 +2658,7 @@ HLN,Haleon plc American Depositary Shares (Each representing two Ordinary Shares
 HLNE,Hamilton Lane Incorporated - Class A Common Stock,NASDAQ
 HLP,Hongli Group Inc. - Class A Ordinary Shares,NASDAQ
 HLSQ,Tessera Defense and Homeland Security Inc. Common Stock,AMEX
-HLT,Hilton Worldwide Holdings Inc. Common Stock,NYSE
+HLT,Hilton Worldwide Holdings Inc. - Common Stock,NASDAQ
 HLXC,Helix Acquisition Corp. III - Class A Ordinary Shares,NASDAQ
 HMC,"Honda Motor Company, Ltd. Common Stock",NYSE
 HMH,HMH Holding Inc. - Common Stock,NASDAQ
@@ -3258,7 +3253,7 @@ LAND,Gladstone Land Corporation - Common Stock,NASDAQ
 LANV,Lanvin Group Holdings Limited Ordinary Shares,NYSE
 LAR,Lithium Argentina AG Common Shares,NYSE
 LARK,Landmark Bancorp Inc. - Common Stock,NASDAQ
-LASE,Laser Photonics Corporation - Common Stock,NASDAQ
+LASE,LASE Corp. - Common Stock,NASDAQ
 LASR,"nLIGHT, Inc. - Common Stock",NASDAQ
 LATA,Galata Acquisition Corp. II - Class A Ordinary Shares,NASDAQ
 LATAU,Galata Acquisition Corp. II - Units,NASDAQ
@@ -3289,6 +3284,7 @@ LDOS,"Leidos Holdings, Inc. Common Stock",NYSE
 LE,"Lands' End, Inc. - Common Stock",NASDAQ
 LEA,Lear Corporation Common Stock,NYSE
 LECO,"Lincoln Electric Holdings, Inc. - Common Shares",NASDAQ
+LEDR,Leader's Advantage Acquisition Corp. - Class A Ordinary Shares,NASDAQ
 LEDRU,Leader's Advantage Acquisition Corp. - Units,NASDAQ
 LEDS,SemiLEDS Corporation - Common Stock,NASDAQ
 LEE,"Lee Enterprises, Incorporated - Common Stock",NASDAQ
@@ -3973,7 +3969,7 @@ NMS,Nuveen Minnesota Quality Municipal Income Fund,NYSE
 NMT,Nuveen Massachusetts Quality Municipal Income Fund Common Stock,NYSE
 NMTC,NeuroOne Medical Technologies Corporation - Common Stock,NASDAQ
 NMZ,"Nuveen Municipal High Income Opportunity Fund Common Stock, $0.01 par value, per share",NYSE
-NMZ.V,"Nuveen Municipal High Income Opportunity Fund Rights (expiring December 2, 2026) Rights when issued",NYSE
+NMZ.R,"Nuveen Municipal High Income Opportunity Fund Rights (expiring December 2, 2026) Rights",NYSE
 NN,NextNav Inc. - Common stock,NASDAQ
 NNBR,"NN, Inc. - Common Stock",NASDAQ
 NNDM,Nano Dimension Ltd. - American Depositary Shares,NASDAQ
@@ -4585,7 +4581,7 @@ PRK,Park National Corporation Common Stock,AMEX
 PRKS,United Parks & Resorts Inc. Common Stock,NYSE
 PRLB,"Proto Labs, Inc. Common stock",NYSE
 PRLD,Prelude Therapeutics Incorporated - Common Stock,NASDAQ
-PRM,"Perimeter Solutions, SA Common Stock",NYSE
+PRM,Perimeter Group Inc. Common Stock,NYSE
 PRMB,Primo Brands Corporation Class A Common Stock,NYSE
 PRME,"Prime Medicine, Inc. - Common Stock",NASDAQ
 PROF,Profound Medical Corp. - common stock,NASDAQ
@@ -4969,6 +4965,7 @@ SABR,Sabre Corporation - Common Stock,NASDAQ
 SABS,"SAB Biotherapeutics, Inc. - Common Stock",NASDAQ
 SAC,Safeguard Acquisition Corp. Class A Ordinary Shares,NYSE
 SACH,Sachem Capital Corp. Common Shares,AMEX
+SAEN,Genenta Science S.p.A. - American Depositary Shares,NASDAQ
 SAFE,Safehold Inc. New Common Stock,NYSE
 SAFT,"Safety Insurance Group, Inc. - Common Stock",NASDAQ
 SAFX,"XCF Global, Inc. - Class A Common Stock",NASDAQ
@@ -6217,8 +6214,8 @@ XRTX,XORTX Therapeutics Inc. - Common Shares,NASDAQ
 XRX,Xerox Holdings Corporation - Common Stock,NASDAQ
 XSLL,Xsolla SPAC 1 - Class A Ordinary Shares,NASDAQ
 XSLLU,Xsolla SPAC 1 - Units,NASDAQ
-XTER,Karman Line Acquisition Corp. - Class A Ordinary Shares,NASDAQ
-XTERU,Karman Line Acquisition Corp. - Units,NASDAQ
+XTER,Xterax Corporation II - Class A Ordinary Shares,NASDAQ
+XTERU,Xterax Corporation II - Units,NASDAQ
 XTIA,"XTI Aerospace, Inc. Common Stock  - Common Stock",NASDAQ
 XTLB,XTL Biopharmaceuticals Ltd. - American Depositary Shares,NASDAQ
 XTND,"Xtend AI Robotics, Inc. Common Stock",NYSE
